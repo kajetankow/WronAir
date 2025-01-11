@@ -876,4 +876,9 @@ MEDIA QUERIES - WYGLĄD MOBILE
   .tile {
     margin: 5px;
   }
+  .bg-section {
+  max-width: 1000px;
+  height: 699px;
+  }
+  
 }
