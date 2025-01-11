@@ -812,7 +812,7 @@ ODKRYJ WIECEJ
 }
 
 /* RESPONSYWNOŚĆ stopki */
-@media (max-width: 768px) {
+@media (max-width: 1280px) {
   .footer-container,
   .footer-container.search-bar-row {
     flex-direction: column;
@@ -859,7 +859,7 @@ MEDIA QUERIES - WYGLĄD MOBILE
       margin-left: 10px;
   }
   .logo-container img {
-      max-height: 60px;
+      max-height: 90px;
   }
   .top-bar {
       display: none;
@@ -880,5 +880,9 @@ MEDIA QUERIES - WYGLĄD MOBILE
   max-width: 1000px;
   height: 699px;
   }
+  .tile {
+  flex: 0 0 100%; /* Każdy kafelek zajmuje 10% szerokości */
+  
+}
   
 }
