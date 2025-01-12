@@ -10,6 +10,8 @@ body {
   font-family: Calibri, sans-serif;
   background-color: #fff;
   color: #333;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 /* --------------------------------------------------
@@ -697,6 +699,7 @@ KAFELKI
   display: flex;
   justify-content: space-between;
   pointer-events: none;
+
 }
 
 .carousel-nav button {
@@ -958,8 +961,10 @@ MEDIA QUERIES - WYGLĄD MOBILE
   
   /* Powiększenie przycisków nawigacyjnych */
   .carousel-container {
-    margin-left: 40px;
+    margin: 0 auto;  /* Wyśrodkowanie bez dodatkowych marginesów bocznych */
     padding: 40px 0;
+    width: 100%;
+    max-width: 100%;
   }
 
   .carousel {
