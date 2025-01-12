@@ -883,10 +883,17 @@ ODKRYJ WIECEJ
   font-size: 28px;
   margin: 0;
 }
-
+@media (max-width: 1400px) and (min-width: 1201px){
+  .flight-container {
+    
+    transform: translate(-50%, +135%);
+  }
+  
+}
 /* ---------------------------------------
 MEDIA QUERIES - WYGLĄD TABLET
 --------------------------------------- */
+
 @media (max-width: 1200px) and (min-width: 761px){
   .flight-container {
     max-width: 90%;
