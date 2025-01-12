@@ -886,8 +886,12 @@ ODKRYJ WIECEJ
 @media (max-width: 1400px) and (min-width: 1201px){
   .flight-container {
     
-    transform: translate(-50%, +135%);
+    transform: translate(-50%, +80%);
   }
+  .bg-section {
+    max-width: 100%;
+    height: 800px;
+    }
   
 }
 /* ---------------------------------------
