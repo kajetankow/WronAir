@@ -194,9 +194,9 @@ HEADER
 
 .hamburger-bar {
   display: block;
-  width: 85px;
-  height: 10px;
-  margin: 15px;
+  width: 50px;
+  height: 5px;
+  margin: 8px;
   background-color: #fff;
   transition: all 0.3s ease;
 }
@@ -206,8 +206,8 @@ HEADER
   position: fixed;
   top: 0;
   right: 0;
-  width: 70%;
-  height: 100vh;
+  width: 60%;
+  height: 100%;
   background-color: #243751;
   transform: translateX(100%);
   transition: transform 0.3s ease;
@@ -228,13 +228,13 @@ HEADER
 }
 
 .mobile-menu ul li {
-  margin: 40px 0;
+  margin: 20px 0;
 }
 
 .mobile-menu ul li a {
   color: #fff;
   text-decoration: none;
-  font-size: 40px;
+  font-size: 20px;
 }
 
 .mobile-menu.open {
@@ -689,7 +689,38 @@ KAFELKI
   text-align: right;
   margin: 4px 0 0; /* Cena poniżej nazwy miasta */
 }
+.tile_more {
+  flex: 0 0 450px; /* Każdy kafelek zajmuje 10% szerokości */
+  text-align: center;
+  border: 0.8px solid #243751;
+  border-radius: 0;
+  margin: 40px;
+  padding: 50px; /* Równomierny padding wewnątrz kafelka */
+  box-shadow: 0 0.8px 2px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #fff;
+}
 
+.tile_more a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.tile_more img {
+  margin-top: 150px;
+  width: 60%;
+  height: auto;
+  object-fit: cover;
+}
+.tile-info_more {
+  text-align: center;
+  font-size: 30px;
+}
 /* Przyciski nawigacyjne */
 .carousel-nav {
   position: absolute;
@@ -853,76 +884,12 @@ ODKRYJ WIECEJ
   margin: 0;
 }
 
-/* RESPONSYWNOŚĆ stopki */
-@media only screen and (max-width: 1200px) {
-  .footer-container,
-  .footer-container.search-bar-row {
-    flex-direction: column;
-    align-items: center;
-  }
-  .footer-links a,
-  .social-media a{
-    font-size: 30px;
-  }
-  .social-media a img {
-    width: 40px;
-  }
-  .payment-title {
-    font-size: 50%;
-    
-  }
-  .social-title {
-    font-size: 40px;
-  }
-  
-  .footer-column {
-    margin-bottom: 20px;
-  }
-  .search-bar {
-    max-width: 100%;
-    
-  }
-  .input-group {
-    flex-direction: column; /* Stack inputs vertically on small screens */
-  }
-
-  .input-group input {
-      width: 100%; /* Full width on small screens */
-      height: 90px;
-      font-size: 35px;
-  }
-  .checkbox-container {
-    font-size: 30px;
-    font-weight: bold;
-  }
-  .checkbox-container p{
-    font-size: 20px;
-  }
-  
-  .input-group button {
-      width: 100%; /* Full width for button on small screens */
-      height: 90px;
-      font-size: 35px;
-  }
-  .odkryj-wiecej h2, p {
-    font-size: 30px;
-    font-weight: bold;
-  }
-  .checkbox-container input {
-    transform: scale(3);
-    margin-left: 20px;
-  }
-  .lang-btn {
-    font-size: 40px;
-    padding: 10px 20px; /* przykładowe powiększenie paddingu */
-  }
-}
-
 /* ---------------------------------------
-MEDIA QUERIES - WYGLĄD MOBILE
+MEDIA QUERIES - WYGLĄD TABLET
 --------------------------------------- */
-@media only screen and (max-width: 1200px) {
+@media (max-width: 1200px) and (min-width: 761px){
   .flight-container {
+    max-width: 90%;
     transform: translate(0%, 0%);
     margin-top: 15%
   }
@@ -935,7 +902,66 @@ MEDIA QUERIES - WYGLĄD MOBILE
       margin-left: 10px;
   }
   .logo-container img {
-      max-height: 100px;
+      max-height: 70px;
+  }
+  .top-bar {
+      display: none;
+  }
+  .main-menu {
+      display: none;
+  }
+  .menu-toggle {
+      display: block;
+  }
+  .logo-container img {
+      width: auto;
+  }
+  
+  .mobile-menu {
+    
+    width: 20%;
+  
+  }
+  .bg-section {
+  max-width: 100%;
+  height: 500px;
+  }
+  .bg-section-border {
+    max-height: 520px;
+  }
+  .line-container {
+    margin: 10px 0;
+  }
+  .checkbox-container p
+  {
+    font-size: 17px;
+    color: white;
+  }
+  .footer-bottom {
+    font-size: 15px;
+  }
+  
+}
+
+/* ---------------------------------------
+MEDIA QUERIES - WYGLĄD MOBILE
+--------------------------------------- */
+@media (max-width: 760px) {
+  .flight-container {
+    max-width: 90%;
+    transform: translate(0%, 0%);
+    margin-top: 35%
+  }
+  .header-with-logo {
+      height: auto;
+      padding: 10px 0;
+  }
+  .logo-container {
+      position: static;
+      margin-left: 10px;
+  }
+  .logo-container img {
+      max-height: 50px;
   }
   .top-bar {
       display: none;
@@ -956,7 +982,7 @@ MEDIA QUERIES - WYGLĄD MOBILE
 
   /* Powiększenie obrazka (opcjonalne) – zapewnienie, że jeden element zajmuje całość */
   .tile img {
-    width: 70%;
+    width: 100%;
   }
   
   /* Powiększenie przycisków nawigacyjnych */
@@ -982,12 +1008,12 @@ MEDIA QUERIES - WYGLĄD MOBILE
   }
 
   .tile-info h3 {
-    font-size: 80px;
+    font-size: 40px;
   }
 
   .tile-info .price {
-    font-size: 40px;
-    margin-bottom: 90px;
+    font-size: 30px;
+    margin-bottom: 20px;
   }
 
   /* Powiększenie przycisków */
@@ -997,7 +1023,7 @@ MEDIA QUERIES - WYGLĄD MOBILE
   }
 
   .bg-section {
-  max-width: 900px;
+  max-width: 100%;
   height: 900px;
   }
   .flight-form {
@@ -1011,6 +1037,7 @@ MEDIA QUERIES - WYGLĄD MOBILE
     flex-direction: column;
     align-items: center;
     width: 100%;
+    margin-left: 20%;
     margin-bottom: 20px;
   }
 
@@ -1019,28 +1046,34 @@ MEDIA QUERIES - WYGLĄD MOBILE
   .flight-form .form-group2,
   .flight-form .form-group3,
   .flight-form .date-pair {
-    width: 90%;  /* lub inna wartość, zależnie od potrzeb */
+    width: 100%;  /* lub inna wartość, zależnie od potrzeb */
     margin: 0 auto 12px auto;
   }
+  .date-pair {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 0; /* brak dodatkowych przerw między elementami */
+  }
   .flight-form .passenger-group{
-    width: 90%;  /* lub inna wartość, zależnie od potrzeb */
-    margin-left: 200px
+    width: 100%;  /* lub inna wartość, zależnie od potrzeb */
+    margin-left: 0px !important;
   }
 
   /* Powiększenie pól tekstowych oraz select */
   .flight-form input,
   .flight-form select {
-    width: 100%;
-    height: 90px;     /* zwiększona wysokość */
-    font-size: 40px;  /* większa czcionka */
-    padding: 10px;
+    width: 80%;
+    height: 60px;     /* zwiększona wysokość */
+    font-size: 20px;  /* większa czcionka */
+    padding: 20px;
   }
 
   /* Przycisk wyszukiwania również na pełnej szerokości i większy */
   .search-button {
-    width: 100%;
-    height: 9cqb;
-    font-size: 40px;
+    width: 80%;
+    height: 60px;
+    font-size: 20px;
     padding: 10px;
   }
 
@@ -1048,13 +1081,16 @@ MEDIA QUERIES - WYGLĄD MOBILE
   .small-select {
     height: 60px !important;
     width: 60px !important;
-    margin-left: 30px;
+    margin-left: 10px;
     font-size: 20px !important;
   }
 
   /* Opcjonalnie: Dostosowanie etykiety przed selectem „Ilość pasażerów” */
   .passenger-group label {
-    font-size: 30px;
+    display: flex;
+    align-items: center;
+
+    font-size: 20px;
     margin-bottom: 10px;
   }
 
@@ -1062,25 +1098,102 @@ MEDIA QUERIES - WYGLĄD MOBILE
   .flight-container .header-title {
     font-size: 30px;
     padding: 10px;
-    width: 50%;
-    left: 25%;
+    width: 80%;
+    left: 10%;
   }
   .form-half {
-    width: 50%;
-    height: 90px;
+    width: 40%;       /* dwa elementy po 50% */
+    height: 60px;     /* wysokość zgodnie z Twoimi ustawieniami */
+    margin: 0;        /* usuń dodatkowe marginesy */
+    padding: 0;       /* sprawdź padding – ustaw na 0, jeśli nie jest konieczny */
+    box-sizing: border-box; /* upewnij się, że wszystkie wymiary są wliczane w szerokość */
   }
   
   .form-half input {
-    height: 90px;
-    font-size: 30px;
-    
+  width: 100%;
+  height: 100%;
+  border: 3px solid #222745;
+  padding: 6px;
+  font-size: 11px;
+  box-sizing: border-box;
+
   }
   .line-container {
-    margin: 110px 0;
+    margin: 10px 0;
   }
   .checkbox-container p
   {
     font-size: 17px;
     color: white;
+  }
+  .footer-bottom {
+    font-size: 15px;
+  }
+  .footer-container,
+  .footer-container.search-bar-row {
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer-links a,
+  .social-media a{
+    font-size: 20px;
+  }
+  .social-media a img {
+    width: 30px;
+  }
+  .payment-title {
+    font-size: 25px;
+    
+  }
+  .social-title {
+    font-size: 25px;
+  }
+  
+  .footer-column {
+    margin-bottom: 20px;
+  }
+  .search-bar {
+    max-width: 100%;
+    
+  }
+  .input-group {
+    flex-direction: column; /* Stack inputs vertically on small screens */
+  }
+
+  .input-group input {
+      width: 100%; /* Full width on small screens */
+      height: 60px;
+      font-size: 20px;
+  }
+  .checkbox-container {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .checkbox-container p{
+    font-size: 10px;
+  }
+  
+  .input-group button {
+      width: 100%; /* Full width for button on small screens */
+      height: 60px;
+      font-size: 20px;
+  }
+  .odkryj-wiecej h2 {
+    font-size: 25px;
+  }
+  .odkryj-wiecej p {
+    font-size: 20px;
+  }
+  .checkbox-container input {
+    transform: scale(2);
+    margin-left: 20px;
+  }
+
+  .lang-btn {
+    font-size: 20px;
+    padding: 10px 20px; /* przykładowe powiększenie paddingu */
+  }
+  .text-linia {
+    font-size: 20px;
   }
 }
