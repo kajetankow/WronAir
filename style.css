@@ -204,7 +204,7 @@ HEADER
   position: fixed;
   top: 0;
   right: 0;
-  width: 40%;
+  width: 70%;
   height: 100vh;
   background-color: #243751;
   transform: translateX(100%);
@@ -859,17 +859,17 @@ ODKRYJ WIECEJ
   }
   .footer-links a,
   .social-media a{
-    font-size: 45px;
+    font-size: 30px;
   }
   .social-media a img {
     width: 40px;
   }
   .payment-title {
-    font-size: 80px;
+    font-size: 50%;
     
   }
   .social-title {
-    font-size: 80px;
+    font-size: 40px;
   }
   
   .footer-column {
@@ -992,8 +992,8 @@ MEDIA QUERIES - WYGLĄD MOBILE
   }
 
   .bg-section {
-  max-width: 1000px;
-  height: 1000px;
+  max-width: 900px;
+  height: 900px;
   }
   .flight-form {
     display: flex;
