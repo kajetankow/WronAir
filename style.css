@@ -854,7 +854,7 @@ ODKRYJ WIECEJ
 }
 
 /* RESPONSYWNOŚĆ stopki */
-@media (max-width: 850px) {
+@media (max-width: 1000px) {
   .footer-container,
   .footer-container.search-bar-row {
     flex-direction: column;
@@ -921,7 +921,7 @@ ODKRYJ WIECEJ
 /* ---------------------------------------
 MEDIA QUERIES - WYGLĄD MOBILE
 --------------------------------------- */
-@media (max-width: 850px) {
+@media (max-width: 1000px) {
   .flight-container {
     transform: translate(0%, 0%);
     margin-top: 15%
