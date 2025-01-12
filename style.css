@@ -854,7 +854,7 @@ ODKRYJ WIECEJ
 }
 
 /* RESPONSYWNOŚĆ stopki */
-@media only screen and (max-width: 390px) and (orientation: portrait) {
+@media only screen and (max-width: 400px) and (orientation: portrait) {
   .footer-container,
   .footer-container.search-bar-row {
     flex-direction: column;
@@ -921,7 +921,7 @@ ODKRYJ WIECEJ
 /* ---------------------------------------
 MEDIA QUERIES - WYGLĄD MOBILE
 --------------------------------------- */
-@media only screen and (max-width: 390px) and (orientation: portrait) {
+@media only screen and (max-width: 400px) and (orientation: portrait) {
   .flight-container {
     transform: translate(0%, 0%);
     margin-top: 15%
