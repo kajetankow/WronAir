@@ -17,7 +17,6 @@ body {
 /* --------------------------------------------------
 HEADER 
 -------------------------------------------------- */
-
 .header-with-logo {
   position: relative;
   width: 100%;
@@ -218,7 +217,7 @@ HEADER
      dzięki czemu menu zacznie się od góry */
   align-items: flex-start;
   justify-content: center;
-  padding-top: 150px; /* Dodajemy padding, aby zawartość nie przylegała do samej krawędzi */
+  padding-top: 60px; /* Dodajemy padding, aby zawartość nie przylegała do samej krawędzi */
 }
 
 .mobile-menu ul {
@@ -1039,7 +1038,7 @@ MEDIA QUERIES - WYGLĄD MOBILE
     align-items: center;
     width: 100%;
     margin-left: 20%;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 
   /* Zmiana szerokości kontenerów formularza – uaktywniamy pełną szerokość */
@@ -1048,6 +1047,9 @@ MEDIA QUERIES - WYGLĄD MOBILE
   .flight-form .form-group3,
   .flight-form .date-pair {
     width: 100%;  /* lub inna wartość, zależnie od potrzeb */
+    margin: 0 auto 10px auto;
+  }
+  .flight-form .form-group3 {
     margin: 0 auto 12px auto;
   }
   .date-pair {
@@ -1069,6 +1071,7 @@ MEDIA QUERIES - WYGLĄD MOBILE
     font-size: 20px;  /* większa czcionka */
     padding: 20px;
   }
+ 
 
   /* Przycisk wyszukiwania również na pełnej szerokości i większy */
   .search-button {
@@ -1137,7 +1140,8 @@ MEDIA QUERIES - WYGLĄD MOBILE
   }
   .footer-links a,
   .social-media a{
-    font-size: 20px;
+    font-size: 15px;
+    margin-bottom: 0;
   }
   .social-media a img {
     width: 30px;
@@ -1180,10 +1184,10 @@ MEDIA QUERIES - WYGLĄD MOBILE
       font-size: 20px;
   }
   .odkryj-wiecej h2 {
-    font-size: 25px;
+    font-size: 20px;
   }
   .odkryj-wiecej p {
-    font-size: 20px;
+    font-size: 17px;
   }
   .checkbox-container input {
     transform: scale(2);
@@ -1195,6 +1199,24 @@ MEDIA QUERIES - WYGLĄD MOBILE
     padding: 10px 20px; /* przykładowe powiększenie paddingu */
   }
   .text-linia {
-    font-size: 20px;
+    font-size: 17px;
+  }
+  #trip-type {
+    height: 60px; /* Wysokość pola */
+    line-height: 60px; /* Dopasowanie linii tekstu do wysokości */
+    padding: 0; /* Usuń nadmiarowy padding */
+    text-align: center; /* Horyzontalne wyśrodkowanie (opcjonalne) */
+    font-size: 16px; /* Dopasowanie rozmiaru tekstu */
+    -webkit-appearance: none; /* Usuwa domyślny styl strzałki */
+    appearance: none;
+  }
+  #passengers {
+    height: 60px; /* Wysokość pola */
+    line-height: 60px; /* Dopasowanie linii tekstu do wysokości */
+    padding: 0; /* Usuń nadmiarowy padding */
+    text-align: center; /* Horyzontalne wyśrodkowanie (opcjonalne) */
+    font-size: 16px; /* Dopasowanie rozmiaru tekstu */
+    -webkit-appearance: none; /* Usuwa domyślny styl strzałki */
+    appearance: none;
   }
 }
