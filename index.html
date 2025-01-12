@@ -2,7 +2,7 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>WronAir</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -162,9 +162,9 @@
     <p>Dzięki szerokiej siatce połączeń odwiedzisz nie tylko największe światowe metropolie, ale także ukryte perełki, o których marzyłeś! Komfortowe loty, 
       atrakcyjne ceny i przyjazna obsługa sprawią, że każda podróż stanie się niezapomnianą przygodą.</br>
 
-      WronAir – Twoje skrzydła do świata!</br>
+    </br>WronAir – Twoje skrzydła do świata!</br>
 
-      Już dziś zaplanuj swoją podróż i zrealizuj swoje marzenia!</br>
+    </br>Już dziś zaplanuj swoją podróż i zrealizuj swoje marzenia!</br>
     </p>
   </div>
   <!--KAFELKI-->
@@ -208,6 +208,42 @@
           <div class="tile-info">
             <h3>Rzym</h3>
             <p class="price"><span style="font-size: 16px;">już od </span>398 zł*</p>
+          </div>
+        </a>
+      </div>
+      <div class="tile">
+        <a href="oferta5.html">
+          <img src="img/new_jork.webp" alt="Nowy Jork">
+          <div class="tile-info">
+            <h3>Nowy Jork</h3>
+            <p class="price"><span style="font-size: 16px;">już od </span>1400 zł*</p>
+          </div>
+        </a>
+      </div>
+      <div class="tile">
+        <a href="oferta6.html">
+          <img src="img/barcelona.webp" alt="Barcelona">
+          <div class="tile-info">
+            <h3>Barcelona</h3>
+            <p class="price"><span style="font-size: 16px;">już od </span>500 zł*</p>
+          </div>
+        </a>
+      </div>
+      <!-- Tile 7 -->
+      <div class="tile">
+        <a href="oferta7.html">
+          <img src="img/ateny.webp" alt="Ateny">
+          <div class="tile-info">
+            <h3>Ateny</h3>
+            <p class="price"><span style="font-size: 16px;">już od </span>350 zł*</p>
+          </div>
+        </a>
+      </div>
+      <div class="tile_more">
+        <a href="oferta7.html">
+          <img src="img/plus.png" alt="more">
+          <div class="tile-info_more">
+            <h3>Zobacz więcej ...</h3>
           </div>
         </a>
       </div>
@@ -338,6 +374,22 @@
       // Inicjalizacja pozycji karuzeli
       setPositionByIndex();
       
+    
+    // Automatyczne przesuwanie karuzeli co 3 sekundy
+    function startAutoSlide() {
+      autoSlideInterval = setInterval(() => {
+        currentIndex = currentIndex < tiles.length - 3 ? currentIndex + 1 : 0;
+        setPositionByIndex();
+        updateIndicators();
+      }, 8000); // 8 sekundy
+    }
+    // Funkcja resetująca automatyczne przesuwanie karuzeli
+    function resetAutoSlide() {
+      clearInterval(autoSlideInterval);
+      startAutoSlide();
+    }
+    // Uruchomienie automatycznego przesuwania karuzeli
+    startAutoSlide();
     })();
   </script>
   <!--NEWSLETTER-->
