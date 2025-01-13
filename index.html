@@ -10,6 +10,7 @@
 </head>
 <body>
   <header class="header-with-logo">
+    <!-- Kontener na logo -->
     <div class="logo-container">
       <a href="landing-page.html">
         <img src="img/logociemne.jpg" alt="Logo WronAir" />
@@ -114,6 +115,7 @@
               </select>
             </div>
             <div class="passenger-group">
+              
               <label for="passengers">Ilość pasażerów:</label>
               <select id="passengers" name="passengers" class="small-select">
                 <option value="1">1</option>
@@ -126,9 +128,11 @@
           <div class="row">
             <div class="form-group">
               <input type="text" id="from" placeholder="Skąd">
+              <div id="from-suggestions" class="autocomplete-suggestions"></div>
             </div>
             <div class="form-group2">
               <input type="text" id="to" placeholder="Dokąd">
+              <div id="to-suggestions" class="autocomplete-suggestions"></div>
             </div>
           </div>
           <div class="row">
@@ -392,6 +396,55 @@
     // Uruchomienie automatycznego przesuwania karuzeli
     startAutoSlide();
     })();
+    document.addEventListener('DOMContentLoaded', () => {
+  const locations = [
+    'Warszawa', 'Kraków', 'Gdańsk', 'Wrocław', 'Poznań', 
+    'Katowice', 'Łódź', 'Szczecin', 'Lublin', 'Rzeszów'
+  ];
+
+  function setupAutocomplete(inputId, suggestionsId, otherInputId) {
+    const input = document.getElementById(inputId);
+    const suggestionsBox = document.getElementById(suggestionsId);
+    const otherInput = document.getElementById(otherInputId);
+
+    input.addEventListener('input', () => {
+      const query = input.value.toLowerCase();
+      const otherValue = otherInput.value.toLowerCase();
+      suggestionsBox.innerHTML = '';
+
+      if (query) {
+        const filteredLocations = locations.filter(
+          location =>
+            location.toLowerCase().includes(query) &&
+            location.toLowerCase() !== otherValue // Wyklucz lokalizację z drugiego pola
+        );
+
+        filteredLocations.forEach(location => {
+          const suggestionItem = document.createElement('div');
+          suggestionItem.textContent = location;
+
+          suggestionItem.addEventListener('click', () => {
+            input.value = location;
+            suggestionsBox.innerHTML = ''; // Ukryj podpowiedzi po kliknięciu
+          });
+
+          suggestionsBox.appendChild(suggestionItem);
+        });
+      }
+    });
+
+    // Ukryj podpowiedzi, gdy użytkownik kliknie poza polem
+    document.addEventListener('click', (event) => {
+      if (!input.contains(event.target) && !suggestionsBox.contains(event.target)) {
+        suggestionsBox.innerHTML = '';
+      }
+    });
+  }
+
+  // Inicjalizuj autouzupełnianie dla obu pól
+  setupAutocomplete('from', 'from-suggestions', 'to');
+  setupAutocomplete('to', 'to-suggestions', 'from');
+});
   </script>
   <!--NEWSLETTER-->
   <div class="newsletter-container">
@@ -501,6 +554,30 @@
         langDropdownMobile.classList.toggle("show");
       });
     });
+    document.addEventListener('DOMContentLoaded', () => {
+    const tripTypeSelect = document.getElementById('trip-type');
+    const returnInputContainer = document.querySelector('.form-half:nth-child(2)'); // przyjmujemy, że druga połówka dotyczy powrotu
+    const departureInputContainer = document.querySelector('.form-half:nth-child(1)'); 
+
+    // Funkcja zmieniająca widoczność pola "Powrót"
+    function updateReturnVisibility() {
+    if (tripTypeSelect.value === 'one-way') {
+      // Ukryj pole powrotu
+      returnInputContainer.style.display = 'none';
+      // Dodaj klasę, która rozciąga pole wylotu
+      departureInputContainer.classList.add('full-width-departure');
+    } else {
+      returnInputContainer.style.display = 'flex';
+      departureInputContainer.classList.remove('full-width-departure');
+    }
+  }
+
+    // Uruchom przy starcie:
+    updateReturnVisibility();
+
+    // Nasłuchuj zmiany wyboru:
+    tripTypeSelect.addEventListener('change', updateReturnVisibility);
+  });
   </script>
 </body>
 </html>
