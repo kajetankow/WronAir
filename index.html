@@ -12,7 +12,7 @@
   <header class="header-with-logo">
     <!-- Kontener na logo -->
     <div class="logo-container">
-      <a href="index.html">
+      <a href="landing-page.html">
         <img src="img/logociemne.jpg" alt="Logo WronAir" />
       </a>
     </div>
@@ -59,7 +59,7 @@
         <li><a href="#">Upgrade</a></li>
         <li><a href="#">Usługi na Pokładzie</a></li>
         <li><a href="faq.html">FAQ</a></li>
-        <li><a href="o_nas.html">O Nas</a></li>
+        <li><a href="#">O Nas</a></li>
       </ul>
     </nav>
     
@@ -72,7 +72,7 @@
         <li><a href="#">Upgrade</a></li>
         <li><a href="#">Usługi na Pokładzie</a></li>
         <li><a href="faq.html">FAQ</a></li>
-        <li><a href="o_nas.html">O Nas</a></li>
+        <li><a href="#">O Nas</a></li>
         <li>
           <div class="language-switch-mobile">
             <button class="lang-btn" id="langButtonMobile">
@@ -106,7 +106,7 @@
         <!-- Nagłówek formularza -->
         <div class="header-title">Loty</div>
         <!-- Formularz -->
-        <form class="flight-form">
+        <form action="departure.html" method="get" class="flight-form">
           <div class="row">
             <div class="form-group3">
               <select id="trip-type" name="trip_type">
@@ -115,7 +115,6 @@
               </select>
             </div>
             <div class="passenger-group">
-              
               <label for="passengers">Ilość pasażerów:</label>
               <select id="passengers" name="passengers" class="small-select">
                 <option value="1">1</option>
@@ -127,28 +126,29 @@
           </div>
           <div class="row">
             <div class="form-group">
-              <input type="text" id="from" placeholder="Skąd">
+              <input type="text" id="from" name="from" placeholder="Skąd">
               <div id="from-suggestions" class="autocomplete-suggestions"></div>
             </div>
             <div class="form-group2">
-              <input type="text" id="to" placeholder="Dokąd">
+              <input type="text" id="to" name="to" placeholder="Dokąd">
               <div id="to-suggestions" class="autocomplete-suggestions"></div>
             </div>
           </div>
           <div class="row">
             <div class="date-pair">
               <div class="form-half">
-                <input type="text" id="departure-date" placeholder="Wylot" onfocus="(this.type='date')" onblur="if(!this.value) this.type='text'"/>
+                <input type="text" id="departure-date" name="departure_date" placeholder="Wylot" onfocus="(this.type='date')" onblur="if(!this.value) this.type='text'"/>
               </div>
               <div class="form-half">
-                <input type="text" id="return" placeholder="Powrót" onfocus="(this.type='date')" onblur="if(!this.value) this.type='text'"/>
+                <input type="text" id="return" name="return_date" placeholder="Powrót" onfocus="(this.type='date')" onblur="if(!this.value) this.type='text'"/>
               </div>
             </div>
-            <div class="form-group2" >
+            <div class="form-group2">
               <button type="submit" class="search-button">Szukaj</button>
             </div>
           </div>
         </form>
+        
       </div>
     </div>
   </div>
@@ -578,6 +578,7 @@
     // Nasłuchuj zmiany wyboru:
     tripTypeSelect.addEventListener('change', updateReturnVisibility);
   });
+  
   </script>
 </body>
 </html>
