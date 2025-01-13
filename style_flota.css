@@ -892,6 +892,7 @@ MEDIA QUERIES - WYGLĄD TABLET
     }
     .airplane-container {
         margin-top: 10%;
+        max-width: 100% !important;
     }
   }
   
