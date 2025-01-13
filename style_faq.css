@@ -1,0 +1,990 @@
+/* Wyzerowanie marginesów/paddingów i box-sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Podstawowy styl body */
+  body {
+    font-family: Calibri, sans-serif;
+    font-weight: bold;
+    background-color: #fff;
+    color: #333;
+    overflow-x: hidden;
+    width: 100%;
+  }
+  
+  /* --------------------------------------------------
+HEADER 
+-------------------------------------------------- */
+.header-with-logo {
+    position: relative;
+    width: 100%;
+    height: 110px;
+    background-color: #243751;
+  }
+  
+  .logo-container {
+    position: absolute;
+    z-index: 10;
+    top: 10px;
+    left: 14px;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo-container img {
+    height: 80%;
+    max-height: 100px;
+    width: 20vw;
+    object-fit: contain;
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+  }
+  
+  .top-bar-content {
+    padding: 0 44px;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  .login-link {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 20px;
+  }
+  
+  /* WYBÓR JĘZYKA (desktop) */
+  .language-switch {
+    position: relative;
+    z-index: 9;
+  }
+  
+  .lang-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 6px 12px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .lang-btn:hover {
+    background-color: #1a2a45;
+  }
+  
+  .flag {
+    width: 24px;
+    height: auto;
+    margin-right: 6px;
+  }
+  
+  .language-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #243751;
+    list-style: none;
+    display: none;
+    margin: 0;
+    padding: 0;
+    z-index: 10;
+  }
+  
+  .language-dropdown.show {
+    display: block;
+  }
+  
+  .language-dropdown li {
+    display: flex;
+    align-items: center;
+    padding: 4px 8px;
+  }
+  
+  .language-dropdown li img.flag {
+    margin-right: 4px;
+    width: 20px;
+    height: auto;
+  }
+  
+  .language-dropdown li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+  
+  .language-dropdown li.current-language {
+    background-color: #1a2a45;
+  }
+  
+  .language-dropdown li:hover {
+    background-color: #2c3e50;
+  }
+  
+  .language-dropdown li.current-language:hover {
+    background-color: #1a2a45;
+  }
+  
+  /* MENU DESKTOP */
+  .main-menu {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+  }
+  
+  .nav-links li {
+    margin: 0 25px;
+    font-size: 1vw;
+  }
+  
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid transparent;
+    padding: 5px;
+    transition: color 0.3s ease, font-weight 0.3s ease;
+    transition: border-color 0.3s ease;
+  }
+  
+  .nav-links a:hover {
+    color: #9b9b9b;
+    border: 1px #ffffff solid;
+    padding: 5px;
+  }
+  
+  /* przycisk menu mobilnego */
+  .menu-toggle {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 0;
+    margin: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 20;
+  }
+  
+  .hamburger-bar {
+    display: block;
+    width: 50px;
+    height: 5px;
+    margin: 8px;
+    background-color: #fff;
+    transition: all 0.3s ease;
+  }
+  
+  /* MENU MOBILNE */
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 60%;
+    height: 100%;
+    background-color: #243751;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 15;
+    display: flex;
+    /* Zmieniamy wyrównanie pionowe z center na flex-start, 
+       dzięki czemu menu zacznie się od góry */
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 60px; /* Dodajemy padding, aby zawartość nie przylegała do samej krawędzi */
+  }
+  
+  .mobile-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  
+  .mobile-menu ul li {
+    margin: 20px 0;
+  }
+  
+  .mobile-menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+  }
+  
+  .mobile-menu.open {
+    transform: translateX(0);
+  }
+  
+  /* Wybór języka (mobile) */
+  .language-switch-mobile {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .language-switch-mobile .language-dropdown {
+    left: auto;
+    right: 0;
+    margin-top: 10px;
+  }
+  
+  
+  
+  /* --------------------------------------------------
+  STOPKA
+  -------------------------------------------------- */
+  footer {
+    font-family: Calibri, sans-serif;
+    font-size: 20px;
+    background-color: #243751;
+    color: #fff;
+    padding: 40px 0;
+  }
+  
+  .footer-container.search-bar-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    column-gap: 80px;
+    max-width: 1920px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+  }
+  
+  .footer-container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    column-gap: 80px;
+    max-width: 1920px;
+    margin: 0 auto;
+  }
+  
+  .footer-column {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .search-bar {
+    display: flex;
+    align-items: center;
+    max-width: 300px;
+    border-bottom: 2px solid #fff;
+    padding-bottom: 8px;
+    margin: 0 auto;
+  }
+  
+  .search-bar input {
+    flex: 1;
+    border: none;
+    background: none;
+    color: #fff;
+    font-size: 20px;
+    outline: none;
+  }
+  
+  .search-bar input::placeholder {
+    color: #aaa;
+  }
+  
+  .search-bar button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .search-bar button img {
+    width: 24px;
+    height: auto;
+  }
+  
+  .footer-links a {
+    font-family: Calibri, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: underline;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  
+  .footer-links a:hover {
+    color: #9b9b9b;
+  }
+  
+  .payment-title,
+  .social-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .payment-options {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    justify-content: center;
+  }
+  
+  .payment-options a img {
+    width: 50px;
+    height: auto;
+  }
+  
+  .social-media a {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    justify-content: center;
+  }
+  
+  .social-media a img {
+    width: 24px;
+    height: auto;
+    margin-right: 15px;
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+  }
+  
+  .footer-bottom a img {
+    margin-top: 10px;
+    width: 100px;
+    height: auto;
+  }
+  
+  .footer-logo {
+    background-color: #fff;
+    text-align: left;
+    padding: 20px;
+  }
+  .footer-logo img {
+    max-width: 25%;
+  }
+  
+/* --------------------------------------------------
+FAQ 
+-------------------------------------------------- */
+/* Dodanie białego tła na pełnej szerokości */
+#faq-container {
+    background-color: #ffffff; /* Tło białe */
+    padding: 20px 0; /* Odstępy od góry i dołu */
+}
+
+#faq-container h1 {
+    font-size: 40px; /* Ustaw rozmiar tekstu */
+    font-weight: bold; /* Pogrubienie nagłówka */
+    color: #243751; /* Kolor tekstu, kontrastujący z tłem */
+    text-align: center; /* Wyśrodkowanie nagłówka */
+    margin-bottom: 20px; /* Odstęp między nagłówkiem a treścią FAQ */
+    margin-top: 20px; /* Odstęp od góry sekcji */
+}
+
+/* Styl dla #box */
+#box {
+    max-width: 1200px; /* Maksymalna szerokość boxa */
+    margin: 0 auto; /* Wycentrowanie na środku */
+    background-color: #ffffff; /* Tło białe */
+    padding: 20px; /* Odstęp wewnętrzny */
+    border: none; /* Usuń obramowanie */
+    box-shadow: none; /* Usuń cień */
+}
+
+
+h2 {
+    margin: 0;
+    padding: 15px 20px;
+    background-color: #ffffff;
+    color: #243751;
+    border: 2px solid #243751;
+    cursor: default;
+    font-weight: bold;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h2 img {
+    margin-left: 10px;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+#panels div {
+    display: none;
+    background-color: #ffffff;
+    padding: 10px 15px;
+    border: 2px solid #243751;
+    border-top: none;
+    color: #243751;
+}
+
+#panels p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* --------------------------------------------------
+STOPKA
+-------------------------------------------------- */
+footer {
+    font-family: Calibri, sans-serif;
+    font-size: 20px;
+    background-color: #243751; /* Tło stopki */
+    color: #fff;
+}
+
+.footer-container.search-bar-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    column-gap: 80px;
+    max-width: 1920px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+.footer-container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    column-gap: 80px;
+    max-width: 1920px;
+    margin: 0 auto;
+    padding-top: 40px; /* Dodanie odstępu na górze sekcji */
+}
+
+.footer-column {
+    flex: 1;
+    text-align: center;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    max-width: 300px;
+    border-bottom: 2px solid #fff;
+    padding-bottom: 8px;
+    margin: 0 auto;
+}
+
+.search-bar input {
+    flex: 1;
+    border: none;
+    background: none;
+    color: #fff;
+    font-size: 20px;
+    outline: none;
+}
+
+.search-bar input::placeholder {
+    color: #aaa;
+}
+
+.search-bar button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.search-bar button img {
+    width: 24px;
+    height: auto;
+}
+
+.footer-links a {
+    font-family: Calibri, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: underline;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.footer-links a:hover {
+    color: #9b9b9b;
+}
+
+.payment-title,
+.social-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.payment-options {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.payment-options a img {
+    width: 50px;
+    height: auto;
+}
+
+.social-media a {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    justify-content: center;
+}
+
+.social-media a img {
+    width: 24px;
+    height: auto;
+    margin-right: 15px;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+}
+
+.footer-logo {
+    background-color: #fff;
+    text-align: left;
+    padding: 20px;
+}
+
+.footer-logo img {
+    max-width: 25%;
+}
+
+
+
+
+@media (max-width: 768px) {
+  #box {
+      max-width: 100%; /* Zajmuje całą szerokość ekranu na telefonach */
+  }
+
+  h2 {
+      font-size: 1rem; /* Zmniejszenie rozmiaru tekstu na telefonach */
+      padding: 10px 15px; /* Mniejsze marginesy na telefonach */
+  }
+
+  h2 img {
+      width: 32px;
+      height: 32px; /* Zmniejszenie ikon na telefonach */
+  }
+
+  #panels div {
+      font-size: 0.9rem; /* Mniejszy tekst w panelach na telefonach */
+  }
+}
+@media (max-width: 1400px) and (min-width: 1201px){
+    .flight-container {
+      
+      transform: translate(-50%, +80%);
+    }
+    .bg-section {
+      max-width: 100%;
+      height: 800px;
+      }
+    
+  }
+  /* ---------------------------------------
+  MEDIA QUERIES - WYGLĄD TABLET
+  --------------------------------------- */
+  
+  @media (max-width: 1200px) and (min-width: 761px){
+    .flight-container {
+      max-width: 90%;
+      transform: translate(0%, 0%);
+      margin-top: 15%
+    }
+    .header-with-logo {
+        height: auto;
+        padding: 10px 0;
+    }
+    .logo-container {
+        position: static;
+        margin-left: 10px;
+    }
+    .logo-container img {
+        max-height: 70px;
+    }
+    .top-bar {
+        display: none;
+    }
+    .main-menu {
+        display: none;
+    }
+    .menu-toggle {
+        display: block;
+    }
+    .logo-container img {
+        width: auto;
+    }
+    
+    .mobile-menu {
+      
+      width: 20%;
+    
+    }
+    .bg-section {
+    max-width: 100%;
+    height: 500px;
+    }
+    .bg-section-border {
+      max-height: 520px;
+    }
+    .line-container {
+      margin: 10px 0;
+    }
+    .checkbox-container p
+    {
+      font-size: 17px;
+      color: white;
+    }
+    .footer-bottom {
+      font-size: 15px;
+    }
+    
+  }
+  
+  /* ---------------------------------------
+  MEDIA QUERIES - WYGLĄD MOBILE
+  --------------------------------------- */
+  @media (max-width: 760px) {
+    .flight-container {
+      max-width: 90%;
+      transform: translate(0%, 0%);
+      margin-top: 35%
+    }
+    .header-with-logo {
+        height: auto;
+        padding: 10px 0;
+    }
+    .logo-container {
+        position: static;
+        margin-left: 10px;
+    }
+    .logo-container img {
+        max-height: 50px;
+    }
+    .top-bar {
+        display: none;
+    }
+    .main-menu {
+        display: none;
+    }
+    .menu-toggle {
+        display: block;
+    }
+    .logo-container img {
+        width: auto;
+    }
+    .tile {
+      flex: 0 0 100%;  /* Jeden kafelek widoczny na ekranie */
+      margin: 0;       /* Możesz dostosować margines jeśli chcesz mieć odstęp */
+    }
+  
+    /* Powiększenie obrazka (opcjonalne) – zapewnienie, że jeden element zajmuje całość */
+    .tile img {
+      width: 100%;
+    }
+    
+    /* Powiększenie przycisków nawigacyjnych */
+    .carousel-container {
+      margin: 0 auto;  /* Wyśrodkowanie bez dodatkowych marginesów bocznych */
+      padding: 40px 0;
+      width: 100%;
+      max-width: 100%;
+    }
+  
+    .carousel {
+      /* Ustawiamy szerokość kafelka na 90% szerokości viewportu i centrujemy */
+      /* Aby był widoczny tylko jeden kafelek, pozostałe będą po bokach poza ekranem */
+      transform: translateX(0);
+    }
+  
+    .tile {
+      flex: 0 0 90%;
+      margin: 40px auto;  /* Większe marginesy oraz centrowanie */
+      margin-right: 40px;
+      border: 2px solid #243751;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+  
+    .tile-info h3 {
+      font-size: 40px;
+    }
+  
+    .tile-info .price {
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
+  
+    /* Powiększenie przycisków */
+    .carousel-nav button {
+      padding: 30px;
+      font-size: 30px;
+    }
+  
+    .bg-section {
+    max-width: 100%;
+    height: 900px;
+    }
+    .flight-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    /* Każdy wiersz formularza zajmuje pełną szerokość, zmniejszamy marginesy */
+    .flight-form .row {
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      margin-left: 20%;
+      margin-bottom: 10px;
+    }
+  
+    /* Zmiana szerokości kontenerów formularza – uaktywniamy pełną szerokość */
+    .flight-form .form-group,
+    .flight-form .form-group2,
+    .flight-form .form-group3,
+    .flight-form .date-pair {
+      width: 100%;  /* lub inna wartość, zależnie od potrzeb */
+      margin: 0 auto 10px auto;
+    }
+    .flight-form .form-group3 {
+      margin: 0 auto 12px auto;
+    }
+    .date-pair {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      gap: 0; /* brak dodatkowych przerw między elementami */
+    }
+    .flight-form .passenger-group{
+      width: 100%;  /* lub inna wartość, zależnie od potrzeb */
+      margin-left: 0px !important;
+    }
+  
+    /* Powiększenie pól tekstowych oraz select */
+    .flight-form input,
+    .flight-form select {
+      width: 80%;
+      height: 60px;     /* zwiększona wysokość */
+      font-size: 20px;  /* większa czcionka */
+      padding: 20px;
+    }
+   
+  
+    /* Przycisk wyszukiwania również na pełnej szerokości i większy */
+    .search-button {
+      width: 80%;
+      height: 60px;
+      font-size: 20px;
+      padding: 10px;
+    }
+  
+    /* W przypadku selectów w grupie pasażerów – dostosowanie rozmiaru */
+    .small-select {
+      height: 60px !important;
+      width: 60px !important;
+      margin-left: 10px;
+      font-size: 20px !important;
+    }
+  
+    /* Opcjonalnie: Dostosowanie etykiety przed selectem „Ilość pasażerów” */
+    .passenger-group label {
+      display: flex;
+      align-items: center;
+  
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+  
+    /* Jeśli potrzebne – zmniejszenie odstępów nagłówka formularza */
+    .flight-container .header-title {
+      font-size: 30px;
+      padding: 10px;
+      width: 80%;
+      left: 10%;
+    }
+    .form-half {
+      width: 40%;       /* dwa elementy po 50% */
+      height: 60px;     /* wysokość zgodnie z Twoimi ustawieniami */
+      margin: 0;        /* usuń dodatkowe marginesy */
+      padding: 0;       /* sprawdź padding – ustaw na 0, jeśli nie jest konieczny */
+      box-sizing: border-box; /* upewnij się, że wszystkie wymiary są wliczane w szerokość */
+    }
+    
+    .form-half input {
+    width: 100%;
+    height: 100%;
+    border: 3px solid #222745;
+    padding: 6px;
+    font-size: 11px;
+    box-sizing: border-box;
+  
+    }
+    .line-container {
+      margin: 10px 0;
+    }
+    .checkbox-container p
+    {
+      font-size: 17px;
+      color: white;
+    }
+    .footer-bottom {
+      font-size: 15px;
+    }
+    .footer-container,
+    .footer-container.search-bar-row {
+      flex-direction: column;
+      align-items: center;
+    }
+    .footer-links a,
+    .social-media a{
+      font-size: 15px;
+      margin-bottom: 0;
+    }
+    .social-media a img {
+      width: 30px;
+    }
+    .payment-title {
+      font-size: 25px;
+      
+    }
+    .social-title {
+      font-size: 25px;
+    }
+    
+    .footer-column {
+      margin-bottom: 20px;
+    }
+    .search-bar {
+      max-width: 100%;
+      
+    }
+    .input-group {
+      flex-direction: column; /* Stack inputs vertically on small screens */
+    }
+  
+    .input-group input {
+        width: 100%; /* Full width on small screens */
+        height: 60px;
+        font-size: 20px;
+    }
+    .checkbox-container {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .checkbox-container p{
+      font-size: 10px;
+    }
+    
+    .input-group button {
+        width: 100%; /* Full width for button on small screens */
+        height: 60px;
+        font-size: 20px;
+    }
+    .odkryj-wiecej h2 {
+      font-size: 20px;
+    }
+    .odkryj-wiecej p {
+      font-size: 17px;
+    }
+    .checkbox-container input {
+      transform: scale(2);
+      margin-left: 20px;
+    }
+  
+    .lang-btn {
+      font-size: 20px;
+      padding: 10px 20px; /* przykładowe powiększenie paddingu */
+    }
+    .text-linia {
+      font-size: 17px;
+    }
+    #trip-type {
+      height: 60px; /* Wysokość pola */
+      line-height: 60px; /* Dopasowanie linii tekstu do wysokości */
+      padding: 0; /* Usuń nadmiarowy padding */
+      text-align: center; /* Horyzontalne wyśrodkowanie (opcjonalne) */
+      font-size: 16px; /* Dopasowanie rozmiaru tekstu */
+      -webkit-appearance: none; /* Usuwa domyślny styl strzałki */
+      appearance: none;
+    }
+    #passengers {
+      height: 60px; /* Wysokość pola */
+      line-height: 60px; /* Dopasowanie linii tekstu do wysokości */
+      padding: 0; /* Usuń nadmiarowy padding */
+      text-align: center;
+      font-size: 16px; /* Dopasowanie rozmiaru tekstu */
+      -webkit-appearance: none; /* Usuwa domyślny styl strzałki */
+      appearance: none;
+    }
+  
+    .autocomplete-suggestions {
+      
+      width: 80%; /* Dopasowanie szerokości do inputa */
+      max-height: 200px;
+      
+    }
+    
+    .autocomplete-suggestions div {
+      
+      font-size: 20px;
+     
+    }
+    .full-width-departure
+    {
+      width: 80% !important;
+      font-size: 40px !important;
+    }
+    .full-width-departure::placeholder {
+      font-size: 40px !important;
+    }
+  }
+  
