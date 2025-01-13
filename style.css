@@ -1260,10 +1260,10 @@ MEDIA QUERIES - WYGLĄD MOBILE
     appearance: none;
   }
   #passengers {
-    margin-left: 14.5%;
     height: 60px; /* Wysokość pola */
     line-height: 60px; /* Dopasowanie linii tekstu do wysokości */
     padding: 0; /* Usuń nadmiarowy padding */
+    text-align: center;
     font-size: 16px; /* Dopasowanie rozmiaru tekstu */
     -webkit-appearance: none; /* Usuwa domyślny styl strzałki */
     appearance: none;
@@ -1282,8 +1282,11 @@ MEDIA QUERIES - WYGLĄD MOBILE
    
   }
   .full-width-departure
-{
-  width: 80% !important;
-  font-size: 20px;
-}
+  {
+    width: 80% !important;
+    font-size: 40px !important;
+  }
+  .full-width-departure::placeholder {
+    font-size: 40px !important;
+  }
 }
