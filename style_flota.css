@@ -861,8 +861,8 @@ MEDIA QUERIES - WYGLĄD TABLET
     }
 
     .plane-image {
-        max-width: 200%;
-        width: 200% !important; /* Zdjęcie zajmuje 80% szerokości strony */
+        max-width: 100%;
+        width: 100% !important; /* Zdjęcie zajmuje 80% szerokości strony */
         margin-bottom: 20px; /* Dodanie odstępu między obrazem a opisem */
     }
 
