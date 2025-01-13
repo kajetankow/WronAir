@@ -466,6 +466,7 @@ TŁO I FORMULARZ LOTÓW
   width: 247px;
 }
 .form-group2 {
+  position: relative;
   display: flex;
   width: 250px;
   flex-direction: column;
@@ -513,9 +514,13 @@ TŁO I FORMULARZ LOTÓW
   width: 250px;
   margin-right: 20px;
 }
-
+.full-width-departure
+{
+  width: 100% !important;
+  font-size: 20px;
+}
 .form-half {
-  width: 123.5px;
+  width: 124.5px;
   height: 45px;
   display: flex;
   flex-direction: column;
@@ -618,6 +623,39 @@ LINIA
   height: auto;     /* Zachowuje proporcje */
   display: block;   /* Usuwa ewentualne odstępy wokół obrazka */
 }
+.form-group {
+  position: relative; /* Ustawiamy kontener jako odniesienie dla pozycji */
+}
+
+.autocomplete-suggestions {
+  position: absolute; /* Pozycjonowanie względem kontenera form-group */
+  top: 100%; /* Ustawienie poniżej pola input */
+  left: 0; /* Dopasowanie do lewej krawędzi inputa */
+  width: 100%; /* Dopasowanie szerokości do inputa */
+  background: white;
+  z-index: 1000; /* Gwarancja, że podpowiedzi będą nad innymi elementami */
+  max-height: 150px;
+  overflow-y: auto; /* Dodanie przewijania, jeśli podpowiedzi jest wiele */
+  box-sizing: border-box; /* Uwzględnienie paddingu w szerokości */
+}
+
+.autocomplete-suggestions div {
+  padding: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: center;
+  border-bottom: 1px solid #ddd; /* Linie oddzielające podpowiedzi */
+}
+
+.autocomplete-suggestions div:last-child {
+  border-bottom: none; /* Usunięcie dolnej linii w ostatnim elemencie */
+}
+
+.autocomplete-suggestions div:hover {
+  background: #f0f0f0; /* Efekt podświetlenia na hover */
+  color: #222745; /* Dopasowany kolor tekstu */
+}
+
 
 /*
 KAFELKI
@@ -1222,12 +1260,30 @@ MEDIA QUERIES - WYGLĄD MOBILE
     appearance: none;
   }
   #passengers {
+    margin-left: 14.5%;
     height: 60px; /* Wysokość pola */
     line-height: 60px; /* Dopasowanie linii tekstu do wysokości */
     padding: 0; /* Usuń nadmiarowy padding */
-    text-align: center; /* Horyzontalne wyśrodkowanie (opcjonalne) */
     font-size: 16px; /* Dopasowanie rozmiaru tekstu */
     -webkit-appearance: none; /* Usuwa domyślny styl strzałki */
     appearance: none;
   }
+
+  .autocomplete-suggestions {
+    
+    width: 80%; /* Dopasowanie szerokości do inputa */
+    max-height: 200px;
+    
+  }
+  
+  .autocomplete-suggestions div {
+    
+    font-size: 20px;
+   
+  }
+  .full-width-departure
+{
+  width: 80% !important;
+  font-size: 20px;
+}
 }
