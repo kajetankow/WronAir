@@ -863,14 +863,14 @@ MEDIA QUERIES - WYGLĄD TABLET
     .plane-image {
         max-width: 100%;
         width: 100% !important; /* Zdjęcie zajmuje 80% szerokości strony */
-        margin-bottom: 20px; /* Dodanie odstępu między obrazem a opisem */
+        margin-bottom: 28px; /* Dodanie odstępu między obrazem a opisem */
     }
 
     .info {
         text-align: center; /* Wyrównanie opisu do środka */
         width: 100%; /* Opis zajmuje pełną szerokość */
         margin: 0; /* Usuń marginesy */
-        margin-top: 0px;
+        margin-top: 10px;
     }
     .line-container {
         margin: 10px 0;
