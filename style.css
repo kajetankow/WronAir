@@ -1,583 +1,1289 @@
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" href="img/logo_16.ico">
-  <link rel="shortcut icon" href="img/logo_32.ico">
-  <title>WronAir</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header class="header-with-logo">
-    <!-- Kontener na logo -->
-    <div class="logo-container">
-      <a href="landing-page.html">
-        <img src="img/logociemne.jpg" alt="Logo WronAir" />
-      </a>
-    </div>
-    
-    <!-- Przycisk hamburger -->
-    <button class="menu-toggle" id="menuToggle">
-      <span class="hamburger-bar"></span>
-      <span class="hamburger-bar"></span>
-      <span class="hamburger-bar"></span>
-    </button>
-    
-    <!-- Górny pasek -->
-    <div class="top-bar">
-      <div class="top-bar-content">
-        <a href="#" class="login-link">Logowanie i rejestracja</a>
-        <div class="language-switch">
-          <button class="lang-btn" id="langButton">
-            <img src="img/Flag_of_Poland.svg" alt="PL" class="flag" />
-            PL
-          </button>
-          <ul class="language-dropdown" id="langDropdown">
-            <li class="current-language">
-              <a href="#">
-                <img src="img/Flag_of_Poland.svg" alt="PL" class="flag" />
-                PL
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <img src="img/Flag_of_the_United_States.svg.png" alt="ENG" class="flag" />
-                ENG
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Pasek menu (desktop) -->
-    <nav class="main-menu" id="mainNav">
-      <ul class="nav-links">
-        <li><a href="#">Strona Główna</a></li>
-        <li><a href="#">Odpraw się</a></li>
-        <li><a href="#">Upgrade</a></li>
-        <li><a href="#">Usługi na Pokładzie</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">O Nas</a></li>
-      </ul>
-    </nav>
-    
-    <!-- Menu mobilne -->
-    <nav class="mobile-menu" id="mobileMenu">
-      <ul>
-        <li><a href="#">Logowanie i rejestracja</a></li>
-        <li><a href="#">Strona Główna</a></li>
-        <li><a href="#">Odpraw się</a></li>
-        <li><a href="#">Upgrade</a></li>
-        <li><a href="#">Usługi na Pokładzie</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">O Nas</a></li>
-        <li>
-          <div class="language-switch-mobile">
-            <button class="lang-btn" id="langButtonMobile">
-              <img src="img/Flag_of_Poland.svg" alt="PL" class="flag" />
-              PL
-            </button>
-            <ul class="language-dropdown" id="langDropdownMobile">
-              <li class="current-language">
-                <a href="#">
-                  <img src="img/Flag_of_Poland.svg" alt="PL" class="flag" />
-                  PL
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="img/Flag_of_the_United_States.svg.png" alt="ENG" class="flag" />
-                  ENG
-                </a>
-              </li>
-            </ul>
-          </div>
-        </li>
-      </ul>
-    </nav>
-  </header>
+/* Wyzerowanie marginesów/paddingów i box-sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  <!-- Sekcja z tłem i formularzem -->
-  <div class="bg-section-border">
-    <div class="bg-section">
-      <div class="flight-container">
-        <!-- Nagłówek formularza -->
-        <div class="header-title">Loty</div>
-        <!-- Formularz -->
-        <form class="flight-form">
-          <div class="row">
-            <div class="form-group3">
-              <select id="trip-type" name="trip_type">
-                <option value="round-trip">W obie strony</option>
-                <option value="one-way">W jedną stronę</option>
-              </select>
-            </div>
-            <div class="passenger-group">
-              
-              <label for="passengers">Ilość pasażerów:</label>
-              <select id="passengers" name="passengers" class="small-select">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-              </select>
-            </div>
-          </div>
-          <div class="row">
-            <div class="form-group">
-              <input type="text" id="from" placeholder="Skąd">
-              <div id="from-suggestions" class="autocomplete-suggestions"></div>
-            </div>
-            <div class="form-group2">
-              <input type="text" id="to" placeholder="Dokąd">
-              <div id="to-suggestions" class="autocomplete-suggestions"></div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="date-pair">
-              <div class="form-half">
-                <input type="text" id="departure-date" placeholder="Wylot" onfocus="(this.type='date')" onblur="if(!this.value) this.type='text'"/>
-              </div>
-              <div class="form-half">
-                <input type="text" id="return" placeholder="Powrót" onfocus="(this.type='date')" onblur="if(!this.value) this.type='text'"/>
-              </div>
-            </div>
-            <div class="form-group2" >
-              <button type="submit" class="search-button">Szukaj</button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-  <!-- LINIA PRZED MAPA -->
-  <div class="line-container">
-    <div class="line-left"></div>
-    <div class="text-linia">POZNAJ NASZĄ OFERTĘ POŁĄCZEŃ</div>
-    <div class="line-right"></div>
-  </div>
-  <!--MAPA-->
-  <div class="map">
-    <img src="img/mapa.png">
-  </div>
-  <div class="odkryj-wiecej">
-    <h2>Z WronAir ODKRYJESZ WIĘCEJ...</h2>
-    <p>Dzięki szerokiej siatce połączeń odwiedzisz nie tylko największe światowe metropolie, ale także ukryte perełki, o których marzyłeś! Komfortowe loty, 
-      atrakcyjne ceny i przyjazna obsługa sprawią, że każda podróż stanie się niezapomnianą przygodą.</br>
+/* Podstawowy styl body */
+body {
+  font-family: Calibri, sans-serif;
+  background-color: #fff;
+  color: #333;
+  overflow-x: hidden;
+  width: 100%;
+}
 
-    </br>WronAir – Twoje skrzydła do świata!</br>
+/* --------------------------------------------------
+HEADER 
+-------------------------------------------------- */
+.header-with-logo {
+  position: relative;
+  width: 100%;
+  height: 110px;
+  background-color: #243751;
+}
 
-    </br>Już dziś zaplanuj swoją podróż i zrealizuj swoje marzenia!</br>
-    </p>
-  </div>
-  <!--KAFELKI-->
-  <!-- Kontener karuzeli -->
-  <div class="carousel-container">
-    <div class="carousel" id="carousel">
-      <!-- Tile 1 -->
-      <div class="tile">
-        <a href="oferta1.html">
-          <img src="img/krakow.webp" alt="Kraków">
-          <div class="tile-info">
-            <h3>Kraków</h3>
-            <p class="price"><span style="font-size: 16px;">już od </span>500 zł*</p>
-          </div>
-        </a>
-      </div>
-      <!-- Tile 2 -->
-      <div class="tile">
-        <a href="oferta2.html">
-          <img src="img/los_angeles.webp" alt="Los Angeles">
-          <div class="tile-info">
-            <h3>Los Angeles</h3>
-            <p class="price"><span style="font-size: 16px;">już od </span>1099 zł*</p>
-          </div>
-        </a>
-      </div>
-      <!-- Tile 3 -->
-      <div class="tile">
-        <a href="oferta3.html">
-          <img src="img/londyn.webp" alt="Londyn">
-          <div class="tile-info">
-            <h3>Londyn</h3>
-            <p class="price"><span style="font-size: 16px;">już od </span>475 zł*</p>
-          </div>
-        </a>
-      </div>
-      <!-- Tile 4 -->
-      <div class="tile">
-        <a href="oferta4.html">
-          <img src="img/rzym.webp" alt="Rzym">
-          <div class="tile-info">
-            <h3>Rzym</h3>
-            <p class="price"><span style="font-size: 16px;">już od </span>398 zł*</p>
-          </div>
-        </a>
-      </div>
-      <div class="tile">
-        <a href="oferta5.html">
-          <img src="img/new_jork.webp" alt="Nowy Jork">
-          <div class="tile-info">
-            <h3>Nowy Jork</h3>
-            <p class="price"><span style="font-size: 16px;">już od </span>1400 zł*</p>
-          </div>
-        </a>
-      </div>
-      <div class="tile">
-        <a href="oferta6.html">
-          <img src="img/barcelona.webp" alt="Barcelona">
-          <div class="tile-info">
-            <h3>Barcelona</h3>
-            <p class="price"><span style="font-size: 16px;">już od </span>500 zł*</p>
-          </div>
-        </a>
-      </div>
-      <!-- Tile 7 -->
-      <div class="tile">
-        <a href="oferta7.html">
-          <img src="img/ateny.webp" alt="Ateny">
-          <div class="tile-info">
-            <h3>Ateny</h3>
-            <p class="price"><span style="font-size: 16px;">już od </span>350 zł*</p>
-          </div>
-        </a>
-      </div>
-      <div class="tile_more">
-        <a href="oferta7.html">
-          <img src="img/plus.png" alt="more">
-          <div class="tile-info_more">
-            <h3>Zobacz więcej ...</h3>
-          </div>
-        </a>
-      </div>
-      <!-- Możesz dodać kolejne kafelki według potrzeb -->
-    </div>
-    
-    <!-- Nawigacja (przyciski) -->
-    <div class="carousel-nav">
-      <button id="prev">◀</button>
-      <button id="next">▶</button>
-    </div>
-  </div>
+.logo-container {
+  position: absolute;
+  z-index: 10;
+  top: 10px;
+  left: 14px;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+}
+
+.logo-container img {
+  height: 80%;
+  max-height: 100px;
+  width: 20vw;
+  object-fit: contain;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.top-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+}
+
+.top-bar-content {
+  padding: 0 44px;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.login-link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+/* WYBÓR JĘZYKA (desktop) */
+.language-switch {
+  position: relative;
+  z-index: 9;
+}
+
+.lang-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 6px 12px;
+  transition: background-color 0.3s ease;
+}
+
+.lang-btn:hover {
+  background-color: #1a2a45;
+}
+
+.flag {
+  width: 24px;
+  height: auto;
+  margin-right: 6px;
+}
+
+.language-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #243751;
+  list-style: none;
+  display: none;
+  margin: 0;
+  padding: 0;
+  z-index: 10;
+}
+
+.language-dropdown.show {
+  display: block;
+}
+
+.language-dropdown li {
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+}
+
+.language-dropdown li img.flag {
+  margin-right: 4px;
+  width: 20px;
+  height: auto;
+}
+
+.language-dropdown li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.language-dropdown li.current-language {
+  background-color: #1a2a45;
+}
+
+.language-dropdown li:hover {
+  background-color: #2c3e50;
+}
+
+.language-dropdown li.current-language:hover {
+  background-color: #1a2a45;
+}
+
+/* MENU DESKTOP */
+.main-menu {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li {
+  margin: 0 25px;
+  font-size: 1vw;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid transparent;
+  padding: 5px;
+  transition: color 0.3s ease, font-weight 0.3s ease;
+  transition: border-color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #9b9b9b;
+  border: 1px #ffffff solid;
+  padding: 5px;
+}
+
+/* przycisk menu mobilnego */
+.menu-toggle {
+  display: none;
+  position: absolute;
+  top: 10px;
+  right: 0;
+  margin: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 20;
+}
+
+.hamburger-bar {
+  display: block;
+  width: 50px;
+  height: 5px;
+  margin: 8px;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+/* MENU MOBILNE */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 60%;
+  height: 100%;
+  background-color: #243751;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  z-index: 15;
+  display: flex;
+  /* Zmieniamy wyrównanie pionowe z center na flex-start, 
+     dzięki czemu menu zacznie się od góry */
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 60px; /* Dodajemy padding, aby zawartość nie przylegała do samej krawędzi */
+}
+
+.mobile-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.mobile-menu ul li {
+  margin: 20px 0;
+}
+
+.mobile-menu ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.mobile-menu.open {
+  transform: translateX(0);
+}
+
+/* Wybór języka (mobile) */
+.language-switch-mobile {
+  position: relative;
+  display: inline-block;
+}
+
+.language-switch-mobile .language-dropdown {
+  left: auto;
+  right: 0;
+  margin-top: 10px;
+}
+
+
+
+/* --------------------------------------------------
+STOPKA
+-------------------------------------------------- */
+footer {
+  font-family: Calibri, sans-serif;
+  font-size: 20px;
+  background-color: #243751;
+  color: #fff;
+  padding: 40px 0;
+}
+
+.footer-container.search-bar-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  column-gap: 80px;
+  max-width: 1920px;
+  margin: 0 auto;
+  margin-bottom: 40px;
+}
+
+.footer-container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  column-gap: 80px;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.footer-column {
+  flex: 1;
+  text-align: center;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  max-width: 300px;
+  border-bottom: 2px solid #fff;
+  padding-bottom: 8px;
+  margin: 0 auto;
+}
+
+.search-bar input {
+  flex: 1;
+  border: none;
+  background: none;
+  color: #fff;
+  font-size: 20px;
+  outline: none;
+}
+
+.search-bar input::placeholder {
+  color: #aaa;
+}
+
+.search-bar button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.search-bar button img {
+  width: 24px;
+  height: auto;
+}
+
+.footer-links a {
+  font-family: Calibri, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: underline;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.footer-links a:hover {
+  color: #9b9b9b;
+}
+
+.payment-title,
+.social-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.payment-options {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.payment-options a img {
+  width: 50px;
+  height: auto;
+}
+
+.social-media a {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  justify-content: center;
+}
+
+.social-media a img {
+  width: 24px;
+  height: auto;
+  margin-right: 15px;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 20px;
+}
+
+.footer-bottom a img {
+  margin-top: 10px;
+  width: 100px;
+  height: auto;
+}
+
+.footer-logo {
+  background-color: #fff;
+  text-align: left;
+  padding: 20px;
+}
+.footer-logo img {
+  max-width: 25%;
+}
+
+/* --------------------------------------------------
+TŁO I FORMULARZ LOTÓW
+-------------------------------------------------- */
+.bg-section-border {
+  position: relative; /* nadaje kontekst pozycjonowania */
+  height: 899px; /* musisz jawnie zarezerwować miejsce */
+}
+
+.bg-section {
+  position: absolute;
+  left: 50%;
+  width: 1792px;
+  height: 899px;
+  overflow: hidden;
+  background: url("img/front.jpg") no-repeat center center;
+  background-size: cover;
+  transform: translateX(-50%);
+}
+.flight-container {
+  position: relative;
+  z-index: 2;
+  width: 600px;
+  margin: 30px auto;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 3px solid #222745;
+  padding: 30px;
+  padding-bottom: 2px;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translate(-70%, +135%);
+}
+
+.header-title {
+  position: absolute;
+  top: -25px;
+  left: 30px;
+  width: 248px;
+  background-color: #fff;
+  padding: 10px 0px;
+  font-size: 18px;
+  text-align: center;
+  font-weight: bold;
+  color: #222745;
+  border: 3px solid #222745;
+}
+
+.flight-form {
+  margin-top: 20px;
   
-  <!-- Wskaźniki -->
-  <div class="carousel-indicators" id="carouselIndicators">
-    <!-- Kropki będą generowane dynamicznie przez skrypt -->
-  </div>
+}
 
-  <script>
-    (function() {
-      const carousel = document.getElementById('carousel');
-      const prevBtn = document.getElementById('prev');
-      const nextBtn = document.getElementById('next');
-      const indicatorsContainer = document.getElementById('carouselIndicators');
-      const tiles = document.querySelectorAll('.tile');
-      let currentIndex = 0;
-      let isDragging = false;
-      let startPos = 0;
-      let currentTranslate = 0;
-      let prevTranslate = 0;
-      let animationID;
-      
-      // Funkcja ustalająca szerokość kafelka (zmienia się przy resize lub mobilnym widoku)
-      function getTileWidth() {
-        return tiles[0].offsetWidth + parseInt(getComputedStyle(tiles[0]).marginLeft) + parseInt(getComputedStyle(tiles[0]).marginRight);
-      }
-      
-      // Uaktualnienie pozycji karuzeli
-      function setPositionByIndex() {
-        currentTranslate = -currentIndex * getTileWidth();
-        prevTranslate = currentTranslate;
-        setCarouselPosition();
-      }
-      
-      function setCarouselPosition() {
-        carousel.style.transform = `translateX(${currentTranslate}px)`;
-      }
-      
-      // Aktualizacja wskaźników
-      function updateIndicators() {
-        indicatorsContainer.innerHTML = '';
-        for (let i = 0; i < tiles.length; i++) {
-          const dot = document.createElement('button');
-          dot.classList.add('indicator');
-          if (i === currentIndex) dot.classList.add('active');
-          dot.addEventListener('click', () => {
-            currentIndex = i;
-            setPositionByIndex();
-            updateIndicators();
-          });
-          indicatorsContainer.appendChild(dot);
-        }
-      }
-      
-      updateIndicators();
-      
-      // Obsługa przycisków nawigacji
-      prevBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex > 0) ? currentIndex - 1 : tiles.length - 1;
-        setPositionByIndex();
-        updateIndicators();
-      });
-      
-      nextBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex < tiles.length - 1) ? currentIndex + 1 : 0;
-        setPositionByIndex();
-        updateIndicators();
-      });
-      
-      // Drag – zdarzenia myszy
-      carousel.addEventListener('mousedown', dragStart);
-      carousel.addEventListener('mouseup', dragEnd);
-      carousel.addEventListener('mouseleave', dragEnd);
-      carousel.addEventListener('mousemove', dragAction);
-      
-      // Drag – zdarzenia dotykowe (dla urządzeń mobilnych)
-      carousel.addEventListener('touchstart', dragStart);
-      carousel.addEventListener('touchend', dragEnd);
-      carousel.addEventListener('touchmove', dragAction);
-      
-      function dragStart(event) {
-        isDragging = true;
-        startPos = getPositionX(event);
-        carousel.classList.add('grabbing');
-        // Anulujemy animację (jeśli jest)
-        cancelAnimationFrame(animationID);
-      }
-      
-      function dragEnd() {
-        if (!isDragging) return;
-        isDragging = false;
-        carousel.classList.remove('grabbing');
-        // Obliczamy przesunięcie i aktualizujemy currentIndex
-        const movedBy = currentTranslate - prevTranslate;
-        if (movedBy < -100 && currentIndex < tiles.length - 1)
-          currentIndex++;
-        if (movedBy > 100 && currentIndex > 0)
-          currentIndex--;
-        setPositionByIndex();
-        updateIndicators();
-      }
-      
-      function dragAction(event) {
-        if (!isDragging) return;
-        const currentPosition = getPositionX(event);
-        const diff = currentPosition - startPos;
-        currentTranslate = prevTranslate + diff;
-        setCarouselPosition();
-      }
-      
-      function getPositionX(event) {
-        return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
-      }
-      
-      // Aktualizacja pozycji przy zmianie rozmiaru
-      window.addEventListener('resize', setPositionByIndex);
-      
-      // Inicjalizacja pozycji karuzeli
-      setPositionByIndex();
-      
+.row {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 25px;
+  margin-right: 0px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+  width: 250px;
+}
+.form-group3 {
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+  width: 247px;
+}
+.form-group2 {
+  position: relative;
+  display: flex;
+  width: 250px;
+  flex-direction: column;
+  margin-right: 0px;
+}
+
+.form-group input,
+.form-group select,
+.form-group2 input,
+.form-group2 select,
+.form-group3 input,
+.form-group3 select{
+  border: 3px solid #222745;
+  border-radius: 0;
+  padding: 6px;
+  font-size: 14px;
+  text-align: center;
+  width: 100%;
+  height: 45px;
+  background-color: #fff;
+  appearance: none;
+}
+
+.passenger-group {
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+}
+
+.small-select {
+  width: 45px;
+  margin-left: 14px;
+  border-radius: 0;
+  border: 3px solid #222745;
+  font-size: 14px;
+  height: 45px;
+  padding: 6px;
+  appearance: none;
+  text-align: center;
+}
+
+.date-pair {
+  display: flex;
+  flex-direction: row;
+  width: 250px;
+  margin-right: 20px;
+}
+.full-width-departure
+{
+  width: 100% !important;
+  font-size: 20px;
+}
+.form-half {
+  width: 124.5px;
+  height: 45px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-half input {
+  height: 45px;
+  border: 3px solid #222745;
+  border-radius: 0;
+  padding: 6px;
+  font-size: 10px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.search-button {
+  width: 100%;
+  height: 45px;
+  background-color: #c00;
+  color: #fff;
+  font-weight: bold;
+  font-size: 15px;
+  border: 3px solid #900;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #a00;
+}
+
+select {
+  appearance: none;
+  background: #fff url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%23000000' d='M0 0l5 5 5-5z'/%3E%3C/svg%3E") no-repeat right 10px center;
+  background-size: 10px;
+  padding-right: 30px;
+  border: 3px solid #222745;
+  font-size: 14px;
+  height: 45px;
+}
+
+.small-select {
+  appearance: none;
+  background: #fff url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%23000000' d='M0 0l5 5 5-5z'/%3E%3C/svg%3E") no-repeat right 6px center;
+  background-size: 10px;
+  padding-right: 20px;
+  border: 3px solid #222745;
+  font-size: 14px;
+  height: 45px;
+}
+
+.select::-ms-expand,
+.small-select::-ms-expand {
+  display: none;
+}
+/*
+LINIA
+*/
+.line-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.line-left {
+  flex-grow: 1; /* linia po lewej stronie */
+  height: 10px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  background-color: #243751;
+  margin-right: 10px; /* Odstęp między linią a tekstem */
+}
+
+.line-right {
+  flex-grow: 3; /* linia po prawej stronie */
+  height: 10px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  background-color: #243751;
+
+  margin-left: 10px; /* Odstęp między tekstem a linią */
+}
+
+.text-linia {
+  color: #243751;
+  font-weight: bold;
+  font-family: 'Calibri', sans-serif; 
+  font-weight: bold; 
+  font-size: 35px;
+}
+.map {
+  display: flex;             /* Użycie Flexbox do wyśrodkowania zawartości */
+  justify-content: center;   /* Wyśrodkowanie poziome */
+  align-items: center;       /* Wyśrodkowanie pionowe (opcjonalnie, jeśli masz określoną wysokość kontenera) */
+}
+
+.map img {
+  max-width: 100%;  /* Obraz nie przekroczy szerokości kontenera */
+  height: auto;     /* Zachowuje proporcje */
+  display: block;   /* Usuwa ewentualne odstępy wokół obrazka */
+}
+.form-group {
+  position: relative; /* Ustawiamy kontener jako odniesienie dla pozycji */
+}
+
+.autocomplete-suggestions {
+  position: absolute; /* Pozycjonowanie względem kontenera form-group */
+  top: 100%; /* Ustawienie poniżej pola input */
+  left: 0; /* Dopasowanie do lewej krawędzi inputa */
+  width: 100%; /* Dopasowanie szerokości do inputa */
+  background: white;
+  z-index: 1000; /* Gwarancja, że podpowiedzi będą nad innymi elementami */
+  max-height: 150px;
+  overflow-y: auto; /* Dodanie przewijania, jeśli podpowiedzi jest wiele */
+  box-sizing: border-box; /* Uwzględnienie paddingu w szerokości */
+}
+
+.autocomplete-suggestions div {
+  padding: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: center;
+  border-bottom: 1px solid #ddd; /* Linie oddzielające podpowiedzi */
+}
+
+.autocomplete-suggestions div:last-child {
+  border-bottom: none; /* Usunięcie dolnej linii w ostatnim elemencie */
+}
+
+.autocomplete-suggestions div:hover {
+  background: #f0f0f0; /* Efekt podświetlenia na hover */
+  color: #222745; /* Dopasowany kolor tekstu */
+}
+
+
+/*
+KAFELKI
+*/
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background: #f5f5f5;
+  /* Można dodać padding dla całej karuzeli, jeśli chcesz */
+  padding: 20px 0;
+}
+
+/* Styl dla elementów kafelków */
+.carousel {
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+  cursor: grab;
+}
+.carousel:active {
+  cursor: grabbing;
+}
+.tile {
+  flex: 0 0 450px; /* Każdy kafelek zajmuje 10% szerokości */
+  text-align: center;
+  border: 0.8px solid #243751;
+  border-radius: 0;
+  margin: 40px;
+  padding: 50px; /* Równomierny padding wewnątrz kafelka */
+  box-shadow: 0 0.8px 2px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #fff;
+}
+
+.tile a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.tile img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-bottom: 0.8px solid #243751;
+}
+
+.tile-info {
+  margin-top: 10px; /* Dodatkowy margines między zdjęciem a tekstem */
+  text-align: left;
+}
+
+.tile-info h3 {
+  font-family: 'Calibri', sans-serif;
+  font-weight: bold;
+  font-size: 35px; /* Zwiększenie rozmiaru czcionki */
+  margin: 0;
+}
+
+.tile-info .price {
+  font-family: 'Calibri', sans-serif;
+  font-weight: bold;
+  font-size: 30px; /* Zwiększenie rozmiaru czcionki */
+  color: #243751;
+  text-align: right;
+  margin: 4px 0 0; /* Cena poniżej nazwy miasta */
+}
+.tile_more {
+  flex: 0 0 450px; /* Każdy kafelek zajmuje 10% szerokości */
+  text-align: center;
+  border: 0.8px solid #243751;
+  border-radius: 0;
+  margin: 40px;
+  padding: 50px; /* Równomierny padding wewnątrz kafelka */
+  box-shadow: 0 0.8px 2px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #fff;
+}
+
+.tile_more a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.tile_more img {
+  margin-top: 150px;
+  width: 60%;
+  height: auto;
+  object-fit: cover;
+}
+.tile-info_more {
+  text-align: center;
+  font-size: 30px;
+}
+/* Przyciski nawigacyjne */
+.carousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+
+}
+
+.carousel-nav button {
+  pointer-events: all;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: #fff;
+  padding: 20px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-nav button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Wskaźniki (kropki) – przykładowo ustawione poniżej karuzeli */
+.carousel-indicators {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.carousel-indicators button {
+  width: 15px;
+  height: 15px;
+  margin: 5px;
+  border-radius: 50%;
+  border: none;
+  background-color: #ccc;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0;
+}
+
+.carousel-indicators button.active {
+  background-color: #c00;
+}
+
+/*
+NEWSLETTER
+*/
+.newsletter-container {
+  background-color: #525B6C;
+  color: white;
+  padding: 20px;
+  width: 90%;
+  max-width: 1600px;
+  text-align: center;
+  box-sizing: border-box;
+  margin: 0 auto; /* Wyśrodkowanie kontenera */
+  margin-bottom: 40px; /* Przykładowy odstęp poniżej */
+}
+
+.newsletter-container h2 {
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+  text-align: left;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: row; /* Arrange inputs and button in a row */
+  gap: 70px; 
+  margin-top: 20px;
+  justify-content: flex-start; /* Align inputs to the left */
+}
+
+.input-group input {
+  font-family: 'Calibri', sans-serif;
+  font-size: 14px;
+  padding: 10px;
+  border: 2px solid #243751;
+  border-radius: 0;
+  width: 250px; /* Fixed width for inputs */
+  box-sizing: border-box;
+  color: black;
+  background-color: white;
+}
+
+.input-group button {
+  font-family: 'Calibri', sans-serif;
+  background-color: #C50914;
+  color: white;
+  font-weight: bold;
+  border: 2px solid #243751;
+  padding: 10px 20px;
+  border-radius: 0;
+  cursor: pointer;
+  font-size: 14px;
+  width: auto; /* Adjust width to content */
+}
+.input-group button:hover {
+  background-color: #a00;
+}
+
+.text-info {
+  font-family: 'Calibri', sans-serif;
+  font-weight: bold;
+  color: white;
+  text-align: left;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.checkbox-container {
+  margin-top: 20px;
+  text-align: left;
+  font-size: 12px;
+  color: white;
+}
+
+.checkbox-container input {
+  margin-right: 10px;
+  border: 2px solid #243751;
+  accent-color: #243751;
+}
+
+.checkbox-container a {
+  color: white;
+  text-decoration: none;
+}
+.checkbox-container input {
+  margin-right: 10px;
+  border: 2px solid #243751;
+  accent-color: #243751;
+  /* Powiększenie checkboxa o 20% (możesz zmienić wartość) */
+  transform: scale(1.2);
+  /* Ustawienie transform-origin pozwala na lepsze wyrównanie */
+  transform-origin: center;
+}
+/*
+ODKRYJ WIECEJ
+*/
+.odkryj-wiecej {
+  font-family: 'Calibri', sans-serif;
+  margin-left: 40px;
+  margin-bottom: 50px;
+  color:#222745;
+}
+
+.odkryj-wiecej h2 {
+  font-size: 35px;
+  font-weight: bold;
+  margin-bottom: 20px; /* Opcjonalnie dla odstępu między nagłówkiem a resztą tekstu */
+}
+
+.odkryj-wiecej p {
+  font-size: 28px;
+  margin: 0;
+}
+@media (max-width: 1400px) and (min-width: 1201px){
+  .flight-container {
     
-    // Automatyczne przesuwanie karuzeli co 3 sekundy
-    function startAutoSlide() {
-      autoSlideInterval = setInterval(() => {
-        currentIndex = currentIndex < tiles.length - 3 ? currentIndex + 1 : 0;
-        setPositionByIndex();
-        updateIndicators();
-      }, 8000); // 8 sekundy
+    transform: translate(-50%, +80%);
+  }
+  .bg-section {
+    max-width: 100%;
+    height: 800px;
     }
-    // Funkcja resetująca automatyczne przesuwanie karuzeli
-    function resetAutoSlide() {
-      clearInterval(autoSlideInterval);
-      startAutoSlide();
-    }
-    // Uruchomienie automatycznego przesuwania karuzeli
-    startAutoSlide();
-    })();
-    document.addEventListener('DOMContentLoaded', () => {
-  const locations = [
-    'Warszawa', 'Kraków', 'Gdańsk', 'Wrocław', 'Poznań', 
-    'Katowice', 'Łódź', 'Szczecin', 'Lublin', 'Rzeszów'
-  ];
+  
+}
+/* ---------------------------------------
+MEDIA QUERIES - WYGLĄD TABLET
+--------------------------------------- */
 
-  function setupAutocomplete(inputId, suggestionsId, otherInputId) {
-    const input = document.getElementById(inputId);
-    const suggestionsBox = document.getElementById(suggestionsId);
-    const otherInput = document.getElementById(otherInputId);
+@media (max-width: 1200px) and (min-width: 761px){
+  .flight-container {
+    max-width: 90%;
+    transform: translate(0%, 0%);
+    margin-top: 15%
+  }
+  .header-with-logo {
+      height: auto;
+      padding: 10px 0;
+  }
+  .logo-container {
+      position: static;
+      margin-left: 10px;
+  }
+  .logo-container img {
+      max-height: 70px;
+  }
+  .top-bar {
+      display: none;
+  }
+  .main-menu {
+      display: none;
+  }
+  .menu-toggle {
+      display: block;
+  }
+  .logo-container img {
+      width: auto;
+  }
+  
+  .mobile-menu {
+    
+    width: 20%;
+  
+  }
+  .bg-section {
+  max-width: 100%;
+  height: 500px;
+  }
+  .bg-section-border {
+    max-height: 520px;
+  }
+  .line-container {
+    margin: 10px 0;
+  }
+  .checkbox-container p
+  {
+    font-size: 17px;
+    color: white;
+  }
+  .footer-bottom {
+    font-size: 15px;
+  }
+  
+}
 
-    input.addEventListener('input', () => {
-      const query = input.value.toLowerCase();
-      const otherValue = otherInput.value.toLowerCase();
-      suggestionsBox.innerHTML = '';
-
-      if (query) {
-        const filteredLocations = locations.filter(
-          location =>
-            location.toLowerCase().includes(query) &&
-            location.toLowerCase() !== otherValue // Wyklucz lokalizację z drugiego pola
-        );
-
-        filteredLocations.forEach(location => {
-          const suggestionItem = document.createElement('div');
-          suggestionItem.textContent = location;
-
-          suggestionItem.addEventListener('click', () => {
-            input.value = location;
-            suggestionsBox.innerHTML = ''; // Ukryj podpowiedzi po kliknięciu
-          });
-
-          suggestionsBox.appendChild(suggestionItem);
-        });
-      }
-    });
-
-    // Ukryj podpowiedzi, gdy użytkownik kliknie poza polem
-    document.addEventListener('click', (event) => {
-      if (!input.contains(event.target) && !suggestionsBox.contains(event.target)) {
-        suggestionsBox.innerHTML = '';
-      }
-    });
+/* ---------------------------------------
+MEDIA QUERIES - WYGLĄD MOBILE
+--------------------------------------- */
+@media (max-width: 760px) {
+  .flight-container {
+    max-width: 90%;
+    transform: translate(0%, 0%);
+    margin-top: 35%
+  }
+  .header-with-logo {
+      height: auto;
+      padding: 10px 0;
+  }
+  .logo-container {
+      position: static;
+      margin-left: 10px;
+  }
+  .logo-container img {
+      max-height: 50px;
+  }
+  .top-bar {
+      display: none;
+  }
+  .main-menu {
+      display: none;
+  }
+  .menu-toggle {
+      display: block;
+  }
+  .logo-container img {
+      width: auto;
+  }
+  .tile {
+    flex: 0 0 100%;  /* Jeden kafelek widoczny na ekranie */
+    margin: 0;       /* Możesz dostosować margines jeśli chcesz mieć odstęp */
   }
 
-  // Inicjalizuj autouzupełnianie dla obu pól
-  setupAutocomplete('from', 'from-suggestions', 'to');
-  setupAutocomplete('to', 'to-suggestions', 'from');
-});
-  </script>
-  <!--NEWSLETTER-->
-  <div class="newsletter-container">
-    <h2>Aby nie przegapić super okazji dołącz do naszego Newsletter'a</h2>
-    <div class="input-group">
-        <input type="text" placeholder="Twoje imię*" />
-        <input type="email" placeholder="Twój adres e-mail*" />
-        <button class="submit-btn">Zapisz się</button>
-    </div>
-    <p class="text-info">
-        Zapisując się do Newslettera, wyrażam zgodę na otrzymywanie informacji handlowych od WronAir Sp. z o.o. Mogę cofnąć zgodę w każdym czasie. Dane będą przetwarzane do czasu cofnięcia zgody. Wyrażenie zgody jest niezbędne do realizacji umowy/otrzymanie kodu rabatowego.
-    </p>
-    <div class="checkbox-container">
-        <label>
-            <input type="checkbox">
-            Tak, wyrażam zgodę na otrzymywanie informacji handlowych od firmy WronAir.* 
-        </label>
-      </br>
-    </br>
-        <p>
-            Administrator przetwarza dane zgodnie z 
-            <a href="#">Polityką Prywatności</a>.
-            Mam prawo dostępu do danych, sprostowania, usunięcia lub ograniczenia przetwarzania, prawo sprzeciwu, prawo wniesienia skargi do organu nadzorczego lub przeniesienia danych. Wyrażoną powyżej zgodę można wycofać w dowolnym momencie, kontaktując się z Administratorem na adres: <a href="mailto:rodo@wronair.pl">rodo@wronair.pl</a>
-        </p>
-    </div>
-  </div>
+  /* Powiększenie obrazka (opcjonalne) – zapewnienie, że jeden element zajmuje całość */
+  .tile img {
+    width: 100%;
+  }
   
-  <footer>
-    <!-- Zawartość stopki -->
-    <div class="footer-container search-bar-row">
-      <div class="footer-column">
-        <form class="search-bar">
-          <input type="text" placeholder="Wprowadź szukany termin" />
-          <button type="submit">
-            <img src="img/search.png" alt="Szukaj" />
-          </button>
-        </form>
-      </div>
-      <div class="footer-column"></div>
-      <div class="footer-column"></div>
-    </div>
-    <div class="footer-container">
-      <div class="footer-column">
-        <div class="footer-links">
-          <a href="#">Odpraw się</a><br /><br />
-          <a href="#">Upgrade</a><br /><br />
-          <a href="#">Usługi na pokładzie</a><br /><br />
-          <a href="#">FAQ</a>
-        </div>
-        <p class="payment-title">Opcje płatności</p>
-        <div class="payment-options">
-          <a href="#"><img src="img/masterC.png" alt="Mastercard" /></a>
-          <a href="#"><img src="img/visa.png" alt="Visa" /></a>
-          <a href="#"><img src="img/ap.png" alt="Apple Pay" /></a>
-          <a href="#"><img src="img/paypal.png" alt="Paypal" /></a>
-          <a href="#"><img src="img/blik.png" alt="BLIK" /></a>
-        </div>
-      </div>
-      <div class="footer-column">
-        <div class="footer-links">
-          <a href="#">O nas</a><br /><br />
-          <a href="#">Bagaż</a><br /><br />
-          <a href="#">Informacje o odprawie</a><br /><br />
-          <a href="#">Pomoc</a><br /><br />
-          <a href="#">Posiłki i napoje</a><br /><br />
-          <a href="#">Promocje i oferty</a>
-        </div>
-      </div>
-      <div class="footer-column">
-        <p class="social-title">Śledź nas</p>
-        <div class="social-media">
-          <a href="#"><img src="img/ig.png" alt="Instagram" /> @WronAir</a><br />
-          <a href="#"><img src="img/twt.png" alt="Twitter" /> @WronAir</a><br />
-          <a href="#"><img src="img/ln.png" alt="LinkedIn" /> @WronAir</a><br />
-          <a href="#"><img src="img/facebook.png" alt="Facebook" /> @WronAir</a><br />
-          <a href="#"><img src="img/yt.png" alt="YouTube" /> @WronAir</a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; WronAir.com 2024. Wszelkie prawa zastrzeżone.</p>
-    </div>
-  </footer>
-
-  <div class="footer-logo">
-    <img src="img/logojasne.jpg" alt="Logo WronAir">
-  </div>
-
-  <!-- Skrypt do obsługi przycisków (hamburger, wybór języka) -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const menuToggle = document.getElementById("menuToggle");
-      const mobileMenu = document.getElementById("mobileMenu");
-      menuToggle.addEventListener("click", function() {
-        mobileMenu.classList.toggle("open");
-      });
-  
-      const langButton = document.getElementById("langButton");
-      const langDropdown = document.getElementById("langDropdown");
-      langButton.addEventListener("click", function() {
-        langDropdown.classList.toggle("show");
-      });
-  
-      const langButtonMobile = document.getElementById("langButtonMobile");
-      const langDropdownMobile = document.getElementById("langDropdownMobile");
-      langButtonMobile.addEventListener("click", function() {
-        langDropdownMobile.classList.toggle("show");
-      });
-    });
-    document.addEventListener('DOMContentLoaded', () => {
-    const tripTypeSelect = document.getElementById('trip-type');
-    const returnInputContainer = document.querySelector('.form-half:nth-child(2)'); // przyjmujemy, że druga połówka dotyczy powrotu
-    const departureInputContainer = document.querySelector('.form-half:nth-child(1)'); 
-
-    // Funkcja zmieniająca widoczność pola "Powrót"
-    function updateReturnVisibility() {
-    if (tripTypeSelect.value === 'one-way') {
-      // Ukryj pole powrotu
-      returnInputContainer.style.display = 'none';
-      // Dodaj klasę, która rozciąga pole wylotu
-      departureInputContainer.classList.add('full-width-departure');
-    } else {
-      returnInputContainer.style.display = 'flex';
-      departureInputContainer.classList.remove('full-width-departure');
-    }
+  /* Powiększenie przycisków nawigacyjnych */
+  .carousel-container {
+    margin: 0 auto;  /* Wyśrodkowanie bez dodatkowych marginesów bocznych */
+    padding: 40px 0;
+    width: 100%;
+    max-width: 100%;
   }
 
-    // Uruchom przy starcie:
-    updateReturnVisibility();
+  .carousel {
+    /* Ustawiamy szerokość kafelka na 90% szerokości viewportu i centrujemy */
+    /* Aby był widoczny tylko jeden kafelek, pozostałe będą po bokach poza ekranem */
+    transform: translateX(0);
+  }
 
-    // Nasłuchuj zmiany wyboru:
-    tripTypeSelect.addEventListener('change', updateReturnVisibility);
-  });
-  </script>
-</body>
-</html>
+  .tile {
+    flex: 0 0 90%;
+    margin: 40px auto;  /* Większe marginesy oraz centrowanie */
+    margin-right: 40px;
+    border: 2px solid #243751;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .tile-info h3 {
+    font-size: 40px;
+  }
+
+  .tile-info .price {
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+
+  /* Powiększenie przycisków */
+  .carousel-nav button {
+    padding: 30px;
+    font-size: 30px;
+  }
+
+  .bg-section {
+  max-width: 100%;
+  height: 900px;
+  }
+  .flight-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Każdy wiersz formularza zajmuje pełną szerokość, zmniejszamy marginesy */
+  .flight-form .row {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-left: 20%;
+    margin-bottom: 10px;
+  }
+
+  /* Zmiana szerokości kontenerów formularza – uaktywniamy pełną szerokość */
+  .flight-form .form-group,
+  .flight-form .form-group2,
+  .flight-form .form-group3,
+  .flight-form .date-pair {
+    width: 100%;  /* lub inna wartość, zależnie od potrzeb */
+    margin: 0 auto 10px auto;
+  }
+  .flight-form .form-group3 {
+    margin: 0 auto 12px auto;
+  }
+  .date-pair {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 0; /* brak dodatkowych przerw między elementami */
+  }
+  .flight-form .passenger-group{
+    width: 100%;  /* lub inna wartość, zależnie od potrzeb */
+    margin-left: 0px !important;
+  }
+
+  /* Powiększenie pól tekstowych oraz select */
+  .flight-form input,
+  .flight-form select {
+    width: 80%;
+    height: 60px;     /* zwiększona wysokość */
+    font-size: 20px;  /* większa czcionka */
+    padding: 20px;
+  }
+ 
+
+  /* Przycisk wyszukiwania również na pełnej szerokości i większy */
+  .search-button {
+    width: 80%;
+    height: 60px;
+    font-size: 20px;
+    padding: 10px;
+  }
+
+  /* W przypadku selectów w grupie pasażerów – dostosowanie rozmiaru */
+  .small-select {
+    height: 60px !important;
+    width: 60px !important;
+    margin-left: 10px;
+    font-size: 20px !important;
+  }
+
+  /* Opcjonalnie: Dostosowanie etykiety przed selectem „Ilość pasażerów” */
+  .passenger-group label {
+    display: flex;
+    align-items: center;
+
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  /* Jeśli potrzebne – zmniejszenie odstępów nagłówka formularza */
+  .flight-container .header-title {
+    font-size: 30px;
+    padding: 10px;
+    width: 80%;
+    left: 10%;
+  }
+  .form-half {
+    width: 40%;       /* dwa elementy po 50% */
+    height: 60px;     /* wysokość zgodnie z Twoimi ustawieniami */
+    margin: 0;        /* usuń dodatkowe marginesy */
+    padding: 0;       /* sprawdź padding – ustaw na 0, jeśli nie jest konieczny */
+    box-sizing: border-box; /* upewnij się, że wszystkie wymiary są wliczane w szerokość */
+  }
+  
+  .form-half input {
+  width: 100%;
+  height: 100%;
+  border: 3px solid #222745;
+  padding: 6px;
+  font-size: 11px;
+  box-sizing: border-box;
+
+  }
+  .line-container {
+    margin: 10px 0;
+  }
+  .checkbox-container p
+  {
+    font-size: 17px;
+    color: white;
+  }
+  .footer-bottom {
+    font-size: 15px;
+  }
+  .footer-container,
+  .footer-container.search-bar-row {
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer-links a,
+  .social-media a{
+    font-size: 15px;
+    margin-bottom: 0;
+  }
+  .social-media a img {
+    width: 30px;
+  }
+  .payment-title {
+    font-size: 25px;
+    
+  }
+  .social-title {
+    font-size: 25px;
+  }
+  
+  .footer-column {
+    margin-bottom: 20px;
+  }
+  .search-bar {
+    max-width: 100%;
+    
+  }
+  .input-group {
+    flex-direction: column; /* Stack inputs vertically on small screens */
+  }
+
+  .input-group input {
+      width: 100%; /* Full width on small screens */
+      height: 60px;
+      font-size: 20px;
+  }
+  .checkbox-container {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .checkbox-container p{
+    font-size: 10px;
+  }
+  
+  .input-group button {
+      width: 100%; /* Full width for button on small screens */
+      height: 60px;
+      font-size: 20px;
+  }
+  .odkryj-wiecej h2 {
+    font-size: 20px;
+  }
+  .odkryj-wiecej p {
+    font-size: 17px;
+  }
+  .checkbox-container input {
+    transform: scale(2);
+    margin-left: 20px;
+  }
+
+  .lang-btn {
+    font-size: 20px;
+    padding: 10px 20px; /* przykładowe powiększenie paddingu */
+  }
+  .text-linia {
+    font-size: 17px;
+  }
+  #trip-type {
+    height: 60px; /* Wysokość pola */
+    line-height: 60px; /* Dopasowanie linii tekstu do wysokości */
+    padding: 0; /* Usuń nadmiarowy padding */
+    text-align: center; /* Horyzontalne wyśrodkowanie (opcjonalne) */
+    font-size: 16px; /* Dopasowanie rozmiaru tekstu */
+    -webkit-appearance: none; /* Usuwa domyślny styl strzałki */
+    appearance: none;
+  }
+  #passengers {
+    margin-left: 14.5%;
+    height: 60px; /* Wysokość pola */
+    line-height: 60px; /* Dopasowanie linii tekstu do wysokości */
+    padding: 0; /* Usuń nadmiarowy padding */
+    font-size: 16px; /* Dopasowanie rozmiaru tekstu */
+    -webkit-appearance: none; /* Usuwa domyślny styl strzałki */
+    appearance: none;
+  }
+
+  .autocomplete-suggestions {
+    
+    width: 80%; /* Dopasowanie szerokości do inputa */
+    max-height: 200px;
+    
+  }
+  
+  .autocomplete-suggestions div {
+    
+    font-size: 20px;
+   
+  }
+  .full-width-departure
+{
+  width: 80% !important;
+  font-size: 20px;
+}
+}
