@@ -1067,7 +1067,7 @@ MEDIA QUERIES - WYGLĄD MOBILE
 
   /* Powiększenie przycisków */
   .carousel-nav button {
-    padding: 30px;
+    padding: 15px;
     font-size: 30px;
   }
 
