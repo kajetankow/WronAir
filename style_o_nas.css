@@ -172,6 +172,7 @@ HEADER
     padding: 5px;
     transition: color 0.3s ease, font-weight 0.3s ease;
     transition: border-color 0.3s ease;
+    font-weight: normal;
   }
   
   .nav-links a:hover {
@@ -236,6 +237,7 @@ HEADER
     color: #fff;
     text-decoration: none;
     font-size: 20px;
+    font-weight: normal;
   }
   
   .mobile-menu.open {
