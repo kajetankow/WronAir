@@ -714,4 +714,7 @@
     .full-width-departure::placeholder {
       font-size: 40px !important;
     }
+      .upgrade-form h2 {
+      font-size: 15px; /* Zmniejszenie rozmiaru czcionki */
+    }
   }
