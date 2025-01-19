@@ -585,6 +585,10 @@ MEDIA QUERIES - WYGLĄD TABLET
         border: 2px solid #243751;
         width: 24%; /* Stała szerokość */
     }
+    .container input, .container button {
+       
+      width: 100%; /* Stała szerokość */
+  }
   }
   
   /* ---------------------------------------
@@ -703,5 +707,6 @@ MEDIA QUERIES - WYGLĄD TABLET
         font-size: 15px !important;
      
     }
+
   }
   
