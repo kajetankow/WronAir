@@ -513,11 +513,37 @@
     .logo-container img {
         width: auto;
     }
+    .mobile-menu {
+      width: 20%;
+    }
   
     .footer-bottom {
       font-size: 15px;
     }
-    
+    .text-linia {
+      font-size: 24px;
+    }
+    .text-linia::before {
+     max-height: 8px;
+    }
+
+    /* Zakrzywienie prawej linii */
+    .text-linia::after {
+      max-height: 8px;
+      
+    }
+    #order-status {
+      font-size: 20px;
+    }
+    #order-status, #upgrade-info, .end{
+      font-size:17px;
+    }
+    .end {
+      margin-bottom: 20px !important;
+    }
+    .upgrade-end-container p {
+      font-size: 15px;
+    }
   }
   
   /* ---------------------------------------
