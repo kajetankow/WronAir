@@ -720,6 +720,11 @@
       font-size: 40px !important;
     }
     .upgrade-form h2 {
-      font-size: 15px; /* Zmniejszenie rozmiaru czcionki */
+      font-size: 12px; /* Zmniejszenie rozmiaru czcionki */
     }
+    .upgrade-form input {
+    
+      width: 70%; /* Zachowanie szerokości pola */
+      
+  }
   }
