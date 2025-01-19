@@ -13,6 +13,11 @@
     color: #243751;
     overflow-x: hidden;
     width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+  
   }
   
   /* --------------------------------------------------
@@ -402,21 +407,32 @@ HEADER
   MIEJSCA
   -------------------------------------------------- */
   /* General styling for main content */
+  .background-wrapper {
+    position: relative;       /* żeby tło absolute liczyło się w tym kontenerze */
+    width: 100vw;             /* aby maksymalnie zapełnić szerokość ekranu */
+    max-width: 100%;          /* nie rośnie szersze niż viewport */
+    overflow: hidden;         /* obcinamy to, co wychodzi na boki */
+    margin: 0 auto;           /* ew. wyśrodkuj, jeśli potrzebujesz */
+    /* height niekoniecznie musisz ustawiać, zależy od potrzeb
+       można dać min-height: 1300px, jeśli chcesz mieć pewność,
+       że wystarczy miejsca w pionie */
+    z-index: 0;               /* uruchomimy stacking context */
+  }
   .background-container {
-    position: absolute; /* Ustawienie pozycji w odniesieniu do body */
-    top: 250px; /* Umiejscowienie od góry */
-    left: 50%; /* Wyśrodkowanie w poziomie */
-    transform: translateX(-50%); /* Wyrównanie środka tła */
-    background-image: url('img/seat_map.png'); /* Ścieżka do obrazu */
-    background-repeat: no-repeat; /* Brak powtarzania obrazu */
-    background-size: contain; /* Zachowanie proporcji obrazu */
-    width: 800px; /* Stała szerokość tła */
-    height: 1300px; /* Stała wysokość tła */
-    z-index: -1; /* Tło za innymi elementami */
-}
-
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 1300px;
+    background-image: url("img/seat_map.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    z-index: -1; /* lub z-index: 0; i wtedy .content-wrapper: z-index: 1; */
+  }
 /* Główny wrapper strony */
 .content-wrapper {
+    z-index: 1;
     position: relative; /* Pozycjonowanie względem kontenera tła */
     width: 100%; /* Szerokość zawartości dopasowana do strony */
     min-height: 1320px; /* Minimalna wysokość, aby dopasować do tła */
@@ -431,7 +447,7 @@ HEADER
     display: flex;
     flex-direction: column;
     gap: 15px; /* Odstępy między rzędami */
-    margin-top: -3px; /* Odstęp klasy pierwszej od górnej krawędzi */
+    margin-top: 80px; /* Odstęp klasy pierwszej od górnej krawędzi */
 }
 
 /* Rzędy przycisków */
@@ -552,6 +568,9 @@ HEADER
     
       #legend {
         font-size: 23px !important;
+        position: absolute; 
+        top: 300px; 
+        right: 12%;
       }
       #legend li {
         list-style: none;
@@ -772,7 +791,13 @@ MEDIA QUERIES - WYGLĄD TABLET
     }
     .class-section.first-class {
     
-        margin-top: -20px; /* Odstęp klasy pierwszej od górnej krawędzi */
+        margin-top: 80px; /* Odstęp klasy pierwszej od górnej krawędzi */
+    }
+    #legend {
+      font-size: 20px !important;
+      position: absolute; 
+      top: 400px; 
+      right: 4%;
     }
 
 }
@@ -845,9 +870,14 @@ MEDIA QUERIES - WYGLĄD TABLET
     }
         /* Zwiększenie czcionki h1 */
     main.content h1 {
-        font-size: 30px; /* zwiększona czcionka */
+        font-size: 20px; /* zwiększona czcionka */
         margin-bottom: 20px;
     }
+    
+    main.content h3 {
+      font-size: 20px; 
+      
+  }
     .line-container {
         margin: 10px 0;
     
@@ -856,20 +886,25 @@ MEDIA QUERIES - WYGLĄD TABLET
         font-size: 20px;
     }
     .background-container {
-        top: 400px; /* Umiejscowienie od góry */
+        top: 180px; /* Umiejscowienie od góry */
     }
     .class-section.first-class {
         display: flex;
         flex-direction: column;
         gap: 15px; /* Odstępy między rzędami */
-        margin-top: 180px; /* Odstęp klasy pierwszej od górnej krawędzi */
+        margin-top: 265px; /* Odstęp klasy pierwszej od górnej krawędzi */
     }
     #legend {
-        font-size: 17px !important;
+        font-size: 14px !important;
+        position: absolute; 
+        top: 400px; 
+        right: 4%;
       }
+      
     .content-wrapper {
    
     min-height: 1500px; /* Minimalna wysokość, aby dopasować do tła */
    
     }
   }
+
