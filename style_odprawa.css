@@ -480,7 +480,7 @@ HEADER
         justify-content: center;
         flex-wrap: wrap;
         gap: 10%;
-        
+        row-gap: 20px;
         padding: 40px;
        
         width: 90%;
@@ -583,12 +583,9 @@ MEDIA QUERIES - WYGLĄD TABLET
         font-size: 15px; /* Powiększenie tekstu */
         padding: 10px; /* Wewnętrzne odstępy */
         border: 2px solid #243751;
-        width: 24%; /* Stała szerokość */
+        width: 100%; /* Stała szerokość */
     }
-    .container input, .container button {
-       
-      width: 100%; /* Stała szerokość */
-  }
+   
   }
   
   /* ---------------------------------------
