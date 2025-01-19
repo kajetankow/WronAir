@@ -769,6 +769,9 @@ MEDIA QUERIES - WYGLĄD TABLET
         font-size: 16px;
         
       }
+    .fleet p {
+        font-size: 17px !important;
+      }
   }
   
   /* ---------------------------------------
