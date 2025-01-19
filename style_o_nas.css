@@ -652,7 +652,37 @@ MEDIA QUERIES - WYGLĄD TABLET
     .footer-bottom {
       font-size: 15px;
     }
+    .about-us h2{
+      font-size: 24px !important;
+    }
+    .content h1 {
+      font-size: 34px !important;
+    }
+    .about-us p{
+      font-size: 20px !important;
+    }
+    .details p{
+      font-size: 20px !important;
+    }
+    .network p{
+      font-size: 20px !important;
+    }
+    .cta a {
+      max-width: 40%;
+    }
+    main.content .image-row {
+      display: flex;           /* <---- flexbox */
+      flex-direction: column;
+      justify-content: center; /* wyśrodkowanie w poziomie */
+      align-items: center;     /* wyśrodkowanie w pionie */
+      gap: 20px;
+      
+    }
     
+    main.content .image-row img {
+      width: 80%;
+      border: 2px solid #243751;
+    }
   }
   
   /* ---------------------------------------
@@ -752,7 +782,8 @@ MEDIA QUERIES - WYGLĄD TABLET
     /* Powiększenie przycisku od floty (CTA) */
     main.content .cta a {
         padding: 16px 30px;  /* powiększenie przycisku */
-        font-size: 22px; /* zwiększenie rozmiaru czcionki przycisku */
+        max-width: 40%;
+        font-size: 15px; /* zwiększenie rozmiaru czcionki przycisku */
     }
 
   }
