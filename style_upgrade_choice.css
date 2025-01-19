@@ -429,10 +429,10 @@
 
 .option {
     flex: 1;
-    max-width: 300px; /* Domyślna szerokość kafelków */
+    max-width: 350px; /* Domyślna szerokość kafelków */
     background-color: #f5f5f5;
     border: 2px solid #243751;
-    padding: 20px;
+    padding: 30px;
     text-align: center;
 }
 
