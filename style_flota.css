@@ -765,7 +765,7 @@ MEDIA QUERIES - WYGLĄD TABLET
     }
     .map-button {
        
-        top: 60%; /* Wyśrodkowanie w pionie */
+        top: 45%; /* Wyśrodkowanie w pionie */
         font-size: 16px;
         
       }
