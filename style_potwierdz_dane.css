@@ -428,6 +428,7 @@ width: 100%;
 border-collapse: collapse;
 margin-bottom: 20px;
 font-size: 20px;
+margin-right: 150px;
 }
 .info-table th,
 .info-table td {
@@ -575,7 +576,7 @@ MEDIA QUERIES - WYGLĄD TABLET
     }
 
     .plan-details div {
-        font-size: 17px; /* Nowy rozmiar czcionki dla mobilnego widoku */
+        font-size: 15px; /* Nowy rozmiar czcionki dla mobilnego widoku */
         margin-bottom: 5px; /* Opcjonalnie zmniejszenie odstępów między liniami */
         width: 25%;
     }
@@ -588,6 +589,10 @@ MEDIA QUERIES - WYGLĄD TABLET
     .container {
         min-width: 90% !important;
     }
+    .price {
+  
+      font-size: 17px;
+  }
 
     
   }
@@ -692,9 +697,12 @@ MEDIA QUERIES - WYGLĄD TABLET
         width: 90%; /* Dostosowanie szerokości do widoku mobilnego */
         font-size: 17px;
     }
+    .info-table th {
+      padding: 10px;
+    }
 
     .plan-details div {
-        font-size: 14px; /* Nowy rozmiar czcionki dla mobilnego widoku */
+        font-size: 12px; /* Nowy rozmiar czcionki dla mobilnego widoku */
         margin-bottom: 5px; /* Opcjonalnie zmniejszenie odstępów między liniami */
         width: 25%;
     }
