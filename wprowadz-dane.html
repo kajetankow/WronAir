@@ -223,9 +223,11 @@ document.addEventListener("DOMContentLoaded", function () {
     mobileMenu.classList.toggle("open");
   });
 
-  // Parametr `passengers` z URL
   const urlParams = new URLSearchParams(window.location.search);
-  const defaultPassengers = parseInt(urlParams.get("passengers")) || 1; // Domyślna liczba pasażerów to 1
+  const totalPriceElement = document.querySelector(".price-value");
+  const initialPrice = parseFloat(urlParams.get("price")) || 100; // Cena z URL
+  const initialPassengers = parseInt(urlParams.get("passengers")) || 1; // Liczba pasażerów z URL
+  const basePricePerPassenger = initialPrice / initialPassengers; // Cena za pasażera
 
   const passengersContainer = document.getElementById("passengersContainer");
   const addPassengerButton = document.getElementById("addPassengerButton");
@@ -233,6 +235,30 @@ document.addEventListener("DOMContentLoaded", function () {
   const maxPassengers = 4;
 
   let passengerCount = 0;
+
+  // Funkcja do aktualizacji ceny
+  function updatePrice() {
+    const newTotalPrice = basePricePerPassenger * passengerCount;
+    totalPriceElement.textContent = `${newTotalPrice.toFixed(2)} PLN`;
+    return newTotalPrice; // Zwracamy nową cenę do dalszego użycia
+  }
+
+  // Funkcja do budowy nowego URL z aktualnymi parametrami
+  function buildNextPageURL() {
+    const formData = new FormData(reservationForm);
+    const newParams = new URLSearchParams(window.location.search);
+
+    // Zaktualizuj parametry `passengers` i `price`
+    newParams.set("passengers", passengerCount);
+    newParams.set("price", updatePrice().toFixed(2));
+
+    // Dodaj pozostałe dane z formularza
+    for (const [key, value] of formData.entries()) {
+      newParams.set(key, value);
+    }
+
+    return `next_page.html?${newParams.toString()}`;
+  }
 
   function addPassenger() {
     if (passengerCount >= maxPassengers) return;
@@ -292,6 +318,7 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
 
     passengersContainer.appendChild(passengerDiv);
+    updatePrice();
   }
 
   function removePassenger() {
@@ -299,6 +326,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const lastPassengerDiv = document.getElementById(`passenger${passengerCount}`);
       passengersContainer.removeChild(lastPassengerDiv);
       passengerCount--;
+      updatePrice();
     }
   }
 
@@ -310,14 +338,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   reservationForm.addEventListener("submit", (e) => {
     e.preventDefault();
-
-    const formData = new FormData(reservationForm);
-    const queryString = new URLSearchParams(formData).toString();
-
-    window.location.href = `next_page.html?${queryString}`;
+    window.location.href = buildNextPageURL();
   });
 
-  // Dodaj przycisk "Usuń pasażera" na końcu
   const removeButton = document.createElement("button");
   removeButton.type = "button";
   removeButton.textContent = "- Usuń pasażera";
@@ -326,41 +349,9 @@ document.addEventListener("DOMContentLoaded", function () {
   removeButton.addEventListener("click", removePassenger);
   passengersContainer.parentNode.appendChild(removeButton);
 
-  // Dodaj domyślną liczbę pasażerów
-  for (let i = 0; i < defaultPassengers; i++) {
+  for (let i = 0; i < initialPassengers; i++) {
     addPassenger();
   }
-});
-document.addEventListener("DOMContentLoaded", function () {
-  const urlParams = new URLSearchParams(window.location.search);
-  
-  // Pobranie ceny z URL i wyświetlenie jej na stronie
-  const totalPriceElement = document.querySelector(".price-value");
-  const price = urlParams.get("price");
-  if (price) {
-    totalPriceElement.textContent = `${price} PLN`;
-  }
-  
-  // Funkcja do budowy nowego URL z aktualnymi danymi
-  function buildNextPageURL() {
-    const formData = new FormData(reservationForm);
-    const formParams = new URLSearchParams(formData);
-
-    // Dodaj istniejące parametry do nowych
-    const newParams = new URLSearchParams(window.location.search);
-    for (const [key, value] of formParams.entries()) {
-      newParams.append(key, value);
-    }
-
-    return `next_page.html?${newParams.toString()}`;
-  }
-  
-  // Przekierowanie po wysłaniu formularza
-  const reservationForm = document.getElementById("reservationForm");
-  reservationForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    window.location.href = buildNextPageURL();
-  });
 });
       </script>
 </body>
