@@ -438,7 +438,7 @@
               )}&price=${encodeURIComponent(totalPrice)}&ticket_type=${encodeURIComponent(ticketType)}`;
               nextPageLink.textContent = 'Wybierz lot powrotny';
             } else if (tripType === 'one-way') {
-              nextPageURL = `dane.html?trip_type=${tripType}&from=${encodeURIComponent(
+              nextPageURL = `wprowadz-dane.html?trip_type=${tripType}&from=${encodeURIComponent(
                 from
               )}&to=${encodeURIComponent(to)}&passengers=${passengers}&departure_date=${departureDate}&return_date=${returnDate}&duration=${encodeURIComponent(
                 duration
