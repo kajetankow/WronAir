@@ -7,6 +7,7 @@
   <link rel="shortcut icon" href="img/logo_32.ico">
   <title>WronAir | internet</title>
   <link rel="stylesheet" href="style_internet.css" />
+  <link rel="stylesheet" href="style_headfoot.css" />
 </head>
 <body>
   <header class="header-with-logo">
@@ -214,30 +215,7 @@
       langDropdownMobile.classList.toggle("show");
     });
   });
-  document.addEventListener('DOMContentLoaded', () => {
-  const tripTypeSelect = document.getElementById('trip-type');
-  const returnInputContainer = document.querySelector('.form-half:nth-child(2)'); // przyjmujemy, że druga połówka dotyczy powrotu
-  const departureInputContainer = document.querySelector('.form-half:nth-child(1)'); 
-
-  // Funkcja zmieniająca widoczność pola "Powrót"
-  function updateReturnVisibility() {
-  if (tripTypeSelect.value === 'one-way') {
-    // Ukryj pole powrotu
-    returnInputContainer.style.display = 'none';
-    // Dodaj klasę, która rozciąga pole wylotu
-    departureInputContainer.classList.add('full-width-departure');
-  } else {
-    returnInputContainer.style.display = 'flex';
-    departureInputContainer.classList.remove('full-width-departure');
-  }
-}
-
-  // Uruchom przy starcie:
-  updateReturnVisibility();
-
-  // Nasłuchuj zmiany wyboru:
-  tripTypeSelect.addEventListener('change', updateReturnVisibility);
-});
+  
 
 </script>
 </body>

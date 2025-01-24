@@ -7,6 +7,7 @@
   <link rel="shortcut icon" href="img/logo_32.ico">
   <title>WronAir | Miejsce</title>
   <link rel="stylesheet" href="style_wybor-miejsca.css" />
+  <link rel="stylesheet" href="style_headfoot.css" />
 </head>
 <body>
   <header class="header-with-logo">
@@ -111,7 +112,7 @@
     <h3>Lot <span id="flightCode">WR47</span></h3>
     <h3>Model samolotu: Airbus A330-300</h3>
     
-    <!-- Tutaj wyświetlamy jakie miejsca są aktualnie zaznaczone -->
+    
     <h3>Miejsca wybrane (dla <span id="passengersSpan"></span> pasażerów): 
       <span id="selectedSeat">NIE WYBRANO</span>
     </h3>
@@ -120,7 +121,7 @@
       <div class="background-container"></div>
       <div class="content-wrapper">
 
-        <!-- Klasa 1 (First Class) – w przykładzie wszystkie disabled -->
+        <!-- Klasa 1 -->
         <div class="class-section first-class">
           <div class="row">
             <button disabled>1A</button>
@@ -151,7 +152,7 @@
 
         <!-- Klasa ekonomiczna -->
         <div class="economy-class">
-          <!-- Skrypt generujący miejsca w klasie ekonomicznej -->
+          
           <script>
             const economyClassContainer = document.currentScript.parentNode;
 
@@ -161,17 +162,17 @@
 
               const seatLetters = ["A", "B", "C", "D", "E", "F", "G", "H"];
               seatLetters.forEach((seat, index) => {
-                // Dodanie odstępu w układzie np. między C i D, G i H
+                // odstep
                 if (index === 2 || index === 6) {
                   const spacer = document.createElement("div");
                   spacer.className = "spacer";
                   row.appendChild(spacer);
                 }
-                // Tworzymy przycisk dla danego miejsca
+                // przycisk miejsca
                 const button = document.createElement("button");
                 button.textContent = `${rowNumber}${seat}`;
 
-                // Losowe zajętości (przykładowo)
+                //losowanie zajetych mniejsc
                 if (Math.random() < 0.2) {
                   button.classList.add("occupied");
                   button.disabled = true;
@@ -183,9 +184,8 @@
               return row;
             }
 
-            // W przykładzie generujemy rzędy od 6 do 30
             for (let i = 6; i <= 30; i++) {
-              // Możemy np. zrobić przerwę między 20 a 21
+              //przerwa
               if (i === 21) {
                 const rowBreak = document.createElement("div");
                 rowBreak.className = "row-break";
@@ -194,10 +194,10 @@
               economyClassContainer.appendChild(createRow(i));
             }
           </script>
-        </div> <!-- /economy-class -->
+        </div> 
 
-      </div> <!-- /content-wrapper -->
-    </div> <!-- /background-wrapper -->
+      </div> 
+    </div> 
 
     <!-- Legenda -->
     <div id="legend">
@@ -241,7 +241,7 @@
 
     <div id="passengers-container"></div>
 
-    <!-- Pokazujemy całkowitą cenę -->
+    <!--Cena-->
     <div class="price-container">
         <h2>Cena całkowita: <span class="price-value">0.00</span> PLN</h2>
         <div class="button-group">
@@ -315,12 +315,9 @@
 
   <!-- Skrypty -->
   <script>
-    // -----------------------------
-    // ODCZYT PARAMETRÓW Z URL
-    // -----------------------------
+    
     function getAllQueryParams() {
       const params = new URLSearchParams(window.location.search);
-      // Zwracamy obiekt klucz-wartość
       const result = {};
       for (const [key, value] of params.entries()) {
         result[key] = value;
@@ -330,34 +327,26 @@
 
     const params = getAllQueryParams();
 
-    // Podstawowe wartości z URL, potrzebne w logice
+    //pobranie parametrow
     const passengersCount = parseInt(params.passengers || "1", 10);
     const basePrice = parseFloat(params.price || "0");  
     const ticketType = (params.ticket_type || "ECONOMY").toUpperCase();
 
-    // Ustawiamy domyślnie flight code, jeśli jest w parametrach
     if (params.flight_code) {
       const flightCodeElem = document.getElementById("flightCode");
       if (flightCodeElem) flightCodeElem.textContent = params.flight_code;
     }
-
-    // Wyświetlamy, ile jest pasażerów
     const passengersSpan = document.getElementById("passengersSpan");
     if (passengersSpan) {
       passengersSpan.textContent = passengersCount;
     }
 
-    // -----------------------------
-    // MECHANIZM ZAZNACZANIA MIEJSC
-    // -----------------------------
+    //zaznaczanie miejsc
     let selectedSeats = [];
 
 
     document.addEventListener("click", (event) => {
-    // Warunek sprawdza, czy kliknięto w BUTTON, który:
-    // 1) jest wewnątrz kontenera .economy-class lub .first-class
-    // 2) nie ma klasy .occupied (zajęte miejsce)
-    // 3) nie jest disabled
+   
     if (
         event.target.matches(".economy-class button, .first-class button") &&
         !event.target.classList.contains("occupied") &&
@@ -365,7 +354,7 @@
     ) {
         const seat = event.target.textContent; // np. "12A"
 
-        // Sprawdź, czy to miejsce jest już w tablicy
+        // Sprawdź, czy to miejsce jest już wybrane
         const index = selectedSeats.indexOf(seat);
 
         if (index >= 0) {
@@ -373,27 +362,27 @@
         selectedSeats.splice(index, 1);
         event.target.classList.remove("selected");
         } else {
-        // Jeśli nie było w tablicy
+        // Jeśli nie było 
         if (selectedSeats.length < passengersCount) {
-            // Jeśli wciąż mamy wolne "sloty" do wyboru
+            // Jeśli wciąż mamy wolne sloty do wyboru
             selectedSeats.push(seat);
             event.target.classList.add("selected");
         } else {
             // Mamy już maksymalną liczbę miejsc -> zamieniamy najstarsze na nowe
-            const oldestSeat = selectedSeats.shift(); // "zdejmujemy" pierwsze
+            const oldestSeat = selectedSeats.shift(); // "zdejmujemy" pierwsze ze stosu
             // Szukamy w interfejsie przycisku dla najstarszego miejsca i usuwamy zaznaczenie
             const oldestBtn = [...document.querySelectorAll("button.selected")]
             .find((btn) => btn.textContent === oldestSeat);
             if (oldestBtn) {
             oldestBtn.classList.remove("selected");
             }
-            // Dodajemy nowo kliknięte miejsce
+            // Dodajemy nowe miejsce na szczyt
             selectedSeats.push(seat);
             event.target.classList.add("selected");
         }
         }
 
-        // Aktualizujemy wyświetlanie wybranych miejsc w elemencie #selectedSeat
+  
         const selectedSeatSpan = document.getElementById("selectedSeat");
         if (selectedSeats.length === 0) {
         selectedSeatSpan.textContent = "NIE WYBRANO";
@@ -403,17 +392,12 @@
     }
     });
 
-    // -----------------------------
-    // MECHANIZM BAGAŻU
-    // -----------------------------
+   //bagaz
     const passengersContainer = document.getElementById('passengers-container');
-
-    // Funkcja tworząca sekcję bagażu dla pasażera
     function createPassengerSection(passengerNumber) {
       const container = document.createElement('div');
       container.classList.add('baggage-container');
 
-      // Generujemy unikalne ID do licznika bagażu
       const baggageCounterId = `baggageCounter${passengerNumber}`;
 
       container.innerHTML = `
@@ -437,12 +421,10 @@
       passengersContainer.appendChild(container);
     }
 
-    // Generowanie sekcji dla każdego pasażera
+    //dla kazdego pasazera
     for (let i = 1; i <= passengersCount; i++) {
       createPassengerSection(i);
     }
-
-    // Funkcja obsługująca licznik bagażu
     function updateCounter(spanId, change) {
       const counterSpan = document.getElementById(spanId);
       let count = parseInt(counterSpan.textContent, 10);
@@ -453,40 +435,31 @@
 
       counterSpan.textContent = count;
     }
-    // Ustawiamy funkcję globalnie (na window), aby była dostępna w onclick
+    
     window.updateCounter = updateCounter;
 
-    // -----------------------------
-    // LICZENIE CENY CAŁKOWITEJ
-    // -----------------------------
+    //cema
     function calculateTotalPrice() {
-      // Podstawa to basePrice
+    
       let total = basePrice;
-
-      // Doliczanie kosztu wybranego miejsca (jeśli w ogóle jest wybór)
-      // - w zależności od klasy tarfy (Economy czy Premium Economy)
-      //   zakładamy 599 dla Economy, 399 dla Premium Economy
+      //   doliczamy 599 dla Economy, 399 dla Premium Economy
       let seatCost = 0;
       if (selectedSeats.length > 0) {
         if (ticketType.includes("PREMIUM")) {
           seatCost = 399 * selectedSeats.length;
         } else {
-          // Domyślnie ECONOMY
           seatCost = 599 * selectedSeats.length;
         }
       }
       total += seatCost;
 
       // Doliczanie kosztu bagażu
-      // Tu zakładamy uproszczenie: w Economy wszystko płatne, w Premium np. 1 sztuka darmowa (zależy od polityki).
-      // Ale w Twoim kodzie sugeruje się, że każda sztuka bagażu niewliczona jest płatna 600 PLN. 
-      // Można dodać warunki w zależności od ticketType (np. premium może mieć 1 darmową sztukę).
       
-      let freeBags = 0; // Ilość darmowych sztuk w zależności od klasy
+      let freeBags = 0; 
       if (ticketType.includes("PREMIUM")) {
-        freeBags = 1; // Przykład: Premium Economy ma 1 darmową sztukę
+        freeBags = 1;
       } 
-      // Economy = 0 darmowych (przykład)
+      
 
       let totalBaggageCost = 0;
       const baggageDivs = document.querySelectorAll('.baggage-container .counter span');
@@ -502,9 +475,7 @@
       return total;
     }
 
-    // -----------------------------
-    // AKTUALIZACJA CENY NA EKRANIE
-    // -----------------------------
+  
     function updatePriceDisplay() {
       const priceElement = document.querySelector('.price-value');
       if (priceElement) {
@@ -515,20 +486,14 @@
 
     // Aktualizujemy cenę za każdym razem, gdy użytkownik coś kliknie
     document.body.addEventListener("click", (event) => {
-      // Jeśli klikanie może wpłynąć na cenę (wybór miejsca lub bagażu) – liczymy od nowa.
-      // Najprostsze podejście: zawsze aktualizujemy cenę przy *każdym* kliknięciu.
-      // Oczywiście można by nasłuchiwać tylko konkretnych elementów.
       updatePriceDisplay();
     });
 
-    // Od razu przy wczytaniu strony
     updatePriceDisplay();
 
-    // -----------------------------
-    // PRZYCISK "Potwierdź" – przejście dalej
-    // -----------------------------
+    //przycisk
     document.getElementById("confirmButton").addEventListener("click", () => {
-      // Obliczamy cenę
+    
       const finalPrice = calculateTotalPrice();
 
       // Budujemy listę bagaży
@@ -538,24 +503,14 @@
         baggageCounts.push(span.textContent);
       });
 
-      // Zapisujemy nowe informacje do naszego obiektu params
-      // - seats
-      // - baggage
-      // - final price
       params.finalPrice = finalPrice.toFixed(2);
       params.selectedSeats = selectedSeats.join(","); 
-      // Można też parametryzować liczbę miejsc w inny sposób, np. selectedSeat1, selectedSeat2, ...
-      // Ale najprościej łączyć w jeden string.
-
-      // Bagaże – np. w formie przecinków
-      // lub JSON-a. Tutaj zrobimy listę rozdzielaną myślnikami:
+      
       params.baggageCounts = baggageCounts.join("-");
 
-      // Konstruujemy nowy URL na kolejną stronę (np. boarding_pass.html)
-      // ale może to być dowolna strona (np. "podsumowanie.html")
+      //nowy url
       const nextPage = "dane.html";
 
-      // Tworzymy obiekt URLSearchParams z "params"
       const newParams = new URLSearchParams();
       for (const key in params) {
         newParams.append(key, params[key]);
@@ -563,13 +518,11 @@
 
       const newUrl = nextPage + "?" + newParams.toString();
 
-      // Przechodzimy na kolejną stronę
+      //kolejna strona
       window.location.href = newUrl;
     });
 
-    // -----------------------------
-    // OBSŁUGA MENU/HAMBURGER I JĘZYK
-    // -----------------------------
+    // Skrypt do obsługi przycisków (hamburger, wybór języka) 
     document.addEventListener("DOMContentLoaded", function() {
       const menuToggle = document.getElementById("menuToggle");
       const mobileMenu = document.getElementById("mobileMenu");

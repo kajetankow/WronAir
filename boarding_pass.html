@@ -7,6 +7,7 @@
   <link rel="shortcut icon" href="img/logo_32.ico">
   <title>WronAir | Boarding-Pass</title>
   <link rel="stylesheet" href="style_boarding_pass.css" />
+  <link rel="stylesheet" href="style_headfoot.css" />
 </head>
 <body>
   <header class="header-with-logo">
@@ -55,9 +56,9 @@
     <nav class="main-menu" id="mainNav">
       <ul class="nav-links">
         <li><a href="index.html">Strona Główna</a></li>
-        <li><a href="#">Odpraw się</a></li>
-        <li><a href="#">Upgrade</a></li>
-        <li><a href="#">Usługi na Pokładzie</a></li>
+        <li><a href="odprawa.html">Odpraw się</a></li>
+        <li><a href="upgrade.html">Upgrade</a></li>
+        <li><a href="uslugi.html">Usługi na Pokładzie</a></li>
         <li><a href="faq.html">FAQ</a></li>
         <li><a href="o_nas.html">O Nas</a></li>
       </ul>
@@ -68,9 +69,9 @@
       <ul>
         <li><a href="#">Logowanie i rejestracja</a></li>
         <li><a href="index.html">Strona Główna</a></li>
-        <li><a href="#">Odpraw się</a></li>
-        <li><a href="#">Upgrade</a></li>
-        <li><a href="#">Usługi na Pokładzie</a></li>
+        <li><a href="odprawa.html">Odpraw się</a></li>
+        <li><a href="upgrade.html">Upgrade</a></li>
+        <li><a href="uslugi.html">Usługi na Pokładzie</a></li>
         <li><a href="faq.html">FAQ</a></li>
         <li><a href="o_nas.html">O Nas</a></li>
         <li>
@@ -98,7 +99,7 @@
       </ul>
     </nav>
   </header>
-  <!-- O Nas -->
+  
   <main class="content">
         
     <div class="line-container">
@@ -108,13 +109,13 @@
     <div class="boarding-pass">
       <div class="header">BOARDING PASS</div>
       <div class="content">
-        <!-- Left section -->
+        
         <div class="section-left">
           <div class="qr-code"><img src="img/QR.png" alt="QR Code"></div>
           <div class="logo"><img src="img/logo_160.png" alt="Logo"></div>
         </div>
     
-        <!-- Middle left section -->
+        
         <div class="section-middle-left">
           <p>PASSENGER:</p>
           <p>FROM:</p>
@@ -124,7 +125,6 @@
           <p>DEPARTURE TIME:</p>
         </div>
     
-        <!-- Middle middle-left section -->
         <div class="section-middle-middle-left">
           <p>MR JAN PIOTR <span id="lastName"></span></p>
           <p>[WAW]</p>
@@ -134,7 +134,6 @@
           <p>19:15</p>
         </div>
     
-        <!-- Middle middle-right section -->
         <div class="section-middle-middle-right">
           <p>SEAT:</p>
           <p>GATE:</p>
@@ -142,7 +141,6 @@
           <p>RESERVATION NUMBER:</p>
         </div>
     
-        <!-- Right section -->
         <div class="section-right">
           <p><span id="seat"></span></p>
           <p>26</p>
@@ -166,7 +164,6 @@
   </main>
 
   <footer>
-    <!-- Zawartość stopki -->
     <div class="footer-container search-bar-row">
       <div class="footer-column">
         <form class="search-bar">
@@ -182,9 +179,9 @@
     <div class="footer-container">
       <div class="footer-column">
         <div class="footer-links">
-          <a href="#">Odpraw się</a><br /><br />
-          <a href="#">Upgrade</a><br /><br />
-          <a href="#">Usługi na pokładzie</a><br /><br />
+          <a href="odprawa.html">Odpraw się</a><br /><br />
+          <a href="upgrade.html">Upgrade</a><br /><br />
+          <a href="uslugi.html">Usługi na pokładzie</a><br /><br />
           <a href="faq.html">FAQ</a>
         </div>
         <p class="payment-title">Opcje płatności</p>
@@ -203,7 +200,7 @@
           <a href="#">Informacje o odprawie</a><br /><br />
           <a href="#">Pomoc</a><br /><br />
           <a href="#">Posiłki i napoje</a><br /><br />
-          <a href="#">Promocje i oferty</a>
+          <a href="kontakt.html">Kontakt</a>
         </div>
       </div>
       <div class="footer-column">
@@ -247,19 +244,18 @@
         langDropdownMobile.classList.toggle("show");
       });
     });
-    // Funkcja do pobierania wartości parametrów z URL
+    // url parametry
   function getQueryParam(param) {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(param);
   }
 
   document.addEventListener("DOMContentLoaded", function() {
-    // Pobierz wartości z URL
+   
     const reservationNumber = getQueryParam("reservationNumber");
     const lastName = getQueryParam("lastName");
     const seat = getQueryParam("seat");
 
-    // Znajdź elementy na stronie i wstaw wartości
     if (reservationNumber) {
       document.querySelector(".section-right p:nth-child(4)").textContent = reservationNumber;
     }

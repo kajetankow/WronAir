@@ -7,6 +7,7 @@
   <link rel="shortcut icon" href="img/logo_32.ico">
   <title>WronAir | Dziękujemy!</title>
   <link rel="stylesheet" href="style_upgrade_end.css" />
+  <link rel="stylesheet" href="style_headfoot.css" />
 </head>
 <body>
   <header class="header-with-logo">
@@ -111,25 +112,7 @@
         Prosimy o przybycie na lotnisko co najmniej godzinę przed wylotem oraz regularne sprawdzanie statusu lotu.</p>
       <p class="small-end">W razie pytań zapraszamy do kontaktu z naszym Działem Obsługi Klienta.</p>
     </div>
-    <script>
-      // Pobieranie parametrów z URL
-      const urlParams = new URLSearchParams(window.location.search);
-      const mail = urlParams.get('email');
-  
-      // Wstawianie danych do nagłówków
-      const orderStatusElement = document.getElementById('order-status');
-      const upgradeInfoElement = document.getElementById('upgrade-info');
-        // Generowanie losowego 12-cyfrowego kodu
-        const orderNum = Math.floor(Math.random() * 1e12).toString().padStart(12, '0'); // Zapewnia 12 cyfr
-
-      // Zastąp xxxxxxxxxx w h1 numerem rezerwacji
-        orderStatusElement.textContent = `Rezerwacja numer ${orderNum} została opłacona i zaakceptowana.`;
-
-        // Wstawienie adresu e-mail
-      if(mail) {
-      upgradeInfoElement.textContent = `Potwierdzenie zostało wysłane na adres e-mail: ${mail}`;
-        }
-      </script>
+    
   </main>
   
 
@@ -215,31 +198,24 @@
         langDropdownMobile.classList.toggle("show");
       });
     });
-    document.addEventListener('DOMContentLoaded', () => {
-    const tripTypeSelect = document.getElementById('trip-type');
-    const returnInputContainer = document.querySelector('.form-half:nth-child(2)'); // przyjmujemy, że druga połówka dotyczy powrotu
-    const departureInputContainer = document.querySelector('.form-half:nth-child(1)'); 
 
-    // Funkcja zmieniająca widoczność pola "Powrót"
-    function updateReturnVisibility() {
-    if (tripTypeSelect.value === 'one-way') {
-      // Ukryj pole powrotu
-      returnInputContainer.style.display = 'none';
-      // Dodaj klasę, która rozciąga pole wylotu
-      departureInputContainer.classList.add('full-width-departure');
-    } else {
-      returnInputContainer.style.display = 'flex';
-      departureInputContainer.classList.remove('full-width-departure');
-    }
-  }
+    // Pobieranie parametrów z URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const mail = urlParams.get('email');
 
-    // Uruchom przy starcie:
-    updateReturnVisibility();
+    // Wstawianie danych do nagłówków
+    const orderStatusElement = document.getElementById('order-status');
+    const upgradeInfoElement = document.getElementById('upgrade-info');
+      // Generowanie losowego 12-cyfrowego kodu
+      const orderNum = Math.floor(Math.random() * 1e12).toString().padStart(12, '0'); // Zapewnia 12 cyfr
 
-    // Nasłuchuj zmiany wyboru:
-    tripTypeSelect.addEventListener('change', updateReturnVisibility);
-  });
-  
+    // Zastąp xxxxxxxxxx w h1 numerem rezerwacji
+      orderStatusElement.textContent = `Rezerwacja numer ${orderNum} została opłacona i zaakceptowana.`;
+
+      // Wstawienie adresu e-mail
+    if(mail) {
+    upgradeInfoElement.textContent = `Potwierdzenie zostało wysłane na adres e-mail: ${mail}`;
+      }
   </script>
 </body>
 </html>

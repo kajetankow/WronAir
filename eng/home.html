@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="WronAir, airline, flights, travel, vacation, plane, tickets, flights to Europe" />
+  <link rel="shortcut icon" href="../img/logo_16.ico">
+  <link rel="shortcut icon" href="../img/logo_32.ico">
+  <title>WronAir</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../style_headfoot.css" />
+</head>
+<body>
+  <header class="header-with-logo">
+    <!-- Kontener na logo -->
+    <div class="logo-container">
+      <a href="home.html">
+        <img src="../img/logociemne.jpg" alt="Logo WronAir" />
+      </a>
+    </div>
+    
+    <!-- Przycisk hamburger -->
+    <button class="menu-toggle" id="menuToggle">
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+    </button>
+    
+    <!-- Górny pasek -->
+    <div class="top-bar">
+      <div class="top-bar-content">
+        <a href="#" class="login-link">Login & Register</a>
+        <div class="language-switch">
+          <button class="lang-btn" id="langButton">
+            <img src="../img/Flag_of_the_United_States.svg.png" alt="ENG" class="flag" />
+            ENG
+          </button>
+          <ul class="language-dropdown" id="langDropdown">
+            <li class="current-language">
+              <a href="../index.html">
+                <img src="../img/Flag_of_Poland.svg" alt="PL" class="flag" />
+                PL
+              </a>
+            </li>
+            <li>
+              <a href="index_en.html">
+                <img src="../img/Flag_of_the_United_States.svg.png" alt="ENG" class="flag" />
+                ENG
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Pasek menu (desktop) -->
+    <nav class="main-menu" id="mainNav">
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Check-in</a></li>
+        <li><a href="#">Upgrade</a></li>
+        <li><a href="#">Onboard Services</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">About Us</a></li>
+      </ul>
+    </nav>
+    
+    <!-- Menu mobilne -->
+    <nav class="mobile-menu" id="mobileMenu">
+      <ul>
+        <li><a href="#">Login & Register</a></li>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Check-in</a></li>
+        <li><a href="#">Upgrade</a></li>
+        <li><a href="#">Onboard Services</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">About Us</a></li>
+        <li>
+          <div class="language-switch-mobile">
+            <button class="lang-btn" id="langButtonMobile">
+              <img src="../img/Flag_of_the_United_States.svg.png" alt="ENG" class="flag" />
+              ENG
+            </button>
+            <ul class="language-dropdown" id="langDropdownMobile">
+              <li class="current-language">
+                <a href="../index.html">
+                  <img src="../img/Flag_of_Poland.svg" alt="PL" class="flag" />
+                  PL
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <img src="../img/Flag_of_the_United_States.svg.png" alt="ENG" class="flag" />
+                  ENG
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Sekcja z tłem i formularzem -->
+  <div class="bg-section-border">
+    <div class="bg-section">
+      <div class="flight-container">
+        <!-- Nagłówek formularza -->
+        <div class="header-title">Flights</div>
+        <!-- Formularz -->
+        <form action="#" method="get" class="flight-form">
+          <div class="row">
+            <div class="form-group3">
+              <select id="trip-type" name="trip_type">
+                <option value="round-trip">Round Trip</option>
+                <option value="one-way">One Way</option>
+              </select>
+            </div>
+            <div class="passenger-group">
+              <label for="passengers">Number of passengers:</label>
+              <select id="passengers" name="passengers" class="small-select">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group">
+              <input type="text" id="from" name="from" placeholder="From">
+              <div id="from-suggestions" class="autocomplete-suggestions"></div>
+            </div>
+            <div class="form-group2">
+              <input type="text" id="to" name="to" placeholder="To">
+              <div id="to-suggestions" class="autocomplete-suggestions"></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="date-pair">
+              <div class="form-half">
+                <input type="text" id="departure-date" name="departure_date" placeholder="Departure" onfocus="(this.type='date')" onblur="if(!this.value) this.type='text'"/>
+              </div>
+              <div class="form-half">
+                <input type="text" id="return" name="return_date" placeholder="Return" onfocus="(this.type='date')" onblur="if(!this.value) this.type='text'"/>
+              </div>
+            </div>
+            <div class="form-group2">
+              <button type="submit" class="search-button">Search</button>
+            </div>
+          </div>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+  <!-- LINIA PRZED MAPA -->
+  <div class="line-container">
+    <div class="line-left"></div>
+    <div class="text-linia">DISCOVER OUR FLIGHT CONNECTIONS</div>
+    <div class="line-right"></div>
+  </div>
+  <!--MAPA-->
+  <div class="map">
+    <img src="../img/mapa.png">
+  </div>
+  <div class="odkryj-wiecej">
+    <h2>WITH WRONAIR, DISCOVER MORE...</h2>
+    <p>Thanks to our extensive network, you can explore not only the largest global metropolises but also hidden gems you've dreamed of! 
+        Comfortable flights, attractive prices, and friendly service will make every trip an unforgettable adventure.</br>
+
+    </br>WronAir – Your Wings to the World!</br>
+
+    </br>Plan your journey today and make your dreams come true!</br>
+    </p>
+  </div>
+  <!--KAFELKI-->
+  <!-- Kontener karuzeli -->
+  <div class="carousel-container">
+    <div class="carousel" id="carousel">
+      <!-- Tile 1 -->
+      <div class="tile">
+        <a href="#">
+          <img src="../img/krakow.webp" alt="Kraków">
+          <div class="tile-info">
+            <h3>Cracovia</h3>
+            <p class="price"><span style="font-size: 16px;">starting from </span>500 PLN*</p>
+          </div>
+        </a>
+      </div>
+      <!-- Tile 2 -->
+      <div class="tile">
+        <a href="#">
+          <img src="../img/los_angeles.webp" alt="Los Angeles">
+          <div class="tile-info">
+            <h3>Los Angeles</h3>
+            <p class="price"><span style="font-size: 16px;">starting from </span>1099 PLN*</p>
+          </div>
+        </a>
+      </div>
+      <!-- Tile 3 -->
+      <div class="tile">
+        <a href="#">
+          <img src="../img/londyn.webp" alt="Londyn">
+          <div class="tile-info">
+            <h3>London</h3>
+            <p class="price"><span style="font-size: 16px;">starting from </span>475 PLN*</p>
+          </div>
+        </a>
+      </div>
+      <!-- Tile 4 -->
+      <div class="tile">
+        <a href="#">
+          <img src="../img/rzym.webp" alt="Rzym">
+          <div class="tile-info">
+            <h3>Rome</h3>
+            <p class="price"><span style="font-size: 16px;">starting from </span>398 PLN*</p>
+          </div>
+        </a>
+      </div>
+      <div class="tile">
+        <a href="#">
+          <img src="../img/new_jork.webp" alt="Nowy Jork">
+          <div class="tile-info">
+            <h3>New York</h3>
+            <p class="price"><span style="font-size: 16px;">starting from </span>1400 PLN*</p>
+          </div>
+        </a>
+      </div>
+      <div class="tile">
+        <a href="#">
+          <img src="../img/barcelona.webp" alt="Barcelona">
+          <div class="tile-info">
+            <h3>Barcelona</h3>
+            <p class="price"><span style="font-size: 16px;">starting from </span>500 PLN*</p>
+          </div>
+        </a>
+      </div>
+      <!-- Tile 7 -->
+      <div class="tile">
+        <a href="#">
+          <img src="../img/ateny.webp" alt="Ateny">
+          <div class="tile-info">
+            <h3>Athens</h3>
+            <p class="price"><span style="font-size: 16px;">starting from </span>350 PLN*</p>
+          </div>
+        </a>
+      </div>
+      <div class="tile_more">
+        <a href="#">
+          <img src="../img/plus.png" alt="more">
+          <div class="tile-info_more">
+            <h3>See more ...</h3>
+          </div>
+        </a>
+      </div>
+      
+    </div>
+    
+    <!-- Nawigacja (przyciski) -->
+    <div class="carousel-nav">
+      <button id="prev">◀</button>
+      <button id="next">▶</button>
+    </div>
+  </div>
+  
+  <!-- Wskaźniki -->
+  <div class="carousel-indicators" id="carouselIndicators">
+    
+  </div>
+
+  <script>
+    (function() {
+      const carousel = document.getElementById('carousel');
+      const prevBtn = document.getElementById('prev');
+      const nextBtn = document.getElementById('next');
+      const indicatorsContainer = document.getElementById('carouselIndicators');
+      const tiles = document.querySelectorAll('.tile');
+      let currentIndex = 0;
+      let isDragging = false;
+      let startPos = 0;
+      let currentTranslate = 0;
+      let prevTranslate = 0;
+      let animationID;
+      
+      // Funkcja ustalająca szerokość kafelka (zmienia się przy resize lub mobilnym widoku)
+      function getTileWidth() {
+        return tiles[0].offsetWidth + parseInt(getComputedStyle(tiles[0]).marginLeft) + parseInt(getComputedStyle(tiles[0]).marginRight);
+      }
+      
+      // Uaktualnienie pozycji karuzeli
+      function setPositionByIndex() {
+        currentTranslate = -currentIndex * getTileWidth();
+        prevTranslate = currentTranslate;
+        setCarouselPosition();
+      }
+      
+      function setCarouselPosition() {
+        carousel.style.transform = `translateX(${currentTranslate}px)`;
+      }
+      
+      // Aktualizacja wskaźników
+      function updateIndicators() {
+        indicatorsContainer.innerHTML = '';
+        for (let i = 0; i < tiles.length; i++) {
+          const dot = document.createElement('button');
+          dot.classList.add('indicator');
+          if (i === currentIndex) dot.classList.add('active');
+          dot.addEventListener('click', () => {
+            currentIndex = i;
+            setPositionByIndex();
+            updateIndicators();
+          });
+          indicatorsContainer.appendChild(dot);
+        }
+      }
+      
+      updateIndicators();
+      
+      // Obsługa przycisków nawigacji
+      prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex > 0) ? currentIndex - 1 : tiles.length - 1;
+        setPositionByIndex();
+        updateIndicators();
+      });
+      
+      nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex < tiles.length - 1) ? currentIndex + 1 : 0;
+        setPositionByIndex();
+        updateIndicators();
+      });
+      
+      // Drag – zdarzenia myszy
+      carousel.addEventListener('mousedown', dragStart);
+      carousel.addEventListener('mouseup', dragEnd);
+      carousel.addEventListener('mouseleave', dragEnd);
+      carousel.addEventListener('mousemove', dragAction);
+      
+      // Drag – zdarzenia dotykowe (dla urządzeń mobilnych)
+      carousel.addEventListener('touchstart', dragStart);
+      carousel.addEventListener('touchend', dragEnd);
+      carousel.addEventListener('touchmove', dragAction);
+      
+      function dragStart(event) {
+        isDragging = true;
+        startPos = getPositionX(event);
+        carousel.classList.add('grabbing');
+        // Anulujemy animację (jeśli jest)
+        cancelAnimationFrame(animationID);
+      }
+      
+      function dragEnd() {
+        if (!isDragging) return;
+        isDragging = false;
+        carousel.classList.remove('grabbing');
+        // Obliczamy przesunięcie i aktualizujemy currentIndex
+        const movedBy = currentTranslate - prevTranslate;
+        if (movedBy < -100 && currentIndex < tiles.length - 1)
+          currentIndex++;
+        if (movedBy > 100 && currentIndex > 0)
+          currentIndex--;
+        setPositionByIndex();
+        updateIndicators();
+      }
+      
+      function dragAction(event) {
+        if (!isDragging) return;
+        const currentPosition = getPositionX(event);
+        const diff = currentPosition - startPos;
+        currentTranslate = prevTranslate + diff;
+        setCarouselPosition();
+      }
+      
+      function getPositionX(event) {
+        return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+      }
+      
+      // Aktualizacja pozycji przy zmianie rozmiaru
+      window.addEventListener('resize', setPositionByIndex);
+      
+      // Inicjalizacja pozycji karuzeli
+      setPositionByIndex();
+      
+    
+    // Automatyczne przesuwanie karuzeli co 3 sekundy
+    function startAutoSlide() {
+      autoSlideInterval = setInterval(() => {
+        currentIndex = currentIndex < tiles.length - 3 ? currentIndex + 1 : 0;
+        setPositionByIndex();
+        updateIndicators();
+      }, 8000); // 8 sekundy
+    }
+    // Funkcja resetująca automatyczne przesuwanie karuzeli
+    function resetAutoSlide() {
+      clearInterval(autoSlideInterval);
+      startAutoSlide();
+    }
+    // Uruchomienie automatycznego przesuwania karuzeli
+    startAutoSlide();
+    })();
+    document.addEventListener('DOMContentLoaded', () => {
+  const locations = [
+    'Warsaw [WAW]', 'Cracovia [KRA]', 'Frankfurt [FRA]', 'Vilnius [VNO]', 'Tallin [TLL]', 'Bucharest [OTP]', 'Helsinki [HEL]', 'Stockholm [ARN]', 'Oslo [OSL]', 'Amsterdam [AMS]', 'Prague [PRG]', 'Munchen [MUC]', 'Vienna [VIE]', 'Zagreb [ZAG]', 'Budapest [BUD]', 'Athens [ATH]', 'Rome [FCO]', 'Zurych [ZRH]', 'Paris [CDG]', 'Barcelona [BCN]', 'London [LHR]', 'Lisbon [LIS]', 'New York [JFK]', 'Los Angeles [LAX]', 'Miami [MIA]'
+
+  ];
+
+  function setupAutocomplete(inputId, suggestionsId, otherInputId) {
+    const input = document.getElementById(inputId);
+    const suggestionsBox = document.getElementById(suggestionsId);
+    const otherInput = document.getElementById(otherInputId);
+
+    input.addEventListener('input', () => {
+      const query = input.value.toLowerCase();
+      const otherValue = otherInput.value.toLowerCase();
+      suggestionsBox.innerHTML = '';
+
+      if (query) {
+        const filteredLocations = locations.filter(
+          location =>
+            location.toLowerCase().includes(query) &&
+            location.toLowerCase() !== otherValue // Wyklucz lokalizację z drugiego pola
+        );
+
+        filteredLocations.forEach(location => {
+          const suggestionItem = document.createElement('div');
+          suggestionItem.textContent = location;
+
+          suggestionItem.addEventListener('click', () => {
+            input.value = location;
+            suggestionsBox.innerHTML = ''; // Ukryj podpowiedzi po kliknięciu
+          });
+
+          suggestionsBox.appendChild(suggestionItem);
+        });
+      }
+    });
+
+    // Ukryj podpowiedzi, gdy użytkownik kliknie poza polem
+    document.addEventListener('click', (event) => {
+      if (!input.contains(event.target) && !suggestionsBox.contains(event.target)) {
+        suggestionsBox.innerHTML = '';
+      }
+    });
+  }
+
+  // Inicjalizuj autouzupełnianie dla obu pól
+  setupAutocomplete('from', 'from-suggestions', 'to');
+  setupAutocomplete('to', 'to-suggestions', 'from');
+});
+  </script>
+  <!--NEWSLETTER-->
+  <div class="newsletter-container">
+    <h2>Don't miss out on great deals! Join our Newsletter.</h2>
+    <div class="input-group">
+        <input type="text" placeholder="Your name*" />
+        <input type="email" placeholder="Your e-mail adress*" />
+        <button class="submit-btn">Subscribe</button>
+    </div>
+    <p class="text-info">
+        By subscribing to the Newsletter, I consent to receiving commercial information from WronAir Sp. z o.o. I can withdraw my consent at any time. 
+        Data will be processed until the consent is withdrawn. Giving consent is necessary for contract realization/receiving a discount code.
+    </p>
+    <div class="checkbox-container">
+        <label>
+            <input type="checkbox">
+            Yes, I consent to receiving commercial information from WronAir.* 
+        </label>
+      </br>
+    </br>
+        <p>
+            The administrator processes data in accordance with the <a href="#">Privacy Policy</a>. 
+            I have the right to access, rectify, delete, or restrict data processing, object to processing, 
+            lodge a complaint with a supervisory authority, or transfer data. I can withdraw consent at any time by contacting the Administrator at 
+            <a href="mailto:rodo@wronair.pl">rodo@wronair.pl</a>.
+        </p>
+        </p>
+    </div>
+  </div>
+  
+  <footer>
+    <!-- Zawartość stopki -->
+    <div class="footer-container search-bar-row">
+      <div class="footer-column">
+        <form class="search-bar">
+          <input type="text" placeholder="Enter your search term" />
+          <button type="submit">
+            <img src="../img/search.png" alt="Szukaj" />
+          </button>
+        </form>
+      </div>
+      <div class="footer-column"></div>
+      <div class="footer-column"></div>
+    </div>
+    <div class="footer-container">
+      <div class="footer-column">
+        <div class="footer-links">
+          <a href="#">Check-in</a><br /><br />
+          <a href="#">Upgrade</a><br /><br />
+          <a href="#">Onboard Services</a><br /><br />
+          <a href="#">FAQ</a>
+        </div>
+        <p class="payment-title">Payment Options</p>
+        <div class="payment-options">
+          <a href="#"><img src="../img/masterC.png" alt="Mastercard" /></a>
+          <a href="#"><img src="../img/visa.png" alt="Visa" /></a>
+          <a href="#"><img src="../img/ap.png" alt="Apple Pay" /></a>
+          <a href="#"><img src="../img/paypal.png" alt="Paypal" /></a>
+          <a href="#"><img src="../img/blik.png" alt="BLIK" /></a>
+        </div>
+      </div>
+      <div class="footer-column">
+        <div class="footer-links">
+          <a href="#">About Us</a><br /><br />
+          <a href="#">Luggage</a><br /><br />
+          <a href="#">Informations about Check-in</a><br /><br />
+          <a href="#">Help</a><br /><br />
+          <a href="#">Food and drinks</a><br /><br />
+          <a href="#">Contact</a>
+        </div>
+      </div>
+      <div class="footer-column">
+        <p class="social-title">Follow us</p>
+        <div class="social-media">
+          <a href="#"><img src="../img/ig.png" alt="Instagram" /> @WronAir</a><br />
+          <a href="#"><img src="../img/twt.png" alt="Twitter" /> @WronAir</a><br />
+          <a href="#"><img src="../img/ln.png" alt="LinkedIn" /> @WronAir</a><br />
+          <a href="#"><img src="../img/facebook.png" alt="Facebook" /> @WronAir</a><br />
+          <a href="#"><img src="../img/yt.png" alt="YouTube" /> @WronAir</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; WronAir.com 2024. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div class="footer-logo">
+    <img src="../img/logojasne.jpg" alt="Logo WronAir">
+  </div>
+
+  <!-- Skrypt do obsługi przycisków (hamburger, wybór języka) -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const menuToggle = document.getElementById("menuToggle");
+      const mobileMenu = document.getElementById("mobileMenu");
+      menuToggle.addEventListener("click", function() {
+        mobileMenu.classList.toggle("open");
+      });
+  
+      const langButton = document.getElementById("langButton");
+      const langDropdown = document.getElementById("langDropdown");
+      langButton.addEventListener("click", function() {
+        langDropdown.classList.toggle("show");
+      });
+  
+      const langButtonMobile = document.getElementById("langButtonMobile");
+      const langDropdownMobile = document.getElementById("langDropdownMobile");
+      langButtonMobile.addEventListener("click", function() {
+        langDropdownMobile.classList.toggle("show");
+      });
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+    const tripTypeSelect = document.getElementById('trip-type');
+    const returnInputContainer = document.querySelector('.form-half:nth-child(2)'); // przyjmujemy, że druga połówka dotyczy powrotu
+    const departureInputContainer = document.querySelector('.form-half:nth-child(1)'); 
+
+    // Funkcja zmieniająca widoczność pola "Powrót"
+    function updateReturnVisibility() {
+    if (tripTypeSelect.value === 'one-way') {
+      // Ukryj pole powrotu
+      returnInputContainer.style.display = 'none';
+      // Dodaj klasę, która rozciąga pole wylotu
+      departureInputContainer.classList.add('full-width-departure');
+    } else {
+      returnInputContainer.style.display = 'flex';
+      departureInputContainer.classList.remove('full-width-departure');
+    }
+  }
+
+    // Uruchom przy starcie:
+    updateReturnVisibility();
+
+    // Nasłuchuj zmiany wyboru:
+    tripTypeSelect.addEventListener('change', updateReturnVisibility);
+  });
+  
+  </script>
+</body>
+</html>

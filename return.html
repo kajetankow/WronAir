@@ -2,11 +2,12 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
-  <title>WronAir | powrót</title>
+  <title>WronAir | Powrót</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="img/logo_16.ico">
   <link rel="shortcut icon" href="img/logo_32.ico">
   <link rel="stylesheet" href="style_departure.css" />
+  <link rel="stylesheet" href="style_headfoot.css" />
 </head>
 <body>
   <header class="header-with-logo">
@@ -56,9 +57,9 @@
     <nav class="main-menu" id="mainNav">
       <ul class="nav-links">
         <li><a href="index.html">Strona Główna</a></li>
-        <li><a href="#">Odpraw się</a></li>
-        <li><a href="#">Upgrade</a></li>
-        <li><a href="#">Usługi na Pokładzie</a></li>
+        <li><a href="odprawa.html">Odpraw się</a></li>
+        <li><a href="upgrade.html">Upgrade</a></li>
+        <li><a href="uslugi.html">Usługi na Pokładzie</a></li>
         <li><a href="faq.html">FAQ</a></li>
         <li><a href="o_nas.html">O Nas</a></li>
       </ul>
@@ -69,9 +70,9 @@
       <ul>
         <li><a href="#">Logowanie i rejestracja</a></li>
         <li><a href="index.html">Strona Główna</a></li>
-        <li><a href="#">Odpraw się</a></li>
-        <li><a href="#">Upgrade</a></li>
-        <li><a href="#">Usługi na Pokładzie</a></li>
+        <li><a href="odprawa.html">Odpraw się</a></li>
+        <li><a href="upgrade.html">Upgrade</a></li>
+        <li><a href="uslugi.html">Usługi na Pokładzie</a></li>
         <li><a href="faq.html">FAQ</a></li>
         <li><a href="o_nas.html">O Nas</a></li>
         <li>
@@ -100,7 +101,7 @@
     </nav>
   </header>
 
-  <!-- Element Departure -->
+  <!-- Element Return -->
   <main class="content">
     <h1>Wybierz godzinę powrotu w dniu: <span id="arrival_date-display"></span></h1>
     <h2><span class="spaces"></span><span id="to-display3"></span> ------------ <span><img src="img/samolot.png" alt="Plane Icon" class="icon"></span> ------------ <span id = "from-display3"></span></h2>
@@ -264,9 +265,9 @@
     <div class="footer-container">
       <div class="footer-column">
         <div class="footer-links">
-          <a href="#">Odpraw się</a><br /><br />
-          <a href="#">Upgrade</a><br /><br />
-          <a href="#">Usługi na pokładzie</a><br /><br />
+          <a href="odprawa.html">Odpraw się</a><br /><br />
+          <a href="upgrade.html">Upgrade</a><br /><br />
+          <a href="uslugi.html">Usługi na pokładzie</a><br /><br />
           <a href="faq.html">FAQ</a>
         </div>
         <p class="payment-title">Opcje płatności</p>
@@ -285,7 +286,7 @@
           <a href="#">Informacje o odprawie</a><br /><br />
           <a href="#">Pomoc</a><br /><br />
           <a href="#">Posiłki i napoje</a><br /><br />
-          <a href="#">Promocje i oferty</a>
+          <a href="kontakt.html">Kontakt</a>
         </div>
       </div>
       <div class="footer-column">
@@ -329,138 +330,134 @@
         langDropdownMobile.classList.toggle("show");
       });
     });
-  </script>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-  const params = new URLSearchParams(window.location.search);
-  const tripType = params.get("trip_type") || "round-trip";
-  const from = params.get("from") || "Nieznane";
-  const to = params.get("to") || "Nieznane";
-  const passengers = params.get("passengers") || "1";
-  const departureDate = params.get("departure_date") || "Brak daty";
-  const returnDate = params.get("return_date") || "Brak daty";
-  const duration = params.get("duration") || "Brak czasu";
-  const departure_time = params.get("departure_time") || "Brak czasu";
-  const arrival_time = params.get("arrival_time") || "Brak czasu";
-  const flight_code = params.get("flight_code") || "Brak kodu";
-  const price = params.get("price") || "0.00";
-  const ticket_type = params.get("ticket_type") || "Nieznany";
 
-  // Wyświetlanie parametrów w elementach strony
-  document.getElementById("from-display").textContent = from;
-  document.getElementById("to-display").textContent = to;
-  document.getElementById("from-display1").textContent = from;
-  document.getElementById("to-display1").textContent = to;
-  document.getElementById("from-display2").textContent = from;
-  document.getElementById("to-display2").textContent = to;
-  document.getElementById("from-display3").textContent = from.slice(0, -6);
-  document.getElementById("to-display3").textContent = to.slice(0, -6);
-  document.getElementById("arrival_date-display").textContent = returnDate;
+    document.addEventListener("DOMContentLoaded", function () {
+    const params = new URLSearchParams(window.location.search);
+    const tripType = params.get("trip_type") || "round-trip";
+    const from = params.get("from") || "Nieznane";
+    const to = params.get("to") || "Nieznane";
+    const passengers = params.get("passengers") || "1";
+    const departureDate = params.get("departure_date") || "Brak daty";
+    const returnDate = params.get("return_date") || "Brak daty";
+    const duration = params.get("duration") || "Brak czasu";
+    const departure_time = params.get("departure_time") || "Brak czasu";
+    const arrival_time = params.get("arrival_time") || "Brak czasu";
+    const flight_code = params.get("flight_code") || "Brak kodu";
+    const price = params.get("price") || "0.00";
+    const ticket_type = params.get("ticket_type") || "Nieznany";
 
-  const nextPageLink = document.getElementById("nextPageLink");
-  const priceValueElement = document.querySelector(".price-value");
-  let selectedOption = null; // Przechowuje wybraną opcję
+    // Wyświetlanie parametrów 
+    document.getElementById("from-display").textContent = from;
+    document.getElementById("to-display").textContent = to;
+    document.getElementById("from-display1").textContent = from;
+    document.getElementById("to-display1").textContent = to;
+    document.getElementById("from-display2").textContent = from;
+    document.getElementById("to-display2").textContent = to;
+    document.getElementById("from-display3").textContent = from.slice(0, -6);
+    document.getElementById("to-display3").textContent = to.slice(0, -6);
+    document.getElementById("arrival_date-display").textContent = returnDate;
 
-  priceValueElement.textContent = `${price} PLN`;
+    const nextPageLink = document.getElementById("nextPageLink");
+    const priceValueElement = document.querySelector(".price-value");
+    let selectedOption = null; 
 
-  // Dezaktywuj przycisk „Wprowadź dane pasażerów” na początku
-  nextPageLink.classList.add("disabled");
-  nextPageLink.style.pointerEvents = "none";
-  nextPageLink.style.opacity = "0.5";
+    priceValueElement.textContent = `${price} PLN`;
 
-  // Dodaj funkcjonalność do opcji lotów
-  const flightOptions = document.querySelectorAll(".flight-options");
-  flightOptions.forEach((option) => {
-    const priceBoxes = option.querySelectorAll(".price-box");
+    nextPageLink.classList.add("disabled");
+    nextPageLink.style.pointerEvents = "none";
+    nextPageLink.style.opacity = "0.5";
 
-    priceBoxes.forEach((priceBox) => {
-      const selectButton = priceBox.querySelector("button");
-      selectButton.addEventListener("click", function () {
-        // Jeśli już jest wybrana opcja, usuń zaznaczenie
-        if (selectedOption) {
-          selectedOption.classList.remove("selected");
-        }
+    const flightOptions = document.querySelectorAll(".flight-options");
+    flightOptions.forEach((option) => {
+      const priceBoxes = option.querySelectorAll(".price-box");
 
-        // Ustaw nową wybraną opcję
-        selectedOption = priceBox;
-        priceBox.classList.add("selected");
+      priceBoxes.forEach((priceBox) => {
+        const selectButton = priceBox.querySelector("button");
+        selectButton.addEventListener("click", function () {
+          //Jeśli już jest wybrana opcja, usuń zaznaczenie
+          if (selectedOption) {
+            selectedOption.classList.remove("selected");
+          }
 
-        // Aktywuj przycisk „Wprowadź dane pasażerów”
-        nextPageLink.classList.remove("disabled");
-        nextPageLink.style.pointerEvents = "auto";
-        nextPageLink.style.opacity = "1";
+          //Ustaw nową wybraną opcję
+          selectedOption = priceBox;
+          priceBox.classList.add("selected");
 
-        // Pobierz dane z wybranej opcji
-        const duration_return = option.querySelector(".hour")?.textContent.trim() || "";
-        //const departureTime_return = option.querySelector(".departure-time")?.getAttribute("data-time") || "";
-        //const arrivalTime_return = option.querySelector(".arrival-time")?.getAttribute("data-time") || "";
-        const departureTime_return = option.querySelector(".departure-time")?.textContent.trim() || "Brak czasu";
-        const arrivalTime_return = option.querySelector(".arrival-time")?.textContent.trim() || "Brak czasu";
-        const flightCode_return = option.querySelector(".additional-info p")?.textContent.trim() || "";
-        const priceText_return = priceBox.querySelector(".price").textContent.trim();
-        const ticketType_return = priceBox.querySelector("h1").textContent.trim();
+          //Aktywuj przycisk „Wprowadź dane pasażerów”
+          nextPageLink.classList.remove("disabled");
+          nextPageLink.style.pointerEvents = "auto";
+          nextPageLink.style.opacity = "1";
 
-        // Zamiana na float i int
-        const actualPrice = parseFloat(price);
-        const numericPrice = parseFloat(priceText_return.replace(/[^\d,.-]/g, "").replace(",", "."));
-        const passengersInt = parseInt(passengers) || 1;
-        const totalPrice = (actualPrice + (numericPrice * passengersInt)).toFixed(2);
+          //Pobierz dane z wybranej opcji
+          const duration_return = option.querySelector(".hour")?.textContent.trim() || "";
+          //const departureTime_return = option.querySelector(".departure-time")?.getAttribute("data-time") || "";
+          //const arrivalTime_return = option.querySelector(".arrival-time")?.getAttribute("data-time") || "";
+          const departureTime_return = option.querySelector(".departure-time")?.textContent.trim() || "Brak czasu";
+          const arrivalTime_return = option.querySelector(".arrival-time")?.textContent.trim() || "Brak czasu";
+          const flightCode_return = option.querySelector(".additional-info p")?.textContent.trim() || "";
+          const priceText_return = priceBox.querySelector(".price").textContent.trim();
+          const ticketType_return = priceBox.querySelector("h1").textContent.trim();
 
-        // Wyświetl cenę w elemencie .price-value
-        priceValueElement.textContent = `${totalPrice} PLN`;
+         
+          const actualPrice = parseFloat(price);
+          const numericPrice = parseFloat(priceText_return.replace(/[^\d,.-]/g, "").replace(",", "."));
+          const passengersInt = parseInt(passengers) || 1;
+          const totalPrice = (actualPrice + (numericPrice * passengersInt)).toFixed(2);
 
-        // Ustaw URL dla przycisku „Wprowadź dane pasażerów”
-        nextPageLink.href = `wprowadz-dane.html?trip_type=${tripType}&from=${encodeURIComponent(
-          from
-        )}&to=${encodeURIComponent(to)}&passengers=${passengers}&departure_date=${departureDate}&return_date=${returnDate}&duration=${encodeURIComponent(
-          duration
-        )}&departure_time=${encodeURIComponent(
-          departure_time
-        )}&arrival_time=${encodeURIComponent(arrival_time)}&flight_code=${encodeURIComponent(
-          flight_code
-        )}&price=${encodeURIComponent(totalPrice)}&price_departure=${encodeURIComponent(price)}&ticket_type=${encodeURIComponent(
-          ticket_type
-        )}&duration_return=${encodeURIComponent(duration_return)}&departure_time_return=${encodeURIComponent(
-          departureTime_return
-        )}&arrival_time_return=${encodeURIComponent(
-          arrivalTime_return
-        )}&flight_code_return=${encodeURIComponent(
-          flightCode_return
-        )}&ticket_type_return=${encodeURIComponent(ticketType_return)}`;
-        console.log("Generated URL:", nextPageLink.href); // Debugowanie
+          // Wyświetl cenę 
+          priceValueElement.textContent = `${totalPrice} PLN`;
+
+          // Ustaw URL dla przycisku „Wprowadź dane pasażerów”
+          nextPageLink.href = `wprowadz-dane.html?trip_type=${tripType}&from=${encodeURIComponent(
+            from
+          )}&to=${encodeURIComponent(to)}&passengers=${passengers}&departure_date=${departureDate}&return_date=${returnDate}&duration=${encodeURIComponent(
+            duration
+          )}&departure_time=${encodeURIComponent(
+            departure_time
+          )}&arrival_time=${encodeURIComponent(arrival_time)}&flight_code=${encodeURIComponent(
+            flight_code
+          )}&price=${encodeURIComponent(totalPrice)}&price_departure=${encodeURIComponent(price)}&ticket_type=${encodeURIComponent(
+            ticket_type
+          )}&duration_return=${encodeURIComponent(duration_return)}&departure_time_return=${encodeURIComponent(
+            departureTime_return
+          )}&arrival_time_return=${encodeURIComponent(
+            arrivalTime_return
+          )}&flight_code_return=${encodeURIComponent(
+            flightCode_return
+          )}&ticket_type_return=${encodeURIComponent(ticketType_return)}`;
+          console.log("Generated URL:", nextPageLink.href); 
+        });
       });
     });
-  });
 
-  // Zapobiegaj przypadkowym kliknięciom w „Wprowadź dane pasażerów” bez wyboru opcji
-  nextPageLink.addEventListener("click", function (event) {
-    if (nextPageLink.classList.contains("disabled")) {
-      event.preventDefault();
-    } else {
-      console.log("Redirecting to:", nextPageLink.href); // Debugowanie
-    }
-  });
-});
-</script>
-<script>
-// Pobierz wszystkie przyciski z klasy "price-box"
-const buttons = document.querySelectorAll('.price-box button');
-
-// Funkcja resetująca kolory wszystkich przycisków
-function resetButtonColors() {
-    buttons.forEach(button => {
-        button.style.backgroundColor = ''; // Resetuj kolor do domyślnego
+    
+    nextPageLink.addEventListener("click", function (event) {
+      if (nextPageLink.classList.contains("disabled")) {
+        event.preventDefault();
+      } else {
+        console.log("Redirecting to:", nextPageLink.href); 
+      }
     });
-}
+  });
+  
+  
+ 
+  const buttons = document.querySelectorAll('.price-box button');
 
-// Dodaj nasłuchiwanie na zdarzenie kliknięcia dla każdego przycisku
-buttons.forEach(button => {
-    button.addEventListener('click', function () {
-        resetButtonColors(); // Resetuj kolory wszystkich przycisków
-        this.style.backgroundColor = '#053364'; // Zmień kolor tylko klikniętego przycisku
-    });
-});
-console.log("Departure Time:", departure_time);
+  
+  function resetButtonColors() {
+      buttons.forEach(button => {
+          button.style.backgroundColor = ''; 
+      });
+  }
+
+  buttons.forEach(button => {
+      button.addEventListener('click', function () {
+          resetButtonColors(); 
+          this.style.backgroundColor = '#053364'; 
+      });
+  });
+  console.log("Departure Time:", departure_time);
 </script>
 
 </body>

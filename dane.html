@@ -7,6 +7,7 @@
   <link rel="shortcut icon" href="img/logo_32.ico">
   <title>WronAir | Podsumowanie</title>
   <link rel="stylesheet" href="style_potwierdz_dane.css" />
+  <link rel="stylesheet" href="style_headfoot.css" />
 </head>
 <body>
   <header class="header-with-logo">
@@ -55,9 +56,9 @@
     <nav class="main-menu" id="mainNav">
       <ul class="nav-links">
         <li><a href="index.html">Strona Główna</a></li>
-        <li><a href="#">Odpraw się</a></li>
-        <li><a href="#">Upgrade</a></li>
-        <li><a href="#">Usługi na Pokładzie</a></li>
+        <li><a href="odprwa.html">Odpraw się</a></li>
+        <li><a href="upgrade.html">Upgrade</a></li>
+        <li><a href="uslugi.html">Usługi na Pokładzie</a></li>
         <li><a href="faq.html">FAQ</a></li>
         <li><a href="o_nas.html">O Nas</a></li>
       </ul>
@@ -68,9 +69,9 @@
       <ul>
         <li><a href="#">Logowanie i rejestracja</a></li>
         <li><a href="index.html">Strona Główna</a></li>
-        <li><a href="#">Odpraw się</a></li>
-        <li><a href="#">Upgrade</a></li>
-        <li><a href="#">Usługi na Pokładzie</a></li>
+        <li><a href="odprawa.html">Odpraw się</a></li>
+        <li><a href="upgrade.html">Upgrade</a></li>
+        <li><a href="uslugi.html">Usługi na Pokładzie</a></li>
         <li><a href="faq.html">FAQ</a></li>
         <li><a href="o_nas.html">O Nas</a></li>
         <li>
@@ -188,7 +189,7 @@
                 <div class="price">CENA: 2 319.87 PLN</div>
             </div>
             
-            <h3>POWRÓT (odprawa na lot powrotny dostępna będzie 24h przed datą lotu powrotnego)</h3>
+            <h3 id="return_title">POWRÓT (odprawa na lot powrotny dostępna będzie 24h przed datą lotu powrotnego)</h3>
             <div class="plan">
                 <div class="plan-details">
                     <div>Wylot: </div>
@@ -249,9 +250,9 @@
     <div class="footer-container">
       <div class="footer-column">
         <div class="footer-links">
-          <a href="#">Odpraw się</a><br /><br />
-          <a href="#">Upgrade</a><br /><br />
-          <a href="#">Usługi na pokładzie</a><br /><br />
+          <a href="odprawa.html">Odpraw się</a><br /><br />
+          <a href="upgrade.html">Upgrade</a><br /><br />
+          <a href="uslugi.html">Usługi na pokładzie</a><br /><br />
           <a href="faq.html">FAQ</a>
         </div>
         <p class="payment-title">Opcje płatności</p>
@@ -266,11 +267,11 @@
       <div class="footer-column">
         <div class="footer-links">
           <a href="o_nas.html">O nas</a><br /><br />
-          <a href="#">Bagaż</a><br /><br />
-          <a href="#">Informacje o odprawie</a><br /><br />
-          <a href="#">Pomoc</a><br /><br />
-          <a href="#">Posiłki i napoje</a><br /><br />
-          <a href="#">Promocje i oferty</a>
+          <a href="faq.html">Bagaż</a><br /><br />
+          <a href="faq.html">Informacje o odprawie</a><br /><br />
+          <a href="faq.html">Pomoc</a><br /><br />
+          <a href="faq.html">Posiłki i napoje</a><br /><br />
+          <a href="kontakt.html">Kontakt</a>
         </div>
       </div>
       <div class="footer-column">
@@ -296,7 +297,7 @@
   <!-- Skrypt do obsługi przycisków (hamburger, wybór języka) -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-  // --- Obsługa menu mobilnego i języka ---
+
   const menuToggle = document.getElementById("menuToggle");
   const mobileMenu = document.getElementById("mobileMenu");
   menuToggle.addEventListener("click", function () {
@@ -315,36 +316,31 @@
     langDropdownMobile.classList.toggle("show");
   });
 
-  // --- Pobieranie parametrów z URL ---
+  //pobranie parametrow
   function getQueryParams() {
     const params = new URLSearchParams(window.location.search);
     return Object.fromEntries(params.entries());
   }
 
-  // --- Wypełnienie danych na stronie ---
+  //wypelnienie danych 
   function populateData() {
     const params = getQueryParams();
 
-    // Generowanie 12-cyfrowego numeru rezerwacji
+    //Generowanie 12-cyfrowego numeru rezerwacji
     const orderNum = Math.floor(Math.random() * 1e12).toString().padStart(12, "0");
     const reservationNumberSpan = document.getElementById("reservationNumberSpan");
     if (reservationNumberSpan) {
-      reservationNumberSpan.textContent = orderNum; // Wygenerowany numer
+      reservationNumberSpan.textContent = orderNum; 
     }
-
-    // Nadpisujemy nazwisko w już istniejącym "Pasażer 1"
+    //ustawiamy dane
     const lastNameSpan = document.getElementById("lastNameSpan");
     if (lastNameSpan) {
       lastNameSpan.textContent = params.lastName1 || "Brak nazwiska";
     }
 
-    // Liczba pasażerów z parametrów
+    
     const passengerCount = Math.min(Number(params.passengers || 0), 4); // do 4 pasażerów max
 
-    // --- Nadpisz dane pasażera 1 w istniejącym bloku ---
-    // Ten blok w HTML ma na sztywno Imię: Jan, Drugie: Piotr itd.
-    // Jeżeli chcesz te dane pobierać z URL, musisz je też podmienić:
-    // Szukamy najpierw tablicy w obrębie "Pasażer 1"
     const passengerOneTable = document.querySelector(".section .section-title + .info-table");
     if (passengerOneTable && passengerCount >= 1) {
       const firstName = params.firstName1 || "Jan";
@@ -353,7 +349,7 @@
       const birthDate = params.birthDate1 || "18.12.1984";
       const gender = params.gender1 === "male" ? "M" : (params.gender1 === "female" ? "F" : "M");
 
-      // Podmiana wierszy w istniejącej tabeli
+      
       passengerOneTable.innerHTML = `
         <tr>
           <th>Imię</th>
@@ -378,8 +374,7 @@
       `;
     }
 
-    // --- Dodaj pasażerów 2,3,4... (o ile istnieją) ---
-    // Znajdujemy sekcję, w której jest definicja pasażera 1:
+   
     const firstSection = document.querySelectorAll(".section")[0];
     if (firstSection) {
       // Jeżeli mamy więcej niż 1 pasażera...
@@ -390,7 +385,7 @@
         const bDate = params[`birthDate${i}`] || "";
         const gen = params[`gender${i}`] === "male" ? "M" : "F";
 
-        // Tworzymy nowy blok
+       
         const passengerHtml = `
           <div style="margin-top:1rem;">
             <div class="section-title">Pasażer ${i}</div>
@@ -403,14 +398,12 @@
             </table>
           </div>
         `;
-        // Wstawiamy nowego pasażera za istniejącym blokiem
+        // Wstawiamy nowego pasażera 
         firstSection.insertAdjacentHTML("beforeend", passengerHtml);
       }
     }
 
-    // --- Nadpisywanie danych kontaktowych ---
-    // U Ciebie "Dane kontaktowe" to drugi div obok "Pasażer 1"
-    // Znajdźmy tytuł "Dane kontaktowe" i pobierzmy tabelę
+    //kontakt
     const allSectionTitles = document.querySelectorAll(".section-title");
     let contactTitleDiv = null;
     for (const title of allSectionTitles) {
@@ -429,16 +422,14 @@
       }
     }
 
-// --- Plan podróży (WYLOT + POWRÓT) ---
-// Pobieramy wszystkie elementy z klasą .plan-details
-// Pobranie wszystkich sekcji <div class="plan">
+
   const planSections = document.querySelectorAll(".plan");
     if (planSections.length < 2) {
       console.error("Nie znaleziono wystarczającej liczby sekcji <div class='plan'>.");
       return;
     }
 
-    // WYLOT - Pierwsza sekcja
+    // WYLOT 
     planSections[0].innerHTML = `
       <div class="plan-details">
         <div>Wylot: </div>
@@ -472,7 +463,8 @@
       <div class="price">CENA: ${params.price_departure || "2 319.87"} PLN</div>
     `;
     const price_return = (parseFloat(params.price) - parseFloat(params.price_departure)).toFixed(2);
-    // POWRÓT - Druga sekcja
+    // POWRÓT 
+    if(params.trip_type === "round-trip") {
     planSections[1].innerHTML = `
       <div class="plan-details">
         <div>Wylot: </div>
@@ -493,7 +485,7 @@
 
         <div>TERMINAL: 5</div>
         <div>TERMINAL: 1</div>
-        <div>MIEJSCE: BRAK</div>
+        <div>MIEJSCE: ${params.selectedSeats_return || "BRAK"}</div>
 
         <div>GATE: TBD</div>
         <div>GATE: TBD</div>
@@ -503,23 +495,29 @@
         <div></div>
         <div>BAGAŻ REJESTROWANY: ${params.baggageCounts_return || params.baggageCounts || "0 sztuk"}</div>
       </div>
-      <div class="price">CENA: ${price_return || "1 677.89 "} PLN</div>
+      <div class="price">CENA: ${price_return || "NaN "} PLN</div>
     `;
+    }
+    else{
+    // Ukryj lub usuń zawartość, gdy trip_type nie jest "round-trip"
+    planSections[1].innerHTML = ""; // Wyczyszczenie zawartości
+    planSections[1].style.display = "none";
 
-    // --- Cena całkowita ---
+    document.getElementById("return_title").style.display = "none";
+    }
+    //price
     const totalSection = document.querySelector(".total-section .total");
     if (totalSection) {
-      totalSection.textContent = `Cena całkowita: ${params.finalPrice || "3997.76"} PLN (z VAT)`;
+      totalSection.textContent = `Cena całkowita: ${params.finalPrice || "NaN"} PLN (z VAT)`;
     }
 
-    // --- Link do potwierdzenia ---
+    //przycisk
     const confirmButton = document.querySelector(".confirm-button");
     if (confirmButton) {
       confirmButton.href = `podziekowania.html?${new URLSearchParams(params).toString()}`;
     }
   }
 
-  // Uruchamiamy wypełnianie danych
   populateData();
 });
 </script>

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="img/logo_16.ico">
   <link rel="shortcut icon" href="img/logo_32.ico">
-  <title>WronAir</title>
+  <title>WronAir | Dziękujemy!</title>
   <link rel="stylesheet" href="style_upgrade_end.css" />
 </head>
 <body>
@@ -68,9 +68,9 @@
       <ul>
         <li><a href="#">Logowanie i rejestracja</a></li>
         <li><a href="index.html">Strona Główna</a></li>
-        <li><a href="#">Odpraw się</a></li>
+        <li><a href="odprawa.html">Odpraw się</a></li>
         <li><a href="upgrade.html">Upgrade</a></li>
-        <li><a href="#">Usługi na Pokładzie</a></li>
+        <li><a href="uslugi.html">Usługi na Pokładzie</a></li>
         <li><a href="faq.html">FAQ</a></li>
         <li><a href="o_nas.html">O Nas</a></li>
         <li>
@@ -111,30 +111,7 @@
         Prosimy o przybycie na lotnisko co najmniej godzinę przed wylotem oraz regularne sprawdzanie statusu lotu.</p>
       <p class="small-end">W razie pytań zapraszamy do kontaktu z naszym Działem Obsługi Klienta.</p>
     </div>
-    <script>
-      // Pobieranie parametrów z URL
-      const urlParams = new URLSearchParams(window.location.search);
-      const orderCode = urlParams.get('orderCode'); // Pobierz orderCode
-      const upgradeChoice = urlParams.get('upgradeChoice'); // Pobierz upgradeChoice
-      const luggageType = urlParams.get('luggageType'); // Pobierz luggageType
-      const seatType = urlParams.get('seatType'); // Pobierz seatType
-  
-      // Wstawianie danych do nagłówków
-      const orderStatusElement = document.getElementById('order-status');
-      const upgradeInfoElement = document.getElementById('upgrade-info');
-  
-      // Zastąp xxxxxxxxxx w h1 numerem rezerwacji
-      if (orderCode) {
-        orderStatusElement.textContent = `Zmiana rezerwacji numer ${orderCode} została opłacona i zaakceptowana.`;
-      }
-  
-      // Wypełnij informację o ulepszeniu na podstawie upgradeChoice
-      if (upgradeChoice === 'luggage' && luggageType) {
-        upgradeInfoElement.textContent = `Zakupili państwo bagaż rejestrowany o wadze ${luggageType} kg.`;
-      } else if (upgradeChoice === 'seat' && seatType) {
-        upgradeInfoElement.textContent = `Ulepszyli Państwo miejsca na pokładzie samolotu z Economy na ${seatType}.`;
-      }
-    </script>
+    
   </main>
   
 
@@ -155,10 +132,10 @@
     <div class="footer-container">
       <div class="footer-column">
         <div class="footer-links">
-          <a href="#">Odpraw się</a><br /><br />
-          <a href="#">Upgrade</a><br /><br />
-          <a href="#">Usługi na pokładzie</a><br /><br />
-          <a href="#">FAQ</a>
+          <a href="odprawa.html">Odpraw się</a><br /><br />
+          <a href="upgrade.html">Upgrade</a><br /><br />
+          <a href="uslugi.html">Usługi na pokładzie</a><br /><br />
+          <a href="faq.html">FAQ</a>
         </div>
         <p class="payment-title">Opcje płatności</p>
         <div class="payment-options">
@@ -171,12 +148,12 @@
       </div>
       <div class="footer-column">
         <div class="footer-links">
-          <a href="#">O nas</a><br /><br />
+          <a href="o_nas.html">O nas</a><br /><br />
           <a href="#">Bagaż</a><br /><br />
           <a href="#">Informacje o odprawie</a><br /><br />
           <a href="#">Pomoc</a><br /><br />
           <a href="#">Posiłki i napoje</a><br /><br />
-          <a href="#">Promocje i oferty</a>
+          <a href="kontakt.html">Kontakt</a>
         </div>
       </div>
       <div class="footer-column">
@@ -220,31 +197,30 @@
         langDropdownMobile.classList.toggle("show");
       });
     });
-    document.addEventListener('DOMContentLoaded', () => {
-    const tripTypeSelect = document.getElementById('trip-type');
-    const returnInputContainer = document.querySelector('.form-half:nth-child(2)'); // przyjmujemy, że druga połówka dotyczy powrotu
-    const departureInputContainer = document.querySelector('.form-half:nth-child(1)'); 
-
-    // Funkcja zmieniająca widoczność pola "Powrót"
-    function updateReturnVisibility() {
-    if (tripTypeSelect.value === 'one-way') {
-      // Ukryj pole powrotu
-      returnInputContainer.style.display = 'none';
-      // Dodaj klasę, która rozciąga pole wylotu
-      departureInputContainer.classList.add('full-width-departure');
-    } else {
-      returnInputContainer.style.display = 'flex';
-      departureInputContainer.classList.remove('full-width-departure');
-    }
-  }
-
-    // Uruchom przy starcie:
-    updateReturnVisibility();
-
-    // Nasłuchuj zmiany wyboru:
-    tripTypeSelect.addEventListener('change', updateReturnVisibility);
-  });
+    
   
-  </script>
+      // Pobieranie parametrów z URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const orderCode = urlParams.get('orderCode'); 
+      const upgradeChoice = urlParams.get('upgradeChoice'); 
+      const luggageType = urlParams.get('luggageType'); 
+      const seatType = urlParams.get('seatType'); 
+  
+      // Wstawianie danych 
+      const orderStatusElement = document.getElementById('order-status');
+      const upgradeInfoElement = document.getElementById('upgrade-info');
+  
+      // Zastąp xxxxxxxxxx w h1 numerem rezerwacji
+      if (orderCode) {
+        orderStatusElement.textContent = `Zmiana rezerwacji numer ${orderCode} została opłacona i zaakceptowana.`;
+      }
+  
+      //Wypełnij informację o ulepszeniu na podstawie upgradeChoice
+      if (upgradeChoice === 'luggage' && luggageType) {
+        upgradeInfoElement.textContent = `Zakupili państwo bagaż rejestrowany o wadze ${luggageType} kg.`;
+      } else if (upgradeChoice === 'seat' && seatType) {
+        upgradeInfoElement.textContent = `Ulepszyli Państwo miejsca na pokładzie samolotu z Economy na ${seatType}.`;
+      }
+    </script>
 </body>
 </html>

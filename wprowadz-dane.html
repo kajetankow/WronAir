@@ -7,6 +7,7 @@
   <link rel="shortcut icon" href="img/logo_32.ico">
   <title>WronAir | wprowadź dane</title>
   <link rel="stylesheet" href="style_wprowadz-dane.css" />
+  <link rel="stylesheet" href="style_headfoot.css" />
 </head>
 <body>
   <header class="header-with-logo">
@@ -70,7 +71,7 @@
         <li><a href="index.html">Strona Główna</a></li>
         <li><a href="odprawa.html">Odpraw się</a></li>
         <li><a href="upgrade.html">Upgrade</a></li>
-        <li><a href="#">Usługi na Pokładzie</a></li>
+        <li><a href="uslugi.html">Usługi na Pokładzie</a></li>
         <li><a href="faq.html">FAQ</a></li>
         <li><a href="o_nas.html">O Nas</a></li>
         <li>
@@ -112,7 +113,7 @@
               <input type="email" id="email" name="email" required placeholder="E-mail*">
             </div>
             <div>
-              <input type="text" id="countryCode" name="countryCode" required placeholder="Numer kierunkowy kraju*">
+              <input type="text" id="countryCode" name="countryCode" required placeholder="Kraj*">
             </div>
             <div>
               <input type="text" id="phoneNumber" name="phoneNumber" required placeholder="Numer telefonu*">
@@ -128,11 +129,10 @@
 
         <div class="part-container">
           <div id="passengersContainer">
-            <!-- Passengers will be dynamically added here -->
           </div>
           <div class="checkbox-group">
             <input type="checkbox" id="confirm" name="confirm" required>
-            <label for="newsletter">Oświadczam, że podane przeze mnie dane są zgodne z prawdą i kompletne. Jestem świadomy/a odpowiedzalności za podanie nieprawdziwych informacji.*</label>
+            <label for="checkbox">Oświadczam, że podane przeze mnie dane są zgodne z prawdą i kompletne. Jestem świadomy/a odpowiedzalności za podanie nieprawdziwych informacji.*</label>
           </div>
           <p>*pole obowiązkowe</p>
           <p>*dane muszą zgadzać się z danymi zawartymi w paszporcie</p>
@@ -168,10 +168,10 @@
     <div class="footer-container">
       <div class="footer-column">
         <div class="footer-links">
-          <a href="#">Odpraw się</a><br /><br />
-          <a href="#">Upgrade</a><br /><br />
-          <a href="#">Usługi na pokładzie</a><br /><br />
-          <a href="#">FAQ</a>
+          <a href="odprawa.html">Odpraw się</a><br /><br />
+          <a href="upgrade.html">Upgrade</a><br /><br />
+          <a href="uslugi.html">Usługi na pokładzie</a><br /><br />
+          <a href="faq.html">FAQ</a>
         </div>
         <p class="payment-title">Opcje płatności</p>
         <div class="payment-options">
@@ -184,12 +184,12 @@
       </div>
       <div class="footer-column">
         <div class="footer-links">
-          <a href="#">O nas</a><br /><br />
+          <a href="o_nas.html">O nas</a><br /><br />
           <a href="#">Bagaż</a><br /><br />
           <a href="#">Informacje o odprawie</a><br /><br />
           <a href="#">Pomoc</a><br /><br />
           <a href="#">Posiłki i napoje</a><br /><br />
-          <a href="#">Promocje i oferty</a>
+          <a href="kontakt.html">Kontakt</a>
         </div>
       </div>
       <div class="footer-column">

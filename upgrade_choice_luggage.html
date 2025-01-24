@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="img/logo_16.ico">
   <link rel="shortcut icon" href="img/logo_32.ico">
-  <title>WronAir</title>
+  <title>WronAir | Upgrade</title>
   <link rel="stylesheet" href="style_upgrade_choice.css" />
+  <link rel="stylesheet" href="style_headfoot.css" />
 </head>
 <body>
   <header class="header-with-logo">
@@ -55,9 +56,9 @@
     <nav class="main-menu" id="mainNav">
       <ul class="nav-links">
         <li><a href="index.html">Strona Główna</a></li>
-        <li><a href="#">Odpraw się</a></li>
+        <li><a href="odprawa.html">Odpraw się</a></li>
         <li><a href="upgrade.html">Upgrade</a></li>
-        <li><a href="#">Usługi na Pokładzie</a></li>
+        <li><a href="uslugi.html">Usługi na Pokładzie</a></li>
         <li><a href="faq.html">FAQ</a></li>
         <li><a href="o_nas.html">O Nas</a></li>
       </ul>
@@ -68,9 +69,9 @@
       <ul>
         <li><a href="#">Logowanie i rejestracja</a></li>
         <li><a href="index.html">Strona Główna</a></li>
-        <li><a href="#">Odpraw się</a></li>
+        <li><a href="odprawa.html">Odpraw się</a></li>
         <li><a href="upgrade.html">Upgrade</a></li>
-        <li><a href="#">Usługi na Pokładzie</a></li>
+        <li><a href="uslugi.html">Usługi na Pokładzie</a></li>
         <li><a href="faq.html">FAQ</a></li>
         <li><a href="o_nas.html">O Nas</a></li>
         <li>
@@ -126,28 +127,7 @@
         </div>
     </section>
 </main>
-<script>
-    document.querySelectorAll('.upgrade-btn').forEach(button => {
-    button.addEventListener('click', event => {
-        const upgradeType = event.target.getAttribute('data-upgrade');
-        const targetPage = 'upgrade_end.html';
 
-        // Pobierz aktualny URL
-        const currentUrl = new URL(window.location.href);
-
-        // Utwórz parametry dla nowego URL
-        const orderCode = currentUrl.searchParams.get('orderCode') || 'defaultOrderCode';
-        const upgradeChoice = currentUrl.searchParams.get('upgradeChoice') || 'defaultUpgradeChoice';
-
-        // Zbuduj nowy URL z parametrami
-        const targetUrl = `${targetPage}?orderCode=${encodeURIComponent(orderCode)}&upgradeChoice=${encodeURIComponent(upgradeChoice)}&luggageType=${encodeURIComponent(upgradeType)}`;
-
-        // Przekieruj na nową stronę
-        window.location.href = targetUrl;
-    });
-});
-
-</script>
 
 
   <footer>
@@ -167,10 +147,10 @@
     <div class="footer-container">
       <div class="footer-column">
         <div class="footer-links">
-          <a href="#">Odpraw się</a><br /><br />
-          <a href="#">Upgrade</a><br /><br />
-          <a href="#">Usługi na pokładzie</a><br /><br />
-          <a href="#">FAQ</a>
+          <a href="odprawa.html">Odpraw się</a><br /><br />
+          <a href="upgrade.html">Upgrade</a><br /><br />
+          <a href="uslugi.html">Usługi na pokładzie</a><br /><br />
+          <a href="faq.html">FAQ</a>
         </div>
         <p class="payment-title">Opcje płatności</p>
         <div class="payment-options">
@@ -183,12 +163,12 @@
       </div>
       <div class="footer-column">
         <div class="footer-links">
-          <a href="#">O nas</a><br /><br />
+          <a href="o_nas.html">O nas</a><br /><br />
           <a href="#">Bagaż</a><br /><br />
           <a href="#">Informacje o odprawie</a><br /><br />
           <a href="#">Pomoc</a><br /><br />
           <a href="#">Posiłki i napoje</a><br /><br />
-          <a href="#">Promocje i oferty</a>
+          <a href="kontakt.html">Kontakt</a>
         </div>
       </div>
       <div class="footer-column">
@@ -232,31 +212,27 @@
         langDropdownMobile.classList.toggle("show");
       });
     });
-    document.addEventListener('DOMContentLoaded', () => {
-    const tripTypeSelect = document.getElementById('trip-type');
-    const returnInputContainer = document.querySelector('.form-half:nth-child(2)'); // przyjmujemy, że druga połówka dotyczy powrotu
-    const departureInputContainer = document.querySelector('.form-half:nth-child(1)'); 
 
-    // Funkcja zmieniająca widoczność pola "Powrót"
-    function updateReturnVisibility() {
-    if (tripTypeSelect.value === 'one-way') {
-      // Ukryj pole powrotu
-      returnInputContainer.style.display = 'none';
-      // Dodaj klasę, która rozciąga pole wylotu
-      departureInputContainer.classList.add('full-width-departure');
-    } else {
-      returnInputContainer.style.display = 'flex';
-      departureInputContainer.classList.remove('full-width-departure');
-    }
-  }
+    document.querySelectorAll('.upgrade-btn').forEach(button => {
+    button.addEventListener('click', event => {
+        const upgradeType = event.target.getAttribute('data-upgrade');
+        const targetPage = 'upgrade_end.html';
 
-    // Uruchom przy starcie:
-    updateReturnVisibility();
+        // Pobierz aktualny URL
+        const currentUrl = new URL(window.location.href);
 
-    // Nasłuchuj zmiany wyboru:
-    tripTypeSelect.addEventListener('change', updateReturnVisibility);
-  });
-  
-  </script>
+        // Utwórz parametry dla nowego URL
+        const orderCode = currentUrl.searchParams.get('orderCode') || 'defaultOrderCode';
+        const upgradeChoice = currentUrl.searchParams.get('upgradeChoice') || 'defaultUpgradeChoice';
+
+        // Zbuduj nowy URL z parametrami
+        const targetUrl = `${targetPage}?orderCode=${encodeURIComponent(orderCode)}&upgradeChoice=${encodeURIComponent(upgradeChoice)}&luggageType=${encodeURIComponent(upgradeType)}`;
+
+        // Przekieruj na nową stronę
+        window.location.href = targetUrl;
+    });
+});
+
+</script>
 </body>
 </html>

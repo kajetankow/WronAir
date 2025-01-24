@@ -7,6 +7,7 @@
   <link rel="shortcut icon" href="img/logo_32.ico">
   <title>WronAir | Odprawa</title>
   <link rel="stylesheet" href="style_potwierdz_dane.css" />
+  <link rel="stylesheet" href="style_headfoot.css" />
 </head>
 <body>
   <header class="header-with-logo">
@@ -55,9 +56,9 @@
     <nav class="main-menu" id="mainNav">
       <ul class="nav-links">
         <li><a href="index.html">Strona Główna</a></li>
-        <li><a href="#">Odpraw się</a></li>
-        <li><a href="#">Upgrade</a></li>
-        <li><a href="#">Usługi na Pokładzie</a></li>
+        <li><a href="odprawa.html">Odpraw się</a></li>
+        <li><a href="upgrade.html">Upgrade</a></li>
+        <li><a href="uslugi.html">Usługi na Pokładzie</a></li>
         <li><a href="faq.html">FAQ</a></li>
         <li><a href="o_nas.html">O Nas</a></li>
       </ul>
@@ -68,9 +69,9 @@
       <ul>
         <li><a href="#">Logowanie i rejestracja</a></li>
         <li><a href="index.html">Strona Główna</a></li>
-        <li><a href="#">Odpraw się</a></li>
-        <li><a href="#">Upgrade</a></li>
-        <li><a href="#">Usługi na Pokładzie</a></li>
+        <li><a href="odprawa.html">Odpraw się</a></li>
+        <li><a href="upgrade.html">Upgrade</a></li>
+        <li><a href="uslugi.html">Usługi na Pokładzie</a></li>
         <li><a href="faq.html">FAQ</a></li>
         <li><a href="o_nas.html">O Nas</a></li>
         <li>
@@ -249,9 +250,9 @@
     <div class="footer-container">
       <div class="footer-column">
         <div class="footer-links">
-          <a href="#">Odpraw się</a><br /><br />
-          <a href="#">Upgrade</a><br /><br />
-          <a href="#">Usługi na pokładzie</a><br /><br />
+          <a href="odprawa.html">Odpraw się</a><br /><br />
+          <a href="upgrade.html">Upgrade</a><br /><br />
+          <a href="uslugi.html">Usługi na pokładzie</a><br /><br />
           <a href="faq.html">FAQ</a>
         </div>
         <p class="payment-title">Opcje płatności</p>
@@ -270,7 +271,7 @@
           <a href="#">Informacje o odprawie</a><br /><br />
           <a href="#">Pomoc</a><br /><br />
           <a href="#">Posiłki i napoje</a><br /><br />
-          <a href="#">Promocje i oferty</a>
+          <a href="kontakt.html">Kontakt</a>
         </div>
       </div>
       <div class="footer-column">
@@ -314,36 +315,34 @@
         langDropdownMobile.classList.toggle("show");
       });
     });
-    // Funkcja do pobierania parametrów z URL
+  // Funkcja do pobierania parametrów z URL
   function getQueryParams() {
-    const params = new URLSearchParams(window.location.search); // Pobiera parametry z URL
+    const params = new URLSearchParams(window.location.search); 
     return {
       reservationNumber: params.get("reservationNumber") || "Brak numeru rezerwacji",
       lastName: params.get("lastName") || "Brak nazwiska",
     };
   }
 
-  // Funkcja do wstawienia danych do odpowiednich spanów i utworzenia linku
+  
   function populateData() {
     const { reservationNumber, lastName } = getQueryParams();
 
-    // Dodanie numeru rezerwacji do odpowiedniego spana
+    
     const reservationNumberSpan = document.getElementById("reservationNumberSpan");
     reservationNumberSpan.textContent = reservationNumber;
 
-    // Dodanie nazwiska do odpowiedniego spana
+    
     const lastNameSpan = document.getElementById("lastNameSpan");
     lastNameSpan.textContent = lastName;
 
-    // Tworzenie nowego linku
+    //Tworzenie nowego linku
     const confirmButton = document.querySelector(".confirm-button");
     const nextURL = `wybor_miejsca.html?reservationNumber=${encodeURIComponent(
       reservationNumber
     )}&lastName=${encodeURIComponent(lastName)}`;
-    confirmButton.href = nextURL; // Ustawienie nowego linku
+    confirmButton.href = nextURL; //Ustawienie nowego linku
   }
-
-  // Uruchomienie funkcji po załadowaniu strony
   document.addEventListener("DOMContentLoaded", populateData);
   </script>
 </body>
