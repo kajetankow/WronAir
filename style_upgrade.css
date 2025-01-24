@@ -159,11 +159,11 @@
   @media (max-width: 760px) {
     
     .upgrade-form h2 {
-      font-size: 12px; /* Zmniejszenie rozmiaru czcionki */
+      font-size: 12px; 
     }
     .upgrade-form input {
     
-      width: 70%; /* Zachowanie szerokości pola */
+      width: 70%; 
       
   }
   }
