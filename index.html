@@ -180,7 +180,7 @@
     <div class="carousel" id="carousel">
       <!-- Tile 1 -->
       <div class="tile">
-        <a href="oferta1.html">
+        <a href="#">
           <img src="img/krakow.webp" alt="Kraków">
           <div class="tile-info">
             <h3>Kraków</h3>
@@ -190,7 +190,7 @@
       </div>
       <!-- Tile 2 -->
       <div class="tile">
-        <a href="oferta2.html">
+        <a href="#">
           <img src="img/los_angeles.webp" alt="Los Angeles">
           <div class="tile-info">
             <h3>Los Angeles</h3>
@@ -200,7 +200,7 @@
       </div>
       <!-- Tile 3 -->
       <div class="tile">
-        <a href="oferta3.html">
+        <a href="#">
           <img src="img/londyn.webp" alt="Londyn">
           <div class="tile-info">
             <h3>Londyn</h3>
@@ -210,7 +210,7 @@
       </div>
       <!-- Tile 4 -->
       <div class="tile">
-        <a href="oferta4.html">
+        <a href="#">
           <img src="img/rzym.webp" alt="Rzym">
           <div class="tile-info">
             <h3>Rzym</h3>
@@ -219,7 +219,7 @@
         </a>
       </div>
       <div class="tile">
-        <a href="oferta5.html">
+        <a href="#">
           <img src="img/new_jork.webp" alt="Nowy Jork">
           <div class="tile-info">
             <h3>Nowy Jork</h3>
@@ -228,7 +228,7 @@
         </a>
       </div>
       <div class="tile">
-        <a href="oferta6.html">
+        <a href="#">
           <img src="img/barcelona.webp" alt="Barcelona">
           <div class="tile-info">
             <h3>Barcelona</h3>
@@ -238,7 +238,7 @@
       </div>
       <!-- Tile 7 -->
       <div class="tile">
-        <a href="oferta7.html">
+        <a href="#">
           <img src="img/ateny.webp" alt="Ateny">
           <div class="tile-info">
             <h3>Ateny</h3>
@@ -254,7 +254,6 @@
           </div>
         </a>
       </div>
-      <!-- Możesz dodać kolejne kafelki według potrzeb -->
     </div>
     
     <!-- Nawigacja (przyciski) -->
@@ -380,7 +379,7 @@
     });
     document.addEventListener('DOMContentLoaded', () => {
     const tripTypeSelect = document.getElementById('trip-type');
-    const returnInputContainer = document.querySelector('.form-half:nth-child(2)'); // przyjmujemy, że druga połówka dotyczy powrotu
+    const returnInputContainer = document.querySelector('.form-half:nth-child(2)'); 
     const departureInputContainer = document.querySelector('.form-half:nth-child(1)'); 
 
     // Funkcja zmieniająca widoczność pola "Powrót"
@@ -395,11 +394,7 @@
       departureInputContainer.classList.remove('full-width-departure');
     }
   }
-
-    // Uruchom przy starcie:
     updateReturnVisibility();
-
-    // Nasłuchuj zmiany wyboru:
     tripTypeSelect.addEventListener('change', updateReturnVisibility);
   });
   
@@ -417,7 +412,7 @@
       let prevTranslate = 0;
       let animationID;
       
-      //funkcja ustalająca szerokość kafelka (zmienia się przy resize lub mobilnym widoku)
+      //funkcja ustalająca szerokość kafelka
       function getTileWidth() {
         return tiles[0].offsetWidth + parseInt(getComputedStyle(tiles[0]).marginLeft) + parseInt(getComputedStyle(tiles[0]).marginRight);
       }
@@ -511,18 +506,15 @@
       
       // Aktualizacja pozycji przy zmianie rozmiaru
       window.addEventListener('resize', setPositionByIndex);
-      
-      // Inicjalizacja pozycji karuzeli
       setPositionByIndex();
       
-    
-    // Automatyczne przesuwanie karuzeli co 3 sekundy
+    // Automatyczne przesuwanie karuzeli co 8 sekund
     function startAutoSlide() {
       autoSlideInterval = setInterval(() => {
         currentIndex = currentIndex < tiles.length - 3 ? currentIndex + 1 : 0;
         setPositionByIndex();
         updateIndicators();
-      }, 8000); // 8 sekundy
+      }, 8000); // 8 sekund
     }
     // Funkcja resetująca automatyczne przesuwanie karuzeli
     function resetAutoSlide() {
